@@ -3,168 +3,210 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Play, ArrowRight, CheckCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function HeroSlider() {
-  const slides = [
-    {
-      id: 1,
-      title: "Yenilikçi Tıbbi Çözümler",
-      subtitle: "En son teknoloji ile üretilmiş yüksek kaliteli tıbbi malzemeler",
-      description: "Sağlık sektörünün ihtiyaçlarını karşılamak için tasarlanmış ileri teknoloji ürünlerimizle tanışın.",
-      image: "/placeholder.svg?height=1080&width=1920",
-      cta: "Ürünleri Keşfedin",
-      color: "from-blue-600 to-cyan-400",
-    },
-    {
-      id: 2,
-      title: "Güvenilir Tedarik Zinciri",
-      subtitle: "Zamanında teslimat ve kesintisiz hizmet garantisi",
-      description: "Türkiye'nin her yerine hızlı ve güvenilir teslimat ile sağlık kurumlarının yanındayız.",
-      image: "/placeholder.svg?height=1080&width=1920",
-      cta: "Tedarik Çözümlerimiz",
-      color: "from-purple-600 to-blue-500",
-    },
-    {
-      id: 3,
-      title: "Kalite ve Güven",
-      subtitle: "Uluslararası standartlarda üretim ve sertifikasyon",
-      description: "Tüm ürünlerimiz en yüksek kalite standartlarında üretilir ve uluslararası sertifikalara sahiptir.",
-      image: "/placeholder.svg?height=1080&width=1920",
-      cta: "Kalite Politikamız",
-      color: "from-emerald-600 to-teal-400",
-    },
-  ]
+const slides = [
+  {
+    id: 1,
+    title: "Tıbbi Ekipman",
+    subtitle: "Teknolojisinde Öncü",
+    description: "En son teknoloji tıbbi cihazlar ve ekipmanlar ile sağlık sektörüne hizmet veriyoruz.",
+    image: "/placeholder.svg?height=800&width=1200&text=Medical+Equipment",
+    features: ["ISO Sertifikalı", "7/24 Teknik Destek", "Garantili Hizmet"],
+  },
+  {
+    id: 2,
+    title: "Laboratuvar",
+    subtitle: "Çözümleri",
+    description: "Modern laboratuvar ekipmanları ile hassas ve güvenilir test sonuçları sunuyoruz.",
+    image: "/placeholder.svg?height=800&width=1200&text=Laboratory+Solutions",
+    features: ["Yüksek Hassasiyet", "Hızlı Sonuçlar", "Uzman Ekip"],
+  },
+  {
+    id: 3,
+    title: "Hasta Bakım",
+    subtitle: "Sistemleri",
+    description: "Hasta konforunu ve güvenliğini ön planda tutan bakım sistemleri geliştiriyoruz.",
+    image: "/placeholder.svg?height=800&width=1200&text=Patient+Care+Systems",
+    features: ["Hasta Odaklı", "Güvenli Teknoloji", "Kolay Kullanım"],
+  },
+]
 
+export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const [autoplay, setAutoplay] = useState(true)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    if (!isAutoPlaying) return
 
-    if (autoplay) {
-      interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
-      }, 5000)
-    }
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length)
+    }, 5000)
 
     return () => clearInterval(interval)
-  }, [autoplay, slides.length])
+  }, [isAutoPlaying])
 
   const nextSlide = () => {
-    setAutoplay(false)
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
   }
 
   const prevSlide = () => {
-    setAutoplay(false)
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
   }
 
   const goToSlide = (index: number) => {
-    setAutoplay(false)
     setCurrentSlide(index)
   }
 
   return (
-    <section className="relative h-[80vh] md:h-[90vh] w-full overflow-hidden bg-black">
-      {/* Slides */}
+    <section id="home" className="relative h-screen overflow-hidden">
+      {/* Background Slides */}
       <AnimatePresence mode="wait">
-        {slides.map(
-          (slide, index) =>
-            index === currentSlide && (
-              <motion.div
-                key={slide.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="absolute inset-0 h-full w-full"
-              >
-                {/* Background Image with Overlay */}
-                <div className="absolute inset-0 z-0">
-                  <Image
-                    src={slide.image || "/placeholder.svg"}
-                    alt={slide.title}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-r ${slide.color} opacity-50 mix-blend-multiply`}
-                  ></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                </div>
-
-                {/* Content */}
-                <div className="container relative z-10 mx-auto h-full px-4 sm:px-6 lg:px-8">
-                  <div className="flex h-full flex-col justify-center">
-                    <div className="max-w-3xl">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                      >
-                        <h2 className="mb-2 text-sm font-medium uppercase tracking-wider text-white/80 md:text-base">
-                          {slide.subtitle}
-                        </h2>
-                        <h1 className="mb-6 text-4xl font-bold text-white md:text-5xl lg:text-6xl">{slide.title}</h1>
-                        <p className="mb-8 max-w-xl text-lg text-white/80">{slide.description}</p>
-                        <Button
-                          size="lg"
-                          className="bg-white text-gray-900 hover:bg-white/90"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {slide.cta}
-                        </Button>
-                      </motion.div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ),
-        )}
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.7 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={slides[currentSlide].image || "/placeholder.svg"}
+            alt={slides[currentSlide].title}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
+        </motion.div>
       </AnimatePresence>
 
+      {/* Content */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.6 }}
+                className="text-white"
+              >
+                <motion.span
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full glass-card"
+                >
+                  Tuna Medikal
+                </motion.span>
+
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="text-5xl md:text-7xl font-bold mb-4 leading-tight"
+                >
+                  {slides[currentSlide].title}
+                  <br />
+                  <span className="gradient-text-green">{slides[currentSlide].subtitle}</span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl"
+                >
+                  {slides[currentSlide].description}
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex flex-wrap gap-4 mb-8"
+                >
+                  {slides[currentSlide].features.map((feature, index) => (
+                    <div key={index} className="flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
+                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      <span className="text-white font-medium">{feature}</span>
+                    </div>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="flex flex-col sm:flex-row gap-4"
+                >
+                  <Button size="lg" className="btn-green-gradient px-8 py-4 text-lg rounded-full group">
+                    Ürünlerimizi İncele
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="btn-glass px-8 py-4 text-lg rounded-full group border-2 border-white/30"
+                  >
+                    <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Tanıtım Videosu
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation Arrows */}
-      <div className="absolute bottom-1/2 left-4 z-20 translate-y-1/2 md:left-8">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={prevSlide}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30 md:h-12 md:w-12"
-          aria-label="Önceki slayt"
-        >
-          <ChevronLeft className="h-6 w-6" />
-        </motion.button>
-      </div>
+      <button
+        onClick={prevSlide}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full text-white hover:bg-white/20 transition-all duration-300 group"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+      >
+        <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+      </button>
 
-      <div className="absolute bottom-1/2 right-4 z-20 translate-y-1/2 md:right-8">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={nextSlide}
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-colors hover:bg-white/30 md:h-12 md:w-12"
-          aria-label="Sonraki slayt"
-        >
-          <ChevronRight className="h-6 w-6" />
-        </motion.button>
-      </div>
+      <button
+        onClick={nextSlide}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 glass-card p-3 rounded-full text-white hover:bg-white/20 transition-all duration-300 group"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+      >
+        <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+      </button>
 
-      {/* Dots Navigation */}
-      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center space-x-3">
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`h-2 w-8 rounded-full transition-all duration-300 ${
-              index === currentSlide ? "bg-white" : "bg-white/40"
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              index === currentSlide ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
             }`}
-            aria-label={`Slayt ${index + 1}`}
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
           />
         ))}
+      </div>
+
+      {/* Progress Bar */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+        <motion.div
+          className="h-full bg-gradient-to-r from-green-500 to-green-600"
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: 5, ease: "linear" }}
+          key={currentSlide}
+        />
       </div>
     </section>
   )

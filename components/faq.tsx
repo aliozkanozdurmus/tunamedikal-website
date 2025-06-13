@@ -1,57 +1,57 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Plus, Minus } from "lucide-react"
+
+const faqs = [
+  {
+    question: "Tuna Medikal hangi tür tıbbi cihazlar üretiyor?",
+    answer:
+      "Kardiyovasküler ürünler, tanı ekipmanları, laboratuvar malzemeleri, tek kullanımlık ürünler, hasta izleme sistemleri ve özel üretim çözümleri dahil olmak üzere geniş bir ürün yelpazesi sunuyoruz.",
+  },
+  {
+    question: "Ürünleriniz hangi kalite standartlarına sahip?",
+    answer:
+      "Tüm ürünlerimiz ISO 13485 kalite yönetim sistemi standartlarına uygun olarak üretilmekte ve CE işareti taşımaktadır. Ayrıca Sağlık Bakanlığı onaylarına sahiptir.",
+  },
+  {
+    question: "Teslimat süreniz ne kadar?",
+    answer:
+      "Stokta bulunan ürünler için 1-3 iş günü, özel üretim gerektiren ürünler için 2-4 hafta teslimat süresi bulunmaktadır. Acil durumlar için hızlı teslimat seçeneklerimiz mevcuttur.",
+  },
+  {
+    question: "Teknik destek hizmeti veriyor musunuz?",
+    answer:
+      "Evet, 7/24 teknik destek hizmeti sunuyoruz. Ürün kurulumu, kullanım eğitimi, bakım ve onarım hizmetleri dahil olmak üzere kapsamlı destek sağlıyoruz.",
+  },
+  {
+    question: "Hangi bölgelere hizmet veriyorsunuz?",
+    answer:
+      "Türkiye genelinde hizmet vermekteyiz. İstanbul, Ankara, İzmir başta olmak üzere tüm illere teslimat yapıyoruz. Ayrıca seçili ülkelere ihracat da gerçekleştiriyoruz.",
+  },
+  {
+    question: "Ürün garantisi var mı?",
+    answer:
+      "Tüm ürünlerimiz için minimum 2 yıl garanti sunuyoruz. Bazı özel ürünler için garanti süresi daha uzun olabilir. Garanti kapsamında ücretsiz bakım ve onarım hizmeti verilmektedir.",
+  },
+]
 
 export function Faq() {
-  const faqs = [
-    {
-      question: "Hangi tıbbi malzeme kategorilerinde ürün sunuyorsunuz?",
-      answer:
-        "Kardiyovasküler ürünler, tanı ekipmanları, laboratuvar malzemeleri, tek kullanımlık ürünler, hasta izleme sistemleri ve daha birçok kategoride geniş bir ürün yelpazesi sunuyoruz. Detaylı ürün kataloğumuzu web sitemizden inceleyebilir veya satış temsilcilerimizle iletişime geçebilirsiniz.",
-    },
-    {
-      question: "Ürünleriniz hangi kalite sertifikalarına sahip?",
-      answer:
-        "Tüm ürünlerimiz ISO 13485 Tıbbi Cihazlar Kalite Yönetim Sistemi sertifikasına sahiptir. Ayrıca, Avrupa pazarında satılan ürünlerimiz CE işaretine, Amerika pazarında satılan ürünlerimiz ise FDA onayına sahiptir. Ürünlerimiz düzenli olarak bağımsız laboratuvarlarda test edilmektedir.",
-    },
-    {
-      question: "Minimum sipariş miktarınız nedir?",
-      answer:
-        "Ürün kategorisine göre minimum sipariş miktarlarımız değişiklik göstermektedir. Toplu alımlarda özel fiyatlandırma seçeneklerimiz mevcuttur. Detaylı bilgi için satış departmanımızla iletişime geçmenizi öneririz.",
-    },
-    {
-      question: "Teslimat süreleriniz nedir?",
-      answer:
-        "Stokta bulunan ürünler için teslimat süresi genellikle 1-3 iş günüdür. Özel üretim veya büyük miktarlı siparişler için teslimat süresi 1-4 hafta arasında değişebilir. Acil durumlarda hızlı teslimat seçeneklerimiz de bulunmaktadır.",
-    },
-    {
-      question: "Özel üretim yapıyor musunuz?",
-      answer:
-        "Evet, sağlık kurumlarının özel ihtiyaçlarına yönelik özelleştirilmiş tıbbi malzeme üretimi yapıyoruz. Ar-Ge ekibimiz, müşterilerimizin spesifikasyonlarına uygun ürünler geliştirmek için çalışmaktadır. Özel üretim talepleriniz için lütfen bizimle iletişime geçin.",
-    },
-    {
-      question: "Uluslararası gönderim yapıyor musunuz?",
-      answer:
-        "Evet, dünya genelinde 50'den fazla ülkeye ihracat yapıyoruz. Uluslararası lojistik ağımız sayesinde ürünlerimizi güvenli ve hızlı bir şekilde dünyanın her yerine ulaştırabiliyoruz. Ulu̧slararası siparişler için özel gümrük ve lojistik desteği sağlıyoruz.",
-    },
-  ]
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+
+  const toggleFaq = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index)
+  }
 
   return (
-    <section id="faq" className="section-padding bg-gradient-to-b from-white to-medical-50 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
+        animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-gradient-radial from-medical-400 to-transparent blur-3xl -z-10"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -left-40 bottom-40 h-[300px] w-[300px] rounded-full bg-gradient-radial from-medical-500 to-transparent blur-3xl -z-10"
+        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,36 +67,63 @@ export function Faq() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-medical-50 text-medical-600 border border-medical-100"
+            className="inline-block px-6 py-2 mb-6 text-sm font-medium rounded-full glass-card"
           >
-            SSS
+            Sık Sorulan Sorular
           </motion.span>
 
-          <h2 className="section-title">
-            Sıkça Sorulan <span className="gradient-text">Sorular</span>
-          </h2>
-          <p className="section-subtitle">Ürün ve hizmetlerimiz hakkında sık sorulan soruların cevaplarını bulun.</p>
+          <h2 className="section-title gradient-text">Sıkça Sorulan Sorular</h2>
+          <p className="section-subtitle">
+            Tuna Medikal hakkında merak ettiğiniz soruların cevaplarını burada bulabilirsiniz.
+          </p>
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <AccordionItem value={`item-${index}`} className="border-b border-gray-200">
-                  <AccordionTrigger className="text-left font-medium py-4 hover:no-underline group">
-                    <span className="group-hover:text-medical-600 transition-colors">{faq.question}</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 pb-4">{faq.answer}</AccordionContent>
-                </AccordionItem>
-              </motion.div>
-            ))}
-          </Accordion>
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="mb-4"
+            >
+              <div className="glass-card rounded-2xl overflow-hidden">
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-green-50/50 transition-colors duration-200"
+                >
+                  <span className="font-semibold text-gray-800 pr-4">{faq.question}</span>
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex-shrink-0"
+                  >
+                    {openIndex === index ? (
+                      <Minus className="h-5 w-5 text-green-600" />
+                    ) : (
+                      <Plus className="h-5 w-5 text-green-600" />
+                    )}
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-4">
+                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -2,120 +2,148 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Link from "next/link"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function Navbar({ isScrolled }: { isScrolled: boolean }) {
+interface NavbarProps {
+  isScrolled: boolean
+}
+
+export function Navbar({ isScrolled }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const navLinks = [
+  const navItems = [
     { name: "Ana Sayfa", href: "#home" },
     { name: "Hakkımızda", href: "#about" },
-    { name: "Ürünlerimiz", href: "#services" },
+    { name: "Ürünler", href: "#products" },
     { name: "Referanslar", href: "#testimonials" },
     { name: "Galeri", href: "#gallery" },
-    { name: "SSS", href: "#faq" },
-    { name: "Haberler", href: "#news" },
     { name: "İletişim", href: "#contact" },
   ]
 
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "bg-white/20 backdrop-blur-md border-b border-white/20 shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-20 items-center justify-between">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center"
-          >
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="text-2xl font-bold">
-                <span className="gradient-text">Tuna</span> Medikal
-              </div>
-            </Link>
-          </motion.div>
-
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-3">
+            <div className="w-12 h-12 glass-card rounded-xl flex items-center justify-center">
+              <span className="text-xl font-bold gradient-text-green">T</span>
+            </div>
+            <div className="flex flex-col">
+              <span
+                className={`text-xl font-bold transition-colors duration-300 ${
+                  isScrolled ? "text-gray-800" : "text-white"
+                }`}
               >
-                <Link
-                  href={link.href}
-                  className="text-sm font-medium text-gray-700 hover:text-medical-600 transition-colors"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="hidden md:flex items-center space-x-4"
-          >
-            <div className="flex items-center space-x-2">
-              <Phone className="h-4 w-4 text-medical-600" />
-              <span className="text-sm font-medium">+90 555 123 4567</span>
+                Tuna Medikal
+              </span>
+              <span
+                className={`text-xs transition-colors duration-300 ${isScrolled ? "text-gray-600" : "text-white/80"}`}
+              >
+                Medical Equipment
+              </span>
             </div>
-            <Button className="bg-gradient-medical hover:bg-medical-700 shadow-lg shadow-medical-500/20">
-              İletişime Geçin
-            </Button>
           </motion.div>
 
-          <div className="flex md:hidden">
-            <button type="button" className="text-gray-700" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              <span className="sr-only">Menüyü aç</span>
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item, index) => (
+              <motion.a
+                key={item.name}
+                href={item.href}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className={`font-medium transition-all duration-300 relative group ${
+                  isScrolled ? "text-gray-700 hover:text-green-600" : "text-white/90 hover:text-white"
+                }`}
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
+            ))}
           </div>
-        </div>
-      </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-white/95 backdrop-blur-md border-t"
-          >
-            <div className="space-y-1 px-4 pb-5 pt-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="block py-2 text-base font-medium text-gray-700 hover:text-medical-600"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-4">
-                <Button className="w-full bg-gradient-medical hover:bg-medical-700 shadow-lg shadow-medical-500/20">
-                  İletişime Geçin
-                </Button>
+          {/* Contact Info & CTA */}
+          <div className="hidden lg:flex items-center space-x-6">
+            <div
+              className={`flex items-center space-x-4 text-sm transition-colors duration-300 ${
+                isScrolled ? "text-gray-600" : "text-white/80"
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4" />
+                <span>+90 212 XXX XX XX</span>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+
+            <Button className="btn-green-gradient px-6 py-2 rounded-full">İletişim</Button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="sm"
+            className={`md:hidden glass-card transition-colors duration-300 ${
+              isScrolled ? "text-gray-700 hover:bg-gray-100/50" : "text-white hover:bg-white/20"
+            }`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </Button>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden mt-4 glass-card rounded-2xl p-6 mb-4"
+            >
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item, index) => (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`font-medium py-3 px-4 rounded-lg transition-all duration-200 ${
+                      isScrolled ? "text-gray-700 hover:bg-gray-100/50" : "text-white/90 hover:bg-white/10"
+                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </motion.a>
+                ))}
+                <div className="pt-4 border-t border-white/20">
+                  <div className={`flex flex-col space-y-3 text-sm ${isScrolled ? "text-gray-600" : "text-white/80"}`}>
+                    <div className="flex items-center space-x-2">
+                      <Phone className="w-4 h-4" />
+                      <span>+90 212 XXX XX XX</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Mail className="w-4 h-4" />
+                      <span>info@tunamedikal.com</span>
+                    </div>
+                  </div>
+                  <Button className="btn-green-gradient w-full mt-4 rounded-full">İletişim</Button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.nav>
   )
 }

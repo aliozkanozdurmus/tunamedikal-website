@@ -128,9 +128,7 @@ export function Services() {
             Ürün ve Hizmetlerimiz
           </motion.span>
 
-          <h2 className="section-title">
-            <span className="gradient-text">Ürün</span> Kategorilerimiz
-          </h2>
+          <h2 className="section-title gradient-text">Ürün Kategorilerimiz</h2>
           <p className="section-subtitle">
             Sağlık sektörünün tüm ihtiyaçlarını karşılamak için geniş bir ürün ve hizmet yelpazesi sunuyoruz.
           </p>

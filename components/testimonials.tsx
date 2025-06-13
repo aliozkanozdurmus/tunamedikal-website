@@ -111,9 +111,7 @@ export function Testimonials() {
             Referanslarımız
           </motion.span>
 
-          <h2 className="section-title">
-            <span className="gradient-text">Müşterilerimiz</span> Ne Diyor?
-          </h2>
+          <h2 className="section-title gradient-text">Müşterilerimiz Ne Diyor?</h2>
           <p className="section-subtitle">Ürün ve hizmetlerimizi kullanan değerli müşterilerimizin yorumları.</p>
         </motion.div>
 

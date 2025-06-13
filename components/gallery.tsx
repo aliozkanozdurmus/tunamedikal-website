@@ -97,9 +97,7 @@ export function Gallery() {
             Galeri
           </motion.span>
 
-          <h2 className="section-title">
-            <span className="gradient-text">Tesislerimiz</span> ve Ürünlerimiz
-          </h2>
+          <h2 className="section-title gradient-text">Tesislerimiz ve Ürünlerimiz</h2>
           <p className="section-subtitle">Modern üretim tesislerimiz ve yüksek kaliteli ürünlerimizden görüntüler.</p>
         </motion.div>
 

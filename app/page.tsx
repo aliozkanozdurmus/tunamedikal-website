@@ -8,6 +8,7 @@ import { Navbar } from "@/components/navbar"
 import { HeroSlider } from "@/components/hero-slider"
 import { AboutUs } from "@/components/about-us"
 import { ProductCatalog } from "@/components/product-catalog"
+import { Brands } from "@/components/brands"
 import { Testimonials } from "@/components/testimonials"
 import { Gallery } from "@/components/gallery"
 import { Faq } from "@/components/faq"
@@ -15,7 +16,7 @@ import { NewsHighlights } from "@/components/news-highlights"
 import { ContactForm } from "@/components/contact-form"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
-import { MaintenancePopup } from "@/components/maintenance-popup"
+// import { MaintenancePopup } from "@/components/maintenance-popup"
 
 export default function LandingPage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -42,14 +43,15 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="flex min-h-[100dvh] flex-col">
-      <MaintenancePopup />
+    <div className="flex min-h-[100dvh] flex-col bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      {/* <MaintenancePopup /> */}
       <Navbar isScrolled={isScrolled} />
 
       <main className="flex-1">
         <HeroSlider />
         <AboutUs />
         <ProductCatalog />
+        <Brands />
         <Testimonials />
         <Gallery />
         <Faq />

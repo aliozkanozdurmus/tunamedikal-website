@@ -2,65 +2,69 @@
 
 import type React from "react"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react"
+import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent } from "@/components/ui/card"
 
 export function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  })
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Form submission logic would go here
-    alert("Form gönderildi! Bu bir demo.")
+    // Handle form submission here
+    console.log("Form submitted:", formData)
   }
 
   const contactInfo = [
     {
-      icon: <Phone className="h-5 w-5" />,
+      icon: Phone,
       title: "Telefon",
-      details: ["+90 555 123 4567", "+90 555 765 4321"],
-      color: "bg-blue-50 text-blue-600",
+      details: ["+90 212 555 0123", "+90 212 555 0124"],
     },
     {
-      icon: <Mail className="h-5 w-5" />,
+      icon: Mail,
       title: "E-posta",
-      details: ["info@tunamedikal.com", "randevu@tunamedikal.com"],
-      color: "bg-green-50 text-green-600",
+      details: ["info@tunamedikal.com", "satis@tunamedikal.com"],
     },
     {
-      icon: <MapPin className="h-5 w-5" />,
-      title: "Konum",
-      details: ["123 Tıp Merkezi Caddesi", "İstanbul, Türkiye 34000"],
-      color: "bg-red-50 text-red-600",
-    },
-    {
-      icon: <Clock className="h-5 w-5" />,
-      title: "Çalışma Saatleri",
-      details: ["Pazartesi-Cuma: 08:00 - 20:00", "Cumartesi: 09:00 - 17:00"],
-      color: "bg-purple-50 text-purple-600",
+      icon: MapPin,
+      title: "Adres",
+      details: ["Maslak Mahallesi, Büyükdere Cad.", "No: 123, Sarıyer/İstanbul"],
     },
   ]
 
   return (
-    <section
-      id="contact"
-      className="section-padding bg-gradient-to-b from-medical-50 to-white relative overflow-hidden"
-    >
+    <section id="contact" className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
+        animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-gradient-radial from-medical-400 to-transparent blur-3xl -z-10"
+        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
+        animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -left-40 bottom-40 h-[300px] w-[300px] rounded-full bg-gradient-radial from-medical-500 to-transparent blur-3xl -z-10"
+        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,143 +80,153 @@ export function ContactForm() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-medical-50 text-medical-600 border border-medical-100"
+            className="inline-block px-6 py-2 mb-6 text-sm font-medium rounded-full glass-card"
           >
             İletişim
           </motion.span>
 
-          <h2 className="section-title">
-            <span className="gradient-text">İletişime</span> Geçin
-          </h2>
+          <h2 className="section-title gradient-text">Bizimle İletişime Geçin</h2>
           <p className="section-subtitle">
-            Sorularınız mı var veya randevu mu planlamak istiyorsunuz? Bugün bizimle iletişime geçin.
+            Sorularınız için bize ulaşın. Uzman ekibimiz size yardımcı olmaktan mutluluk duyar.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-1"
           >
-            <div className="space-y-6">
-              {contactInfo.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <Card className="overflow-hidden border-none shadow-sm hover:shadow-md transition-all duration-300">
-                    <CardContent className="p-6">
-                      <div className="flex items-start">
-                        <div className={`rounded-full p-3 mr-4 ${item.color}`}>{item.icon}</div>
-                        <div>
-                          <h3 className="font-bold mb-2">{item.title}</h3>
-                          {item.details.map((detail, i) => (
-                            <p key={i} className="text-gray-600">
-                              {detail}
-                            </p>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+            <div className="glass-card p-8 rounded-2xl h-full">
+              <h3 className="text-2xl font-bold gradient-text mb-6">İletişim Bilgileri</h3>
+              <p className="text-gray-600 mb-8">
+                Tıbbi cihaz ve malzeme ihtiyaçlarınız için bizimle iletişime geçebilirsiniz. Profesyonel ekibimiz size
+                en uygun çözümleri sunmak için hazır.
+              </p>
+
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="flex items-start space-x-4"
+                  >
+                    <div className="glass w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+                      <info.icon className="h-5 w-5 text-green-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800 mb-1">{info.title}</h4>
+                      {info.details.map((detail, detailIndex) => (
+                        <p key={detailIndex} className="text-gray-600 text-sm">
+                          {detail}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
+          {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
           >
-            <Card className="overflow-hidden shadow-lg border-none">
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4">Bize Mesaj Gönderin</h3>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Ad Soyad
-                      </label>
-                      <Input id="name" placeholder="Adınız" required />
-                    </motion.div>
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
-                    >
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        E-posta Adresi
-                      </label>
-                      <Input id="email" type="email" placeholder="E-posta adresiniz" required />
-                    </motion.div>
-                  </div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.2 }}
-                  >
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Telefon Numarası
-                    </label>
-                    <Input id="phone" placeholder="Telefon numaranız" />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                  >
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                      Konu
-                    </label>
-                    <Input id="subject" placeholder="Mesaj konusu" required />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.4 }}
-                  >
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                      Mesaj
-                    </label>
-                    <Textarea id="message" placeholder="Mesajınız" rows={5} required />
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.5 }}
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    <Button
-                      type="submit"
-                      className="w-full bg-gradient-medical hover:shadow-lg hover:shadow-medical-500/20 transition-all duration-300"
-                    >
-                      Mesaj Gönder
-                      <Send className="ml-2 h-4 w-4" />
-                    </Button>
-                  </motion.div>
-                </form>
-              </CardContent>
-            </Card>
+            <form onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl">
+              <h3 className="text-2xl font-bold gradient-text mb-6">Mesaj Gönderin</h3>
+
+              <div className="grid md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    Ad Soyad *
+                  </label>
+                  <Input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="glass border-0"
+                    placeholder="Adınızı girin"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    Telefon
+                  </label>
+                  <Input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="glass border-0"
+                    placeholder="Telefon numaranız"
+                  />
+                </div>
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  E-posta *
+                </label>
+                <Input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="glass border-0"
+                  placeholder="E-posta adresiniz"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  Konu
+                </label>
+                <Input
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="glass border-0"
+                  placeholder="Mesaj konusu"
+                />
+              </div>
+
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  Mesaj *
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={5}
+                  className="glass border-0 resize-none"
+                  placeholder="Mesajınızı yazın..."
+                />
+              </div>
+
+              <Button type="submit" className="btn-green-gradient w-full rounded-full py-3">
+                <Send className="mr-2 h-4 w-4" />
+                Mesaj Gönder
+              </Button>
+            </form>
           </motion.div>
         </div>
       </div>
