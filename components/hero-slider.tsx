@@ -1,10 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { ChevronLeft, ChevronRight, Play, ArrowRight, CheckCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 const slides = [
   {
@@ -33,6 +31,9 @@ const slides = [
   },
 ]
 
+const videoUrl =
+  "https://stinvenireaz084550184237.blob.core.windows.net/invenirecomtr-website/3195444-hd_1920_1080_25fps.mp4"
+
 export function HeroSlider() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
@@ -60,107 +61,38 @@ export function HeroSlider() {
   }
 
   return (
-    <section id="home" className="relative h-screen overflow-hidden">
-      {/* Background Slides */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.7 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={slides[currentSlide].image || "/placeholder.svg"}
-            alt={slides[currentSlide].title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20" />
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Content */}
-      <div className="relative z-10 h-full flex items-center">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSlide}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -50 }}
-                transition={{ duration: 0.6 }}
-                className="text-white"
-              >
-                <motion.span
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-block px-4 py-2 mb-6 text-sm font-medium rounded-full glass-card"
-                >
-                  Tuna Medikal
-                </motion.span>
-
-                <motion.h1
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="text-5xl md:text-7xl font-bold mb-4 leading-tight"
-                >
-                  {slides[currentSlide].title}
-                  <br />
-                  <span className="gradient-text-green">{slides[currentSlide].subtitle}</span>
-                </motion.h1>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-xl md:text-2xl mb-8 text-white/90 max-w-2xl"
-                >
-                  {slides[currentSlide].description}
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="flex flex-wrap gap-4 mb-8"
-                >
-                  {slides[currentSlide].features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-2 glass-card px-4 py-2 rounded-full">
-                      <CheckCircle className="w-5 h-5 text-green-400" />
-                      <span className="text-white font-medium">{feature}</span>
-                    </div>
-                  ))}
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="flex flex-col sm:flex-row gap-4"
-                >
-                  <Button size="lg" className="btn-green-gradient px-8 py-4 text-lg rounded-full group">
-                    Ürünlerimizi İncele
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="btn-glass px-8 py-4 text-lg rounded-full group border-2 border-white/30"
-                  >
-                    <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                    Tanıtım Videosu
-                  </Button>
-                </motion.div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+    <section className="relative w-full h-[calc(100vh-80px)] md:h-[600px] lg:h-[700px] overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline // Important for iOS
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+      >
+        <source src={videoUrl} type="video/mp4" />
+        Tarayıcınız video etiketini desteklemiyor.
+      </video>
+      {/* Black dotted overlay */}
+      <div
+        className="absolute inset-0 w-full h-full z-0"
+        style={{
+          backgroundImage: "radial-gradient(rgba(0, 0, 0, 0.3) 0.5px, transparent 0.5px)",
+          backgroundSize: "3px 3px", // Adjust for dot density
+          pointerEvents: "none",
+        }}
+      />
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-4 md:p-8">
+        {" "}
+        {/* Removed bg-black/10 to make video more visible */}
+        <div className="container mx-auto">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg">
+            Tuna Medikal Test
+          </h1>
+          <p className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
+            Sağlık sektöründe yenilikçi çözümler ve güvenilir medikal ürünler sunuyoruz. Kaliteli hizmet anlayışımızla
+            tanışın.
+          </p>
+          {/* Buttons removed as per request */}
         </div>
       </div>
 
@@ -180,7 +112,7 @@ export function HeroSlider() {
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
       >
-        <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+        <ChevronRight className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
       </button>
 
       {/* Slide Indicators */}

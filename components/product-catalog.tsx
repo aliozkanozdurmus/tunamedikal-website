@@ -1,305 +1,319 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Search, Filter, ChevronDown, ChevronUp } from "lucide-react" // ChevronUp eklendi
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect, useMemo } from "react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
-import { ProductDetailPage } from "@/components/product-detail-page"
-import { categories, products, getProductById, getProductsByCategory } from "@/lib/product-data"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import {
+  categories,
+  products,
+  type Product,
+  type Category,
+  getCategoryById,
+  getSubcategoryName,
+} from "@/lib/product-data"
 import { toTitleCase } from "@/lib/utils"
+import { ChevronDown, ChevronUp, Search, XCircle, Filter } from "lucide-react"
+// Changed import to named import and aliased
+import { ProductDetailPage as ProductDetailModal } from "./product-detail-page"
 
 const INITIAL_VISIBLE_PRODUCTS = 3
+const PRODUCTS_TO_SHOW_INCREMENT = 3
 
-export function ProductCatalog() {
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
-  const [showFilters, setShowFilters] = useState(false)
+export default function ProductCatalog() {
+  const [searchTerm, setSearchTerm] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null)
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null)
   const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_VISIBLE_PRODUCTS)
+  // Removed isModalOpen state, selectedProductForModal will control rendering
+  const [selectedProductForModal, setSelectedProductForModal] = useState<Product | null>(null)
+  const [showFilters, setShowFilters] = useState(false)
 
-  const handleCategoryClick = (categoryId: string) => {
-    setSelectedCategory(categoryId === selectedCategory ? null : categoryId)
-    setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
+  const handleProductClick = (product: Product) => {
+    setSelectedProductForModal(product)
+    // No need to set isModalOpen anymore
   }
 
-  const handleProductClick = (productId: string) => {
-    setSelectedProduct(productId)
+  const closeModal = () => {
+    setSelectedProductForModal(null)
+    // No need to set isModalOpen anymore
   }
 
-  const handleCloseProductDetail = () => {
-    setSelectedProduct(null)
-  }
+  const filteredProducts = useMemo(() => {
+    let tempProducts = products
 
-  const handleShowMoreProducts = () => {
-    setVisibleProductCount((prevCount) => Math.min(prevCount + 3, searchedProducts.length))
-  }
+    if (selectedCategory) {
+      tempProducts = tempProducts.filter((product) => product.category === selectedCategory.name)
+      if (selectedSubcategory) {
+        const subcatName = getSubcategoryName(selectedSubcategory)
+        tempProducts = tempProducts.filter((product) => product.subcategory === subcatName)
+      }
+    }
 
-  const handleShowLessProducts = () => {
-    setVisibleProductCount((prevCount) => Math.max(prevCount - 3, INITIAL_VISIBLE_PRODUCTS))
-  }
+    if (searchTerm) {
+      tempProducts = tempProducts.filter(
+        (product) =>
+          toTitleCase(product.name).toLowerCase().includes(searchTerm.toLowerCase()) ||
+          product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (product.subcategory && product.subcategory.toLowerCase().includes(searchTerm.toLowerCase())),
+      )
+    }
+    return tempProducts
+  }, [searchTerm, selectedCategory, selectedSubcategory])
 
   useEffect(() => {
     setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
-  }, [searchQuery, selectedCategory])
+  }, [filteredProducts, selectedCategory, selectedSubcategory])
 
-  const filteredProducts = selectedCategory ? getProductsByCategory(selectedCategory) : products
+  const handleCategoryClick = (category: Category | null) => {
+    setSelectedCategory(category)
+    setSelectedSubcategory(null)
+    setSearchTerm("")
+    setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
+  }
 
-  const searchedProducts = searchQuery
-    ? filteredProducts.filter(
-        (product) =>
-          toTitleCase(product.name).toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          (product.category && toTitleCase(product.category).toLowerCase().includes(searchQuery.toLowerCase())) ||
-          (product.subcategory && toTitleCase(product.subcategory).toLowerCase().includes(searchQuery.toLowerCase())),
-      )
-    : filteredProducts
+  const handleSubcategoryClick = (subcategoryId: string | null) => {
+    setSelectedSubcategory(subcategoryId)
+    setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
+  }
 
-  const productsToDisplay = searchedProducts.slice(0, visibleProductCount)
-  const canShowMore = visibleProductCount < searchedProducts.length
+  const handleShowMoreProducts = () => {
+    setVisibleProductCount((prevCount) => Math.min(prevCount + PRODUCTS_TO_SHOW_INCREMENT, filteredProducts.length))
+  }
+
+  const handleShowLessProducts = () => {
+    setVisibleProductCount((prevCount) => Math.max(prevCount - PRODUCTS_TO_SHOW_INCREMENT, INITIAL_VISIBLE_PRODUCTS))
+  }
+
+  const displayedProducts = useMemo(() => {
+    return filteredProducts.slice(0, visibleProductCount)
+  }, [filteredProducts, visibleProductCount])
+
+  const canShowMore = visibleProductCount < filteredProducts.length
   const canShowLess = visibleProductCount > INITIAL_VISIBLE_PRODUCTS
 
-  const selectedProductData = selectedProduct ? getProductById(selectedProduct) : null
-
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
-
   return (
-    <section id="products" className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f4f7f4_1px,transparent_1px),linear-gradient(to_bottom,#f4f7f4_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl -z-5"
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
-        >
-          <motion.span
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-6 py-2 mb-6 text-sm font-medium rounded-full glass-card"
-          >
-            Ürünlerimiz
-          </motion.span>
-
-          <h2 className="section-title gradient-text">Tıbbi Ekipman & Malzemeler</h2>
-          <p className="section-subtitle">
-            Sağlık profesyonelleri için tasarlanmış yüksek kaliteli tıbbi ürünlerin kapsamlı koleksiyonunu keşfedin.
-          </p>
-        </motion.div>
-
-        {/* Search and filter */}
-        <div className="mb-8 flex flex-col md:flex-row gap-4 items-center justify-between">
-          <div className="relative w-full md:max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <Input
-              type="text"
-              placeholder="Ürün ara..."
-              className="pl-10 glass-card border-0 text-gray-700 placeholder:text-gray-500"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+    <section id="urunler" className="py-12 md:py-16 lg:py-20 bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 md:mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4 md:mb-0">
+            {selectedCategory ? toTitleCase(selectedCategory.name) : "Ürün Kategorileri"}
+          </h2>
+          <div className="flex items-center gap-2 w-full md:w-auto">
+            <div className="relative flex-grow md:flex-grow-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Input
+                type="search"
+                placeholder="Ürün veya kategori ara..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10 pr-4 py-2 w-full md:w-64 rounded-md border-gray-300 dark:border-gray-600 focus:border-blue-500 focus:ring-blue-500"
+              />
+              {searchTerm && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-7 w-7"
+                  onClick={() => setSearchTerm("")}
+                >
+                  <XCircle className="h-4 w-4" />
+                </Button>
+              )}
+            </div>
+            <Button variant="outline" onClick={() => setShowFilters(!showFilters)} className="md:hidden">
+              <Filter className="h-5 w-5 mr-2" />
+              Filtreler
+            </Button>
           </div>
-          <Button
-            variant="outline"
-            className="btn-glass border-2 border-green-200 text-green-700 hover:bg-green-50 w-full md:w-auto"
-            onClick={() => setShowFilters(!showFilters)}
-          >
-            <Filter className="mr-2 h-4 w-4" /> Filtreler <ChevronDown className="ml-2 h-4 w-4" />
-          </Button>
         </div>
 
-        {/* Filters */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="mb-8 overflow-hidden"
+        {/* Mobile Filters */}
+        {showFilters && (
+          <div className="md:hidden mb-6 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <h3 className="text-lg font-semibold mb-3">Kategoriler</h3>
+            <Select
+              onValueChange={(value) => {
+                if (value === "all") {
+                  handleCategoryClick(null)
+                } else {
+                  const cat = getCategoryById(value)
+                  if (cat) handleCategoryClick(cat)
+                }
+              }}
+              value={selectedCategory?.id || "all"}
             >
-              <div className="glass-card p-6 rounded-2xl">
-                <h3 className="text-lg font-medium mb-4 gradient-text-green">Kategoriye Göre Filtrele</h3>
-                <div className="flex flex-wrap gap-3">
-                  {categories.map((category) => (
-                    <Button
-                      key={category.id}
-                      variant={selectedCategory === category.id ? "default" : "outline"}
-                      className={
-                        selectedCategory === category.id
-                          ? "btn-green-gradient"
-                          : "btn-glass border-green-200 text-green-700 hover:bg-green-50"
-                      }
-                      onClick={() => handleCategoryClick(category.id)}
+              <SelectTrigger>
+                <SelectValue placeholder="Kategori Seçin" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tüm Kategoriler</SelectItem>
+                {categories.map((cat) => (
+                  <SelectItem key={cat.id} value={cat.id}>
+                    {toTitleCase(cat.name)}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {selectedCategory && selectedCategory.subcategories && (
+              <div className="mt-4">
+                <h4 className="text-md font-semibold mb-2">Alt Kategoriler</h4>
+                <Select
+                  onValueChange={(value) => handleSubcategoryClick(value === "all" ? null : value)}
+                  value={selectedSubcategory || "all"}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Alt Kategori Seçin" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">Tüm Alt Kategoriler</SelectItem>
+                    {selectedCategory.subcategories.map((subcat) => (
+                      <SelectItem key={subcat.id} value={subcat.id}>
+                        {toTitleCase(subcat.name)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+          </div>
+        )}
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Desktop Filters - Sidebar */}
+          <div className="hidden md:block md:col-span-3 lg:col-span-2 space-y-6">
+            <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200">Kategoriler</h3>
+            <ul className="space-y-2">
+              <li>
+                <Button
+                  variant={!selectedCategory ? "secondary" : "ghost"}
+                  className="w-full justify-start"
+                  onClick={() => handleCategoryClick(null)}
+                >
+                  Tüm Ürünler
+                </Button>
+              </li>
+              {categories.map((cat) => (
+                <li key={cat.id}>
+                  <Button
+                    variant={selectedCategory?.id === cat.id ? "secondary" : "ghost"}
+                    className="w-full justify-start"
+                    onClick={() => handleCategoryClick(cat)}
+                  >
+                    {toTitleCase(cat.name)}
+                  </Button>
+                  {selectedCategory?.id === cat.id && cat.subcategories && (
+                    <ul className="pl-4 mt-2 space-y-1 border-l border-gray-200 dark:border-gray-700">
+                      <li>
+                        <Button
+                          variant={!selectedSubcategory ? "link" : "ghost"}
+                          size="sm"
+                          className={`w-full justify-start text-xs ${!selectedSubcategory ? "font-semibold text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-400"}`}
+                          onClick={() => handleSubcategoryClick(null)}
+                        >
+                          Tümü ({selectedCategory.name})
+                        </Button>
+                      </li>
+                      {cat.subcategories.map((subcat) => (
+                        <li key={subcat.id}>
+                          <Button
+                            variant={selectedSubcategory === subcat.id ? "link" : "ghost"}
+                            size="sm"
+                            className={`w-full justify-start text-xs ${selectedSubcategory === subcat.id ? "font-semibold text-blue-600 dark:text-blue-400" : "text-gray-600 dark:text-gray-400"}`}
+                            onClick={() => handleSubcategoryClick(subcat.id)}
+                          >
+                            {toTitleCase(subcat.name)}
+                          </Button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Product Listing */}
+          <div className="md:col-span-9 lg:col-span-10">
+            {selectedCategory === null && !searchTerm ? (
+              // Category Grid
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-12">
+                {categories.map((category) => (
+                  <Card
+                    key={category.id}
+                    className="cursor-pointer hover:shadow-lg transition-shadow duration-300 flex flex-col"
+                    onClick={() => handleCategoryClick(category)}
+                  >
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-lg font-semibold group-hover:text-blue-600">
+                        {toTitleCase(category.name)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                      <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">{category.description}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : filteredProducts.length > 0 ? (
+              // Product Grid
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {displayedProducts.map((product) => (
+                    <Card
+                      key={product.id}
+                      className="overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out flex flex-col cursor-pointer"
+                      onClick={() => handleProductClick(product)}
                     >
-                      {toTitleCase(category.name)}
-                    </Button>
+                      <CardHeader>
+                        <CardTitle className="text-lg font-semibold group-hover:text-blue-600">
+                          {toTitleCase(product.name)}
+                        </CardTitle>
+                        {product.subcategory && (
+                          <CardDescription className="text-xs text-blue-500 dark:text-blue-400">
+                            {toTitleCase(product.subcategory)}
+                          </CardDescription>
+                        )}
+                      </CardHeader>
+                      <CardContent className="flex-grow">
+                        <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">{product.description}</p>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Categories - Görseller kaldırıldı */}
-        {!selectedCategory && (
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" // lg:grid-cols-4'ten 3'e düşürüldü, daha iyi görünebilir
-          >
-            {categories.map((category) => (
-              <motion.div key={category.id} variants={item}>
-                <Card
-                  className="h-full hover:shadow-2xl transition-all duration-500 border-0 glass-card overflow-hidden group cursor-pointer flex flex-col" // flex flex-col eklendi
-                  onClick={() => handleCategoryClick(category.id)}
-                >
-                  {/* Kategori görseli kaldırıldı */}
-                  <CardContent className="p-6 flex flex-col items-center text-center relative flex-grow">
-                    {" "}
-                    {/* flex-grow eklendi */}
-                    <h3 className="text-xl font-bold mb-2 relative z-10 gradient-text-green">
-                      {toTitleCase(category.name)}
-                    </h3>
-                    <p className="text-gray-600 relative z-10 text-sm">{category.description}</p>{" "}
-                    {/* text-sm eklendi */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0"></div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </motion.div>
-        )}
-
-        {/* Products */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {productsToDisplay.length > 0 ? (
-            productsToDisplay.map((product) => (
-              <motion.div key={product.id} variants={item}>
-                <Card
-                  className="h-full hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer border-0 glass-card"
-                  onClick={() => handleProductClick(product.id)}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-2">
-                      <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
-                        {toTitleCase(product.category)}
-                      </Badge>
-                      {product.subcategory && (
-                        <div className="text-xs text-gray-500">{toTitleCase(product.subcategory)}</div>
-                      )}
-                    </div>
-                    <h3 className="text-lg font-bold mb-2 group-hover:text-green-600 transition-colors">
-                      {toTitleCase(product.name)}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
-                    <div className="flex items-center justify-end mt-4">
-                      <Button
-                        size="sm"
-                        className="btn-green-gradient rounded-full px-6"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          handleProductClick(product.id)
-                        }}
-                      >
-                        Detayları Gör
+                {(canShowMore || canShowLess) && (
+                  <div className="mt-8 flex justify-center gap-4">
+                    {canShowLess && (
+                      <Button variant="outline" onClick={handleShowLessProducts}>
+                        <ChevronUp className="mr-2 h-4 w-4" /> Daha Azını Göster
                       </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))
-          ) : (
-            <div className="col-span-full text-center py-12">
-              <h3 className="text-xl font-medium text-gray-900 mb-2">Ürün bulunamadı</h3>
-              <p className="text-gray-600">Arama veya filtre kriterlerinizi ayarlamayı deneyin</p>
-            </div>
-          )}
-        </motion.div>
-
-        {/* Show More / Show Less Buttons */}
-        {(canShowMore || canShowLess) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-center mt-12 flex justify-center gap-4"
-          >
-            {canShowLess && (
-              <Button
-                onClick={handleShowLessProducts}
-                variant="outline"
-                className="btn-glass border-2 border-green-200 text-green-700 hover:bg-green-50 rounded-full px-8 py-3 text-lg font-semibold group"
-              >
-                Daha azını göster
-                <ChevronUp className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" />
-              </Button>
+                    )}
+                    {canShowMore && (
+                      <Button onClick={handleShowMoreProducts}>
+                        <ChevronDown className="mr-2 h-4 w-4" /> Daha Fazlasını Göster
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <Search className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+                <p className="text-xl text-gray-600 dark:text-gray-300">Aradığınız kriterlere uygun ürün bulunamadı.</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
+                  Farklı bir kategori seçmeyi veya arama terimini değiştirmeyi deneyin.
+                </p>
+                {selectedCategory && (
+                  <Button onClick={() => handleCategoryClick(null)} className="mt-6">
+                    Tüm Kategorilere Dön
+                  </Button>
+                )}
+              </div>
             )}
-            {canShowMore && (
-              <Button
-                onClick={handleShowMoreProducts}
-                className="btn-green-gradient rounded-full px-8 py-3 text-lg font-semibold group"
-              >
-                Daha fazlasını göster
-                <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-              </Button>
-            )}
-          </motion.div>
-        )}
+          </div>
+        </div>
       </div>
-
-      {/* Product Detail Modal */}
-      <AnimatePresence>
-        {selectedProduct && selectedProductData && (
-          <ProductDetailPage product={selectedProductData} onClose={handleCloseProductDetail} />
-        )}
-      </AnimatePresence>
+      {selectedProductForModal && <ProductDetailModal product={selectedProductForModal} onClose={closeModal} />}
     </section>
   )
 }

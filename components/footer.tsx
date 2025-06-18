@@ -1,145 +1,87 @@
 "use client"
 
-import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Instagram, Linkedin, Phone, Mail, MapPin } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gray-900 text-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.05 }}
-        transition={{ duration: 1 }}
-        className="absolute top-0 right-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl"
-      />
+    <footer className="bg-gradient-to-r from-gray-200 to-gray-400 dark:from-gray-700 dark:to-gray-900 py-8 px-4 md:px-6 text-gray-800 dark:text-gray-200">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="flex flex-col items-center md:items-start">
+          <Link href="#" className="flex items-center gap-2 mb-4" prefetch={false}>
+            <Image
+              src="/images/tuna-medikal-logo.png" // Ensure this path is correct
+              alt="Tuna Medikal Logo"
+              width={150} // Adjust as needed
+              height={50} // Adjust as needed
+              className="dark:invert-0" // Keep original color in dark mode
+            />
+          </Link>
+          <p className="text-sm text-gray-700 dark:text-gray-300 text-center md:text-left">
+            Sağlığınız için güvenilir çözümler.
+          </p>
+        </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.05 }}
-        transition={{ duration: 1, delay: 0.3 }}
-        className="absolute bottom-0 left-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-green-500 to-transparent blur-3xl"
-      />
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-50">Hızlı Erişim</h4>
+          <nav className="flex flex-col gap-2">
+            <Link
+              href="#hakkimizda"
+              className="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+              prefetch={false}
+            >
+              Hakkımızda
+            </Link>
+            <Link
+              href="#urunler"
+              className="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+              prefetch={false}
+            >
+              Ürünler
+            </Link>
+            <Link
+              href="#iletisim"
+              className="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+              prefetch={false}
+            >
+              İletişim
+            </Link>
+            <Link
+              href="#sss"
+              className="text-sm text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-50"
+              prefetch={false}
+            >
+              S.S.S
+            </Link>
+          </nav>
+        </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="relative h-16 w-64 mb-4">
-              <Image src="/images/tuna-medikal-logo.png" alt="Tuna Medikal" fill className="object-contain" />
-            </div>
-            <p className="text-gray-400 mb-6">
-              1984'ten beri sağlık sektörüne yüksek kaliteli tıbbi malzeme ve ekipman sağlayan lider üretici ve
-              tedarikçi.
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-gray-50">İletişim Bilgileri</h4>
+          <address className="not-italic text-sm text-gray-700 dark:text-gray-300 space-y-1">
+            <p>Tuna Medikal Test ve Kalibrasyon Hizmetleri San. Tic. Ltd. Şti.</p>
+            <p>İçerenköy Mah. Değirmenyolu Cad. No:21/1 Ataşehir/İSTANBUL</p>
+            <p>
+              Telefon:{" "}
+              <a href="tel:+902165735354" className="hover:underline">
+                +90 216 573 53 54
+              </a>
             </p>
-            <div className="flex space-x-4">
-              {[
-                { icon: <Facebook className="h-5 w-5" />, name: "Facebook", href: "#" },
-                { icon: <Twitter className="h-5 w-5" />, name: "Twitter", href: "#" },
-                { icon: <Instagram className="h-5 w-5" />, name: "Instagram", href: "#" },
-                { icon: <Linkedin className="h-5 w-5" />, name: "LinkedIn", href: "#" },
-              ].map((social, index) => (
-                <motion.div key={social.name} whileHover={{ scale: 1.2, rotate: 5 }} transition={{ duration: 0.2 }}>
-                  <Link href={social.href} className="text-gray-400 hover:text-green-300 transition-colors">
-                    {social.icon}
-                    <span className="sr-only">{social.name}</span>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            <h3 className="text-lg font-bold mb-4">Hızlı Bağlantılar</h3>
-            <ul className="space-y-2">
-              {[
-                { name: "Ana Sayfa", href: "#home" },
-                { name: "Hakkımızda", href: "#about" },
-                { name: "Ürünlerimiz", href: "#services" },
-                { name: "Referanslar", href: "#testimonials" },
-                { name: "Galeri", href: "#gallery" },
-                { name: "İletişim", href: "#contact" },
-              ].map((link, index) => (
-                <motion.li key={index} whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                  <Link href={link.href} className="text-gray-400 hover:text-green-300 transition-colors">
-                    {link.name}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <h3 className="text-lg font-bold mb-4">Ürün Kategorileri</h3>
-            <ul className="space-y-2">
-              {[
-                "Kardiyovasküler Ürünler",
-                "Tanı Ekipmanları",
-                "Laboratuvar Malzemeleri",
-                "Tek Kullanımlık Ürünler",
-                "Hasta İzleme Sistemleri",
-                "Özel Üretim Çözümleri",
-              ].map((service, index) => (
-                <motion.li key={index} whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                  <Link href="#services" className="text-gray-400 hover:text-green-300 transition-colors">
-                    {service}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h3 className="text-lg font-bold mb-4">İletişim Bilgileri</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 text-green-300 mr-3 mt-0.5" />
-                <span className="text-gray-400">
-                  3. Organize Sanayi Bölgesi
-                  <br />
-                  Kamil Şerbetçi Bulvarı No: 39
-                  <br />
-                  Şehitkamil / Gaziantep
-                </span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 text-green-300 mr-3" />
-                <span className="text-gray-400">+90 342 360 9850</span>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 text-green-300 mr-3" />
-                <span className="text-gray-400">info@tunamedical.com.tr</span>
-              </li>
-            </ul>
-          </motion.div>
+            <p>
+              E-posta:{" "}
+              <a href="mailto:info@tunamedikal.com.tr" className="hover:underline">
+                info@tunamedikal.com.tr
+              </a>
+            </p>
+          </address>
         </div>
-
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400 text-sm">&copy; {currentYear} Tuna Medikal. Tüm hakları saklıdır.</p>
-        </div>
+      </div>
+      <div className="mt-8 border-t border-gray-300 dark:border-gray-600 pt-6 text-center">
+        <p className="text-sm text-gray-700 dark:text-gray-300">
+          &copy; {currentYear} Tuna Medikal Test. Tüm hakları saklıdır.
+        </p>
       </div>
     </footer>
   )

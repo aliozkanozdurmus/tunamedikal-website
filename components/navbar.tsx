@@ -10,7 +10,7 @@ interface NavbarProps {
   isScrolled: boolean
 }
 
-export function Navbar({ isScrolled }: NavbarProps) {
+export default function Navbar({ isScrolled }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navItems = [
@@ -18,7 +18,6 @@ export function Navbar({ isScrolled }: NavbarProps) {
     { name: "Hakkımızda", href: "#about" },
     { name: "Ürünler", href: "#products" },
     { name: "Referanslar", href: "#testimonials" },
-    { name: "Galeri", href: "#gallery" },
     { name: "İletişim", href: "#contact" },
   ]
 
@@ -67,7 +66,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
             ))}
           </div>
 
-          {/* Contact Info & CTA */}
+          {/* Contact Info - İletişim butonu kaldırıldı */}
           <div className="hidden lg:flex items-center space-x-6">
             <div
               className={`flex items-center space-x-4 text-sm transition-colors duration-300 ${
@@ -79,10 +78,7 @@ export function Navbar({ isScrolled }: NavbarProps) {
                 <span>+90 342 360 9850</span>
               </div>
             </div>
-
-            <Button onClick={handleCall} className="btn-green-gradient px-6 py-2 rounded-full">
-              İletişim
-            </Button>
+            {/* İletişim butonu kaldırıldı */}
           </div>
 
           {/* Mobile Menu Button */}

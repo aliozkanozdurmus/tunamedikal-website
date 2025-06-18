@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 
-export function Brands() {
+export default function Brands() {
   return (
     <section className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
       {/* Decorative elements */}
@@ -38,7 +38,7 @@ export function Brands() {
             İş Ortaklarımız
           </motion.span>
 
-          <h2 className="section-title gradient-text">Markalarımız</h2>
+          <h2 className="section-title gradient-text">Sağlığın Güvenilir Elleri: Distribütör Ağı</h2>
           <p className="section-subtitle">
             Dünya çapında tanınmış tıbbi ekipman üreticileri ile güçlü iş ortaklıklarımız bulunmaktadır.
           </p>
