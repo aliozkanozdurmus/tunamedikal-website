@@ -84,7 +84,7 @@ export function Footer() {
       </div>
       <div className="mt-8 border-t border-gray-200 dark:border-gray-600 pt-6 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-300 font-sans">
-          &copy; {currentYear} Tuna Medikal Test. Tüm hakları saklıdır.
+          &copy; {currentYear} Tuna Medikal Tıbbi Cihazlar Sanayi Ve Ticaret Limited Şirketi. Tüm Hakları Saklıdır.
         </p>
       </div>
     </footer>
