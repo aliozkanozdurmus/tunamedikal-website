@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Özel Anadolu Hastanesi",
+      name: "Özel Hastane",
       role: "Müşteri",
       image: "/placeholder.svg?height=100&width=100",
       content:

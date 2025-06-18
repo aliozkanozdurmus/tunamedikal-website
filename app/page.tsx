@@ -9,6 +9,7 @@ import { HeroSlider } from "@/components/hero-slider"
 import { AboutUs } from "@/components/about-us"
 import { ProductCatalog } from "@/components/product-catalog"
 import { Brands } from "@/components/brands"
+import { InnovativeSolutions } from "@/components/innovative-solutions"
 import { Testimonials } from "@/components/testimonials"
 import { Gallery } from "@/components/gallery"
 import { Faq } from "@/components/faq"
@@ -52,6 +53,7 @@ export default function LandingPage() {
         <AboutUs />
         <ProductCatalog />
         <Brands />
+        <InnovativeSolutions />
         <Testimonials />
         <Gallery />
         <Faq />

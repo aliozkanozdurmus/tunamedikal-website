@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Phone, Mail } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 interface NavbarProps {
@@ -21,6 +22,14 @@ export function Navbar({ isScrolled }: NavbarProps) {
     { name: "İletişim", href: "#contact" },
   ]
 
+  const handleCall = () => {
+    window.open("tel:+903423609850", "_self")
+  }
+
+  const handleEmail = () => {
+    window.open("mailto:info@tunamedical.com.tr", "_self")
+  }
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -33,22 +42,8 @@ export function Navbar({ isScrolled }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-3">
-            <div className="w-12 h-12 glass-card rounded-xl flex items-center justify-center">
-              <span className="text-xl font-bold gradient-text-green">T</span>
-            </div>
-            <div className="flex flex-col">
-              <span
-                className={`text-xl font-bold transition-colors duration-300 ${
-                  isScrolled ? "text-gray-800" : "text-white"
-                }`}
-              >
-                Tuna Medikal
-              </span>
-              <span
-                className={`text-xs transition-colors duration-300 ${isScrolled ? "text-gray-600" : "text-white/80"}`}
-              >
-                Medical Equipment
-              </span>
+            <div className="relative h-12 w-48">
+              <Image src="/images/tuna-medikal-logo.png" alt="Tuna Medikal" fill className="object-contain" priority />
             </div>
           </motion.div>
 
@@ -81,11 +76,13 @@ export function Navbar({ isScrolled }: NavbarProps) {
             >
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+90 212 XXX XX XX</span>
+                <span>+90 342 360 9850</span>
               </div>
             </div>
 
-            <Button className="btn-green-gradient px-6 py-2 rounded-full">İletişim</Button>
+            <Button onClick={handleCall} className="btn-green-gradient px-6 py-2 rounded-full">
+              İletişim
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -130,14 +127,25 @@ export function Navbar({ isScrolled }: NavbarProps) {
                   <div className={`flex flex-col space-y-3 text-sm ${isScrolled ? "text-gray-600" : "text-white/80"}`}>
                     <div className="flex items-center space-x-2">
                       <Phone className="w-4 h-4" />
-                      <span>+90 212 XXX XX XX</span>
+                      <span>+90 342 360 9850</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <Mail className="w-4 h-4" />
-                      <span>info@tunamedikal.com</span>
+                      <span>info@tunamedical.com.tr</span>
                     </div>
                   </div>
-                  <Button className="btn-green-gradient w-full mt-4 rounded-full">İletişim</Button>
+                  <div className="flex flex-col gap-2 mt-4">
+                    <Button onClick={handleCall} className="btn-green-gradient w-full rounded-full">
+                      Hemen Arayın
+                    </Button>
+                    <Button
+                      onClick={handleEmail}
+                      variant="outline"
+                      className="w-full rounded-full border-green-600 text-green-600"
+                    >
+                      E-posta Gönderin
+                    </Button>
+                  </div>
                 </div>
               </div>
             </motion.div>

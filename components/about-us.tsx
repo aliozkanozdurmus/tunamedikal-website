@@ -6,9 +6,9 @@ import { Award, Users, Clock, Shield } from "lucide-react"
 const stats = [
   {
     icon: Award,
-    number: "15+",
+    number: "40+",
     label: "Yıllık Deneyim",
-    description: "Sağlık sektöründe",
+    description: "1984'ten bu yana",
   },
   {
     icon: Users,
@@ -63,9 +63,8 @@ export function AboutUs() {
                 viewport={{ once: true }}
                 className="text-gray-600 text-lg mb-6 leading-relaxed"
               >
-                Tuna Medikal, 2008 yılından bu yana Türkiye'nin önde gelen tıbbi cihaz ve malzeme tedarikçilerinden
-                biridir. Sağlık sektörüne yönelik kaliteli, güvenilir ve yenilikçi çözümler sunarak hasta güvenliğini ön
-                planda tutuyoruz.
+                TUNA ŞİRKETLER GRUBU'nun ilk temelleri 1984 yılında HUZEYFE DURMAZ tarafından atılmış, TUNA GROUP
+                faaliyetine sentetik dokuma kumaş ve çuval sektöründe üretim yaparak başlamıştır.
               </motion.p>
 
               <motion.p
@@ -75,8 +74,9 @@ export function AboutUs() {
                 viewport={{ once: true }}
                 className="text-gray-600 text-lg mb-8 leading-relaxed"
               >
-                Deneyimli ekibimiz ve geniş ürün yelpazemiz ile hastaneler, klinikler ve sağlık kuruluşlarının
-                ihtiyaçlarına en uygun çözümleri sunmaktayız.
+                Ülkesine ve çalışanlarına fayda sağlamayı amaçlayan TUNA GROUP, sistemini sürekli yenilemeye ve
+                iyileştirmeye yönelik şirket kültürünü yaratarak, teknolojide değişimi ve gelişimi izleyerek, yeni
+                yatırımlar, yeni alanlar belirleyerek pazarda etkin pay sahibi olmak için çalışmalarını sürdürmektedir.
               </motion.p>
 
               <motion.div
@@ -87,13 +87,13 @@ export function AboutUs() {
                 className="flex flex-wrap gap-4"
               >
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-blue-600 font-semibold">Kalite</span>
+                  <span className="text-green-600 font-semibold">Kalite</span>
                 </div>
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-blue-600 font-semibold">Güvenilirlik</span>
+                  <span className="text-green-600 font-semibold">Güvenilirlik</span>
                 </div>
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-blue-600 font-semibold">İnovasyon</span>
+                  <span className="text-green-600 font-semibold">İnovasyon</span>
                 </div>
               </motion.div>
             </div>
@@ -118,10 +118,10 @@ export function AboutUs() {
                 className="glass-card p-6 rounded-xl text-center group cursor-pointer"
               >
                 <div className="glass w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-blue-600" />
+                  <stat.icon className="w-8 h-8 text-green-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-800 mb-1">{stat.number}</div>
-                <div className="text-blue-600 font-semibold mb-1">{stat.label}</div>
+                <div className="text-green-600 font-semibold mb-1">{stat.label}</div>
                 <div className="text-gray-500 text-sm">{stat.description}</div>
               </motion.div>
             ))}

@@ -1,24 +1,28 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { Search, Filter, ChevronDown, Star } from "lucide-react"
+import { Search, Filter, ChevronDown, ChevronUp } from "lucide-react" // ChevronUp eklendi
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { ProductDetailPage } from "@/components/product-detail-page"
 import { categories, products, getProductById, getProductsByCategory } from "@/lib/product-data"
+import { toTitleCase } from "@/lib/utils"
+
+const INITIAL_VISIBLE_PRODUCTS = 3
 
 export function ProductCatalog() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
   const [showFilters, setShowFilters] = useState(false)
+  const [visibleProductCount, setVisibleProductCount] = useState(INITIAL_VISIBLE_PRODUCTS)
 
   const handleCategoryClick = (categoryId: string) => {
     setSelectedCategory(categoryId === selectedCategory ? null : categoryId)
+    setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
   }
 
   const handleProductClick = (productId: string) => {
@@ -29,38 +33,35 @@ export function ProductCatalog() {
     setSelectedProduct(null)
   }
 
+  const handleShowMoreProducts = () => {
+    setVisibleProductCount((prevCount) => Math.min(prevCount + 3, searchedProducts.length))
+  }
+
+  const handleShowLessProducts = () => {
+    setVisibleProductCount((prevCount) => Math.max(prevCount - 3, INITIAL_VISIBLE_PRODUCTS))
+  }
+
+  useEffect(() => {
+    setVisibleProductCount(INITIAL_VISIBLE_PRODUCTS)
+  }, [searchQuery, selectedCategory])
+
   const filteredProducts = selectedCategory ? getProductsByCategory(selectedCategory) : products
 
   const searchedProducts = searchQuery
     ? filteredProducts.filter(
         (product) =>
-          product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          product.description.toLowerCase().includes(searchQuery.toLowerCase()),
+          toTitleCase(product.name).toLowerCase().includes(searchQuery.toLowerCase()) ||
+          product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (product.category && toTitleCase(product.category).toLowerCase().includes(searchQuery.toLowerCase())) ||
+          (product.subcategory && toTitleCase(product.subcategory).toLowerCase().includes(searchQuery.toLowerCase())),
       )
     : filteredProducts
 
+  const productsToDisplay = searchedProducts.slice(0, visibleProductCount)
+  const canShowMore = visibleProductCount < searchedProducts.length
+  const canShowLess = visibleProductCount > INITIAL_VISIBLE_PRODUCTS
+
   const selectedProductData = selectedProduct ? getProductById(selectedProduct) : null
-
-  const renderStars = (rating: number) => {
-    const stars = []
-    const fullStars = Math.floor(rating)
-    const hasHalfStar = rating % 1 >= 0.5
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<Star key={`star-${i}`} className="h-4 w-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />)
-    }
-
-    if (hasHalfStar) {
-      stars.push(<Star key="half-star" className="h-4 w-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />)
-    }
-
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
-    for (let i = 0; i < emptyStars; i++) {
-      stars.push(<Star key={`empty-star-${i}`} className="h-4 w-4 text-gray-300" aria-hidden="true" />)
-    }
-
-    return stars
-  }
 
   const container = {
     hidden: { opacity: 0 },
@@ -169,7 +170,7 @@ export function ProductCatalog() {
                       }
                       onClick={() => handleCategoryClick(category.id)}
                     >
-                      {category.name}
+                      {toTitleCase(category.name)}
                     </Button>
                   ))}
                 </div>
@@ -178,37 +179,30 @@ export function ProductCatalog() {
           )}
         </AnimatePresence>
 
-        {/* Categories */}
+        {/* Categories - Görseller kaldırıldı */}
         {!selectedCategory && (
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" // lg:grid-cols-4'ten 3'e düşürüldü, daha iyi görünebilir
           >
             {categories.map((category) => (
               <motion.div key={category.id} variants={item}>
                 <Card
-                  className="h-full hover:shadow-2xl transition-all duration-500 border-0 glass-card overflow-hidden group cursor-pointer"
+                  className="h-full hover:shadow-2xl transition-all duration-500 border-0 glass-card overflow-hidden group cursor-pointer flex flex-col" // flex flex-col eklendi
                   onClick={() => handleCategoryClick(category.id)}
                 >
-                  <div className="relative h-48 w-full overflow-hidden">
-                    <Image
-                      src={category.image || "/placeholder.svg"}
-                      alt={category.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
-                      <span className="text-white font-medium text-lg">{category.name}</span>
-                    </div>
-                  </div>
-                  <CardContent className="p-6 flex flex-col items-center text-center relative">
-                    <h3 className="text-xl font-bold mb-2 relative z-10 gradient-text-green">{category.name}</h3>
-                    <p className="text-gray-600 relative z-10">{category.description}</p>
-
-                    {/* Background gradient that appears on hover */}
+                  {/* Kategori görseli kaldırıldı */}
+                  <CardContent className="p-6 flex flex-col items-center text-center relative flex-grow">
+                    {" "}
+                    {/* flex-grow eklendi */}
+                    <h3 className="text-xl font-bold mb-2 relative z-10 gradient-text-green">
+                      {toTitleCase(category.name)}
+                    </h3>
+                    <p className="text-gray-600 relative z-10 text-sm">{category.description}</p>{" "}
+                    {/* text-sm eklendi */}
                     <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-green-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0"></div>
                   </CardContent>
                 </Card>
@@ -225,47 +219,27 @@ export function ProductCatalog() {
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
-          {searchedProducts.length > 0 ? (
-            searchedProducts.map((product) => (
+          {productsToDisplay.length > 0 ? (
+            productsToDisplay.map((product) => (
               <motion.div key={product.id} variants={item}>
                 <Card
                   className="h-full hover:shadow-2xl transition-all duration-500 overflow-hidden group cursor-pointer border-0 glass-card"
                   onClick={() => handleProductClick(product.id)}
                 >
-                  <div className="relative h-64 w-full overflow-hidden">
-                    <Image
-                      src={product.images[0] || "/placeholder.svg"}
-                      alt={product.name}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                    {product.isNew && (
-                      <div className="absolute top-4 left-4">
-                        <Badge className="bg-green-500 hover:bg-green-600 text-white">Yeni</Badge>
-                      </div>
-                    )}
-                    {product.isFeatured && (
-                      <div className="absolute top-4 right-4">
-                        <Badge className="bg-blue-500 hover:bg-blue-600 text-white">Öne Çıkan</Badge>
-                      </div>
-                    )}
-                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between mb-2">
                       <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
-                        {product.category}
+                        {toTitleCase(product.category)}
                       </Badge>
-                      <div className="flex items-center">
-                        {renderStars(product.rating)}
-                        <span className="ml-1 text-xs text-gray-500">({product.reviewCount})</span>
-                      </div>
+                      {product.subcategory && (
+                        <div className="text-xs text-gray-500">{toTitleCase(product.subcategory)}</div>
+                      )}
                     </div>
                     <h3 className="text-lg font-bold mb-2 group-hover:text-green-600 transition-colors">
-                      {product.name}
+                      {toTitleCase(product.name)}
                     </h3>
                     <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm text-gray-500">{product.variants.length} varyant mevcut</div>
+                    <div className="flex items-center justify-end mt-4">
                       <Button
                         size="sm"
                         className="btn-green-gradient rounded-full px-6"
@@ -288,6 +262,36 @@ export function ProductCatalog() {
             </div>
           )}
         </motion.div>
+
+        {/* Show More / Show Less Buttons */}
+        {(canShowMore || canShowLess) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-center mt-12 flex justify-center gap-4"
+          >
+            {canShowLess && (
+              <Button
+                onClick={handleShowLessProducts}
+                variant="outline"
+                className="btn-glass border-2 border-green-200 text-green-700 hover:bg-green-50 rounded-full px-8 py-3 text-lg font-semibold group"
+              >
+                Daha azını göster
+                <ChevronUp className="ml-2 h-5 w-5 group-hover:-translate-y-1 transition-transform" />
+              </Button>
+            )}
+            {canShowMore && (
+              <Button
+                onClick={handleShowMoreProducts}
+                className="btn-green-gradient rounded-full px-8 py-3 text-lg font-semibold group"
+              >
+                Daha fazlasını göster
+                <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              </Button>
+            )}
+          </motion.div>
+        )}
       </div>
 
       {/* Product Detail Modal */}

@@ -30,11 +30,6 @@ const faqs = [
     answer:
       "Türkiye genelinde hizmet vermekteyiz. İstanbul, Ankara, İzmir başta olmak üzere tüm illere teslimat yapıyoruz. Ayrıca seçili ülkelere ihracat da gerçekleştiriyoruz.",
   },
-  {
-    question: "Ürün garantisi var mı?",
-    answer:
-      "Tüm ürünlerimiz için minimum 2 yıl garanti sunuyoruz. Bazı özel ürünler için garanti süresi daha uzun olabilir. Garanti kapsamında ücretsiz bakım ve onarım hizmeti verilmektedir.",
-  },
 ]
 
 export function Faq() {

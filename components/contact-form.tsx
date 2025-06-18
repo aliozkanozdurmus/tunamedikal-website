@@ -32,21 +32,29 @@ export function ContactForm() {
     console.log("Form submitted:", formData)
   }
 
+  const handleCall = () => {
+    window.open("tel:+903423609850", "_self")
+  }
+
+  const handleEmail = () => {
+    window.open("mailto:info@tunamedical.com.tr", "_self")
+  }
+
   const contactInfo = [
     {
       icon: Phone,
       title: "Telefon",
-      details: ["+90 212 555 0123", "+90 212 555 0124"],
+      details: ["+90 342 360 9850"],
     },
     {
       icon: Mail,
       title: "E-posta",
-      details: ["info@tunamedikal.com", "satis@tunamedikal.com"],
+      details: ["info@tunamedical.com.tr"],
     },
     {
       icon: MapPin,
       title: "Adres",
-      details: ["Maslak Mahallesi, Büyükdere Cad.", "No: 123, Sarıyer/İstanbul"],
+      details: ["3. Organize Sanayi Bölgesi", "Kamil Şerbetçi Bulvarı No: 39", "Şehitkamil / Gaziantep"],
     },
   ]
 
@@ -106,7 +114,7 @@ export function ContactForm() {
                 en uygun çözümleri sunmak için hazır.
               </p>
 
-              <div className="space-y-6">
+              <div className="space-y-6 mb-8">
                 {contactInfo.map((info, index) => (
                   <motion.div
                     key={index}
@@ -129,6 +137,22 @@ export function ContactForm() {
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Quick Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button onClick={handleCall} className="btn-green-gradient flex-1 rounded-full">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Hemen Arayın
+                </Button>
+                <Button
+                  onClick={handleEmail}
+                  variant="outline"
+                  className="flex-1 rounded-full border-green-600 text-green-600 hover:bg-green-50"
+                >
+                  <Mail className="mr-2 h-4 w-4" />
+                  E-posta Gönderin
+                </Button>
               </div>
             </div>
           </motion.div>
