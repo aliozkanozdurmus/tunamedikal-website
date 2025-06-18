@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { Calendar, ArrowRight, MessageSquare } from "lucide-react"
+import { Calendar, ArrowRight, MessageSquare } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -14,7 +14,7 @@ export function BlogHighlights() {
       title: "Kan Testi Sonuçlarını Anlamak: Kapsamlı Bir Rehber",
       excerpt:
         "Yaygın kan testi sonuçlarını nasıl yorumlayacağınızı ve farklı belirteçlerin sağlığınız hakkında ne gösterdiğini öğrenin.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/blog/kan-testi-sonuclari.jpg",
       date: "10 Haziran 2023",
       category: "Sağlık Eğitimi",
       comments: 8,
@@ -23,7 +23,7 @@ export function BlogHighlights() {
       title: "Tıbbi Tanı Teknolojisindeki Son Gelişmeler",
       excerpt:
         "Hastalıkların nasıl teşhis edildiğini ve tedavi edildiğini devrimleştiren tıbbi testlerdeki son teknolojik yenilikleri keşfedin.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/blog/tibbi-tani-teknolojisi.jpg",
       date: "24 Mayıs 2023",
       category: "Teknoloji",
       comments: 12,
@@ -31,7 +31,7 @@ export function BlogHighlights() {
     {
       title: "Önleyici Sağlık Taramaları: Ne Zaman ve Neden İhtiyacınız Var",
       excerpt: "Yaş, cinsiyet ve risk faktörlerine göre çeşitli sağlık taramaları için önerilen programı keşfedin.",
-      image: "/placeholder.svg?height=400&width=600",
+      image: "/images/blog/onleyici-saglik-taramalari.jpg",
       date: "15 Nisan 2023",
       category: "Önleyici Bakım",
       comments: 5,

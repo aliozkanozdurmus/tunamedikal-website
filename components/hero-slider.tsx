@@ -67,26 +67,27 @@ export function HeroSlider() {
         loop
         muted
         playsInline // Important for iOS
-        className="absolute inset-0 w-full h-full object-cover -z-10"
+        preload="auto" // Added to encourage loading
+        className="absolute inset-0 w-full h-full object-cover z-0" // Changed z-index to z-0
       >
         <source src={videoUrl} type="video/mp4" />
         Tarayıcınız video etiketini desteklemiyor.
       </video>
       {/* Black dotted overlay */}
       <div
-        className="absolute inset-0 w-full h-full z-0"
+        className="absolute inset-0 w-full h-full z-10" // Changed z-index to z-10
         style={{
           backgroundImage: "radial-gradient(rgba(0, 0, 0, 0.3) 0.5px, transparent 0.5px)",
           backgroundSize: "3px 3px", // Adjust for dot density
           pointerEvents: "none",
         }}
       />
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center p-4 md:p-8">
+      <div className="relative z-20 h-full flex flex-col items-center justify-center text-center p-4 md:p-8">
         {" "}
-        {/* Removed bg-black/10 to make video more visible */}
+        {/* Changed z-index to z-20 */}
         <div className="container mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg">
-            Tuna Medikal Test
+            Tuna Medikal
           </h1>
           <p className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
             Sağlık sektöründe yenilikçi çözümler ve güvenilir medikal ürünler sunuyoruz. Kaliteli hizmet anlayışımızla

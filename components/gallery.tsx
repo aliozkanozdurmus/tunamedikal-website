@@ -3,39 +3,39 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { X } from "lucide-react"
+import { X } from 'lucide-react'
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
 
   const galleryImages = [
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/uretim-tesisi-modern.jpg",
       alt: "Modern üretim tesisi",
       category: "Tesis",
     },
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/ileri-teknoloji-tibbi-cihazlar.jpg",
       alt: "İleri teknoloji tıbbi cihazlar",
       category: "Ürünler",
     },
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/kalite-kontrol-laboratuvari-tibbi.jpg",
       alt: "Kalite kontrol laboratuvarı",
       category: "Laboratuvar",
     },
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/lojistik-merkezi-tibbi.jpg",
       alt: "Lojistik merkezi",
       category: "Lojistik",
     },
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/ar-ge-departmani-tibbi.jpg",
       alt: "Ar-Ge departmanı",
       category: "Ar-Ge",
     },
     {
-      src: "/placeholder.svg?height=600&width=800",
+      src: "/images/gallery/uluslararasi-tibbi-fuar.jpg",
       alt: "Uluslararası fuar katılımı",
       category: "Etkinlikler",
     },

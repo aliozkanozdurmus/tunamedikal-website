@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Calendar, ArrowRight, Check } from "lucide-react"
+import { Calendar, ArrowRight, Check } from 'lucide-react'
 
 export function Hero() {
   return (
@@ -119,7 +119,7 @@ export function Hero() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-medical-500/20 to-medical-700/20 z-10 rounded-2xl"></div>
               <Image
-                src="/placeholder.svg?height=1000&width=800"
+                src="/images/hero/hero-main-medical.jpg"
                 alt="Tuna Medikal uzman doktorları"
                 fill
                 className="object-cover"

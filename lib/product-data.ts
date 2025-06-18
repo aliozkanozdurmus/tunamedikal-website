@@ -18,7 +18,7 @@ export interface Product {
   longDescription: string
   features: ProductFeature[]
   specifications: ProductSpecification[]
-  images: string[] // Bu alanı boş bırakacağız veya tek bir placeholder olacak
+  images: string[]
   isNew?: boolean
   isFeatured?: boolean
   relatedProducts: string[]
@@ -28,7 +28,7 @@ export interface Category {
   id: string
   name: string
   description: string
-  image?: string // Bu da artık kullanılmayacak ürün listelemede
+  image?: string
   subcategories?: { id: string; name: string }[]
 }
 
@@ -37,8 +37,9 @@ export const categories: Category[] = [
   {
     id: "anestezi-solunum",
     name: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
-    description: "Anestezi ve solunum sistemleri için profesyonel tıbbi cihazlar",
-    image: "/placeholder.svg?height=300&width=400&text=Anestezi",
+    description:
+      "Anestezi ve solunum sistemleri için profesyonel tıbbi cihazlar ve malzemeler. Hasta güvenliği ve konforunu ön planda tutan yüksek kaliteli ürünler.",
+    image: "/images/categories/anestezi-solunum.jpg",
     subcategories: [
       { id: "filtreler", name: "FİLTRELER" },
       { id: "sisirilebilir-maskeler", name: "ŞİŞİRİLEBİLİR & SİLİKON MASKELER" },
@@ -56,8 +57,9 @@ export const categories: Category[] = [
   {
     id: "uroloji",
     name: "ÜROLOJİ",
-    description: "Ürolojik işlemler için özel tasarlanmış tıbbi malzemeler",
-    image: "/placeholder.svg?height=300&width=400&text=Üroloji",
+    description:
+      "Ürolojik işlemler için özel tasarlanmış tıbbi malzemeler. Minimal invaziv prosedürler ve hasta konforu için geliştirilmiş teknolojik çözümler.",
+    image: "/images/categories/uroloji.jpg",
     subcategories: [
       { id: "ureteral-stent", name: "ÜRETERAL STENT & SETLERİ" },
       { id: "kilavuz-teller", name: "KILAVUZ TELLER" },
@@ -79,8 +81,9 @@ export const categories: Category[] = [
   {
     id: "drenaj",
     name: "DRENAJ",
-    description: "Drenaj ve aspirasyon sistemleri için kapsamlı çözümler",
-    image: "/placeholder.svg?height=300&width=400&text=Drenaj",
+    description:
+      "Drenaj ve aspirasyon sistemleri için kapsamlı çözümler. Cerrahi sonrası hasta bakımı ve enfeksiyon kontrolü için güvenilir sistemler.",
+    image: "/images/categories/drenaj.jpg",
     subcategories: [
       { id: "aspirasyon-esnek", name: "ASPİRASYON TORBASI – ESNEK TORBA" },
       { id: "kanister-esnek", name: "KANİSTER (ESNEK TORBA)" },
@@ -103,8 +106,9 @@ export const categories: Category[] = [
   {
     id: "jinekoloji",
     name: "JİNEKOLOJİ",
-    description: "Jinekolojik muayene ve işlemler için özel ürünler",
-    image: "/placeholder.svg?height=300&width=400&text=Jinekoloji",
+    description:
+      "Jinekolojik muayene ve işlemler için özel ürünler. Kadın sağlığı alanında güvenilir ve konforlu çözümler sunan profesyonel malzemeler.",
+    image: "/images/categories/jinekoloji.jpg",
     subcategories: [
       { id: "iui-kateter", name: "IUI KATETER (IntraUterin Inseminasyon Kateteri)" },
       { id: "karman-enjektor", name: "KARMAN ENJEKTÖR" },
@@ -117,9 +121,10 @@ export const categories: Category[] = [
   },
   {
     id: "diger-genel",
-    name: "DİĞER", // Genel "DİĞER" kategori
-    description: "Çeşitli tıbbi malzemeler ve aksesuarlar",
-    image: "/placeholder.svg?height=300&width=400&text=Diğer",
+    name: "DİĞER",
+    description:
+      "Çeşitli tıbbi malzemeler ve aksesuarlar. Hastane ve klinik ortamlarında kullanılan genel amaçlı tıbbi malzemeler ve yardımcı ürünler.",
+    image: "/images/categories/diger-tibbi-malzemeler.jpg",
     subcategories: [
       { id: "damla-ayar-seti", name: "DAMLA AYAR SETİ" },
       { id: "lavman-seti", name: "LAVMAN SETİ" },
@@ -136,7 +141,7 @@ export const categories: Category[] = [
   },
 ]
 
-// Products
+// Products with extended descriptions
 export const products: Product[] = [
   // ANESTEZİ & SOLUNUM SİSTEMLERİ
   {
@@ -144,12 +149,13 @@ export const products: Product[] = [
     name: "Nebulizatör Seti (Yetişkin)",
     category: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     subcategory: "OKSİJEN & AEROSOL TERAPİ",
-    description: "Yetişkin hastalar için nebulizatör seti.",
+    description:
+      "Yetişkin hastalar için profesyonel nebulizatör seti. Solunum yolu hastalıklarının tedavisinde kullanılan, ilaçların etkili bir şekilde akciğerlere ulaştırılmasını sağlayan komple sistem.",
     longDescription:
-      "Yetişkin hastaların solunum yolu tedavilerinde kullanılan, ilaçların buharlaştırılarak akciğerlere iletilmesini sağlayan komple settir.",
+      "Yetişkin hastaların solunum yolu tedavilerinde kullanılan, ilaçların buharlaştırılarak akciğerlere iletilmesini sağlayan komple settir. Astım, KOAH ve diğer solunum yolu hastalıklarının tedavisinde etkili sonuçlar alınmasını sağlar.",
     features: [{ icon: "user", title: "Yetişkin Uyumlu", description: "Yetişkin anatomisine uygun tasarım." }],
     specifications: [{ name: "Kullanım", value: "Tek kullanımlık" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["nebulizator-seti-pediatrik"],
   },
   {
@@ -157,12 +163,13 @@ export const products: Product[] = [
     name: "Nebulizatör Seti (Pediatrik)",
     category: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     subcategory: "OKSİJEN & AEROSOL TERAPİ",
-    description: "Pediatrik hastalar için nebulizatör seti.",
+    description:
+      "Pediatrik hastalar için özel tasarlanmış nebulizatör seti. Çocukların hassas solunum sistemine uygun, güvenli ve etkili ilaç iletimi sağlayan sistem.",
     longDescription:
-      "Çocuk hastaların solunum yolu tedavilerinde kullanılan, ilaçların buharlaştırılarak akciğerlere iletilmesini sağlayan komple settir.",
+      "Çocuk hastaların solunum yolu tedavilerinde kullanılan, ilaçların buharlaştırılarak akciğerlere iletilmesini sağlayan komple settir. Pediatrik anatomiye özel tasarımı ile çocuklarda güvenli ve etkili tedavi imkanı sunar.",
     features: [{ icon: "baby", title: "Pediatrik Uyumlu", description: "Çocuk anatomisine uygun tasarım." }],
     specifications: [{ name: "Kullanım", value: "Tek kullanımlık" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["nebulizator-seti-yetiskin"],
   },
   {
@@ -170,11 +177,13 @@ export const products: Product[] = [
     name: "Oksijen Maskesi (Yetişkin)",
     category: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     subcategory: "OKSİJEN & AEROSOL TERAPİ",
-    description: "Yetişkin hastalar için oksijen maskesi.",
-    longDescription: "Yetişkin hastalara oksijen tedavisi uygulamak için kullanılan standart maskedir.",
+    description:
+      "Yetişkin hastalar için standart oksijen maskesi. Acil durumlar ve oksijen tedavisi gereken durumlarda güvenilir oksijen iletimi sağlayan profesyonel tıbbi malzeme.",
+    longDescription:
+      "Yetişkin hastalara oksijen tedavisi uygulamak için kullanılan standart maskedir. Şeffaf malzemeden üretilmiş olup, hasta takibini kolaylaştırır ve güvenli oksijen iletimi sağlar.",
     features: [{ icon: "wind", title: "Etkili Oksijenasyon", description: "Yeterli oksijen iletimi sağlar." }],
     specifications: [{ name: "Boyut", value: "Yetişkin" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["oksijen-maskesi-pediatrik"],
   },
   {
@@ -186,7 +195,7 @@ export const products: Product[] = [
     longDescription: "Çocuk hastalara oksijen tedavisi uygulamak için kullanılan özel boyutlu maskedir.",
     features: [{ icon: "wind", title: "Çocuklara Uygun", description: "Pediatrik yüz yapısına uygun." }],
     specifications: [{ name: "Boyut", value: "Pediatrik" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["oksijen-maskesi-yetiskin"],
   },
   {
@@ -198,7 +207,7 @@ export const products: Product[] = [
     longDescription: "Yetişkinlerde aerosol tedavisi için T-parçası içeren nebulizatör kitidir.",
     features: [{ icon: "tool", title: "T-Parçalı Tasarım", description: "Etkili ilaç iletimi." }],
     specifications: [{ name: "Kullanıcı", value: "Yetişkin" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["nebulizer-t-kit-pediatrik-neonatal"],
   },
   {
@@ -210,7 +219,7 @@ export const products: Product[] = [
     longDescription: "Çocuk ve yenidoğanlarda aerosol tedavisi için T-parçası içeren özel nebulizatör kitidir.",
     features: [{ icon: "baby", title: "Hassas Boyutlar", description: "Pediatrik ve neonatal kullanıma uygun." }],
     specifications: [{ name: "Kullanıcı", value: "Pediatrik, Neonatal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["nebulizer-t-kit-yetiskin"],
   },
   {
@@ -222,7 +231,7 @@ export const products: Product[] = [
     longDescription: "Burun yoluyla düşük akımlı oksijen vermek için kullanılan esnek kanüldür.",
     features: [{ icon: "wind", title: "Konforlu Kullanım", description: "Yumuşak ve esnek yapı." }],
     specifications: [{ name: "Malzeme", value: "Tıbbi PVC" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["oksijen-maskesi-yetiskin"],
   },
   {
@@ -235,20 +244,21 @@ export const products: Product[] = [
       "Hasta ile solunum cihazı arasında hava akışını sağlayan, tek kullanımlık veya çok kullanımlık devrelerdir.",
     features: [{ icon: "refresh-cw", title: "Güvenli Bağlantı", description: "Sızdırmaz ve güvenli." }],
     specifications: [{ name: "Tipler", value: "Yetişkin, Pediatrik" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["filtreler-anestezi"],
   },
   {
-    id: "cpap-maskesi", // ID'yi CBAP'tan CPAP'a düzelttim, yaygın kullanımı CPAP.
+    id: "cpap-maskesi",
     name: "CPAP Maskesi",
     category: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     subcategory: "CPAP & BIPAP MASKELERİ",
-    description: "CPAP tedavisi için kullanılan yüz veya burun maskesi.",
+    description:
+      "CPAP tedavisi için profesyonel yüz veya burun maskesi. Uyku apnesi tedavisinde kullanılan, sürekli pozitif hava yolu basıncı sağlayan konforlu ve etkili sistem.",
     longDescription:
-      "Sürekli pozitif hava yolu basıncı (CPAP) tedavisi için tasarlanmış, uyku apnesi gibi durumlarda kullanılan maskedir.",
+      "Sürekli pozitif hava yolu basıncı (CPAP) tedavisi için tasarlanmış, uyku apnesi gibi durumlarda kullanılan maskedir. Farklı yüz yapılarına uyum sağlayan ergonomik tasarımı ile konforlu kullanım sunar.",
     features: [{ icon: "moon", title: "Konforlu Uyum", description: "Uzun süreli kullanım için rahat." }],
     specifications: [{ name: "Çeşitler", value: "Nazal, Oral, Tam Yüz" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["bipap-maskeleri"],
   },
   {
@@ -260,7 +270,7 @@ export const products: Product[] = [
     longDescription: "Solunum devrelerinde kullanılan, hastayı ve cihazı kontaminasyondan koruyan filtrelerdir.",
     features: [{ icon: "shield", title: "Yüksek Filtrasyon", description: "Etkili koruma sağlar." }],
     specifications: [{ name: "Tipler", value: "HME, Bakteri/Viral" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["solunum-devresi"],
   },
   {
@@ -272,7 +282,7 @@ export const products: Product[] = [
     longDescription: "Manuel ventilasyon ve anestezi uygulamalarında kullanılan, yüze tam oturan maskelerdir.",
     features: [{ icon: "maximize-2", title: "Tam Uyum", description: "Yüze sızdırmaz şekilde oturur." }],
     specifications: [{ name: "Malzeme", value: "Silikon, PVC" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["suni-solunum-balonu"],
   },
   {
@@ -285,7 +295,7 @@ export const products: Product[] = [
       "Solunum devresine esneklik kazandıran, hasta hareketlerinden kaynaklanan çekmeyi azaltan ara bağlantı parçasıdır.",
     features: [{ icon: "git-pull-request", title: "Esnek Bağlantı", description: "Hareket kolaylığı sağlar." }],
     specifications: [{ name: "Uzunluk", value: "Çeşitli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["airway-anestezi"],
   },
   {
@@ -297,7 +307,7 @@ export const products: Product[] = [
     longDescription: "Bilinçsiz hastalarda dilin geriye düşerek hava yolunu tıkamasını engelleyen araçlardır.",
     features: [{ icon: "wind", title: "Açık Hava Yolu", description: "Solunumu kolaylaştırır." }],
     specifications: [{ name: "Tipler", value: "Guedel, Nazal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["kateter-mount"],
   },
   {
@@ -310,7 +320,7 @@ export const products: Product[] = [
       "Ameliyat sonrası veya akciğer rahatsızlıklarında akciğer fonksiyonlarını geliştirmek için kullanılan cihazdır.",
     features: [{ icon: "bar-chart-2", title: "Kapasite Artırıcı", description: "Akciğer egzersizi sağlar." }],
     specifications: [{ name: "Tip", value: "İnsentif Spirometre" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["oksijen-maskesi-yetiskin"],
   },
   {
@@ -323,7 +333,7 @@ export const products: Product[] = [
       "İki seviyeli pozitif hava yolu basıncı (BiPAP) tedavisi için kullanılan, solunum yetmezliği gibi durumlarda tercih edilen maskelerdir.",
     features: [{ icon: "sliders", title: "İki Seviyeli Basınç", description: "BiPAP cihazlarıyla uyumlu." }],
     specifications: [{ name: "Çeşitler", value: "Nazal, Tam Yüz" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["cpap-maskesi"],
   },
   {
@@ -336,7 +346,7 @@ export const products: Product[] = [
       "Solunumu durmuş veya yetersiz olan hastalara manuel olarak solunum yaptırmak için kullanılan temel yaşam desteği aracıdır.",
     features: [{ icon: "activity", title: "Manuel Ventilasyon", description: "Acil durumlarda hayat kurtarıcı." }],
     specifications: [{ name: "Boyutlar", value: "Yetişkin, Pediatrik, Neonatal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["sisirilebilir-silikon-maskeler"],
   },
   {
@@ -349,7 +359,7 @@ export const products: Product[] = [
       "Solunum sistemlerinde farklı parçaları birbirine bağlamak için kullanılan standart veya özel konnektörlerdir.",
     features: [{ icon: "link-2", title: "Çeşitli Tipler", description: "Farklı ihtiyaçlara uygun." }],
     specifications: [{ name: "Malzeme", value: "Plastik, Metal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["komponentler-anestezi"],
   },
   {
@@ -361,7 +371,7 @@ export const products: Product[] = [
     longDescription: "Solunum cihazları ve devreleri için çeşitli yedek parçalar, adaptörler ve diğer bileşenlerdir.",
     features: [{ icon: "settings", title: "Sistem Uyumu", description: "Cihazlarla uyumlu parçalar." }],
     specifications: [{ name: "Çeşitlilik", value: "Geniş ürün yelpazesi." }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: ["solunum-devresi"],
   },
   {
@@ -373,7 +383,7 @@ export const products: Product[] = [
     longDescription: "Bu kategoride yer almayan, anestezi ve solunumla ilgili diğer özel tıbbi malzemelerdir.",
     features: [{ icon: "package", title: "Özel Çözümler", description: "Farklı ihtiyaçlara yönelik." }],
     specifications: [{ name: "Uygulama", value: "Çeşitli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/anestezi-solunum.jpg"],
     relatedProducts: [],
   },
 
@@ -388,7 +398,7 @@ export const products: Product[] = [
       "Böbrek ile mesane arasındaki idrar akışını sağlamak için üretere yerleştirilen ince tüpler ve bu işlemi kolaylaştıran setlerdir.",
     features: [{ icon: "git-commit", title: "İdrar Akışı Sağlar", description: "Tıkanıklıkları giderir." }],
     specifications: [{ name: "Malzeme", value: "Silikon, Poliüretan" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["kilavuz-teller-uroloji"],
   },
   {
@@ -400,7 +410,7 @@ export const products: Product[] = [
     longDescription: "Endoskopik ürolojik girişimlerde yol gösterici olarak kullanılan, esnek ve dayanıklı tellerdir.",
     features: [{ icon: "navigation", title: "Yol Gösterici", description: "Hassas yerleştirme sağlar." }],
     specifications: [{ name: "Tipler", value: "Hidrofilik, PTFE kaplı" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-stent-setleri"],
   },
   {
@@ -416,7 +426,7 @@ export const products: Product[] = [
       { icon: "star", title: "Yeni Ürün", description: "Gelişmiş teknoloji." },
     ],
     specifications: [{ name: "Balon Çapları", value: "Çeşitli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     isNew: true,
     relatedProducts: ["pigtail-nefrostomi-kateter"],
   },
@@ -430,7 +440,7 @@ export const products: Product[] = [
       "Üreteroskopik işlemlerde üretere kolay ve travmasız erişim sağlamak için kullanılan hidrofilik kaplı giriş kılıfı ve eşlik eden dilatör setidir.",
     features: [{ icon: "droplet", title: "Hidrofilik Kaplama", description: "Kaygan ve atravmatik giriş." }],
     specifications: [{ name: "Boyutlar", value: "Farklı Fr seçenekleri" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-balon-dilator-uroloji"],
   },
   {
@@ -443,7 +453,7 @@ export const products: Product[] = [
       "Böbrek, üreter veya mesanedeki taşları endoskopik olarak yakalayıp çıkarmak için tasarlanmış çeşitli tiplerde sepetlerdir.",
     features: [{ icon: "trash-2", title: "Etkili Taş Toplama", description: "Farklı taş tiplerine uygun." }],
     specifications: [{ name: "Tel Sayısı", value: "3, 4, 5 telli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-stent-setleri"],
   },
   {
@@ -458,7 +468,7 @@ export const products: Product[] = [
       { icon: "corner-down-left", title: "Güvenli Drenaj", description: "Pigtail ucu yerinden çıkmayı önler." },
     ],
     specifications: [{ name: "Malzeme", value: "Poliüretan" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["nephroflex-balon-dilator"],
   },
   {
@@ -471,7 +481,7 @@ export const products: Product[] = [
       "Üreterdeki darlıkları veya striktürleri genişletmek amacıyla kullanılan, kontrollü basınçla şişirilen balon kateterlerdir.",
     features: [{ icon: "maximize", title: "Darlık Genişletme", description: "Kontrollü ve etkili." }],
     specifications: [{ name: "Balon Uzunlukları", value: "Çeşitli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["transureteroskopik-balon-dilator"],
   },
   {
@@ -484,7 +494,7 @@ export const products: Product[] = [
       "Üreteroskop ile birlikte kullanılarak üreterin belirli bölgelerini genişletmek için tasarlanmış özel balon dilatörlerdir.",
     features: [{ icon: "aperture", title: "Üreteroskopik Kullanım", description: "Endoskopik işlemlere uygun." }],
     specifications: [{ name: "Çalışma Kanalı Uyumu", value: "Evet" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-balon-dilator-uroloji"],
   },
   {
@@ -497,7 +507,7 @@ export const products: Product[] = [
       "Kendiliğinden tutunan Malecot ucu sayesinde böbrekte stabil drenaj sağlayan kateterler ve yeniden giriş (re-entry) işlemlerini kolaylaştıran setlerdir.",
     features: [{ icon: "anchor", title: "Stabil Drenaj", description: "Malecot ucu güvenli fiksasyon sağlar." }],
     specifications: [{ name: "Malzeme", value: "Silikon, Lateks" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["pigtail-nefrostomi-kateter"],
   },
   {
@@ -510,7 +520,7 @@ export const products: Product[] = [
       "Böbrek taşı kırma operasyonlarında (PCNL) böbreğe erişim yolunu seri olarak genişletmek ve çalışma kanalı oluşturmak için kullanılan setlerdir.",
     features: [{ icon: "layers", title: "Seri Dilatasyon", description: "PCNL işlemleri için ideal." }],
     specifications: [{ name: "Boyutlar", value: "Farklı Fr setleri" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["giris-igneleri-uroloji"],
   },
   {
@@ -523,7 +533,7 @@ export const products: Product[] = [
       "Nefrostomi, sistostomi gibi perkütan ürolojik işlemlerde ilk erişimi sağlamak için kullanılan farklı tip ve boyutlarda iğnelerdir.",
     features: [{ icon: "crosshair", title: "Hassas Giriş", description: "Keskin uçlu ve güvenli." }],
     specifications: [{ name: "Tipler", value: "Chiba, Trokar uçlu" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["dilatorler-uroloji"],
   },
   {
@@ -536,7 +546,7 @@ export const products: Product[] = [
       "Üretra, üreter veya nefrostomi yolu gibi daralmış ürolojik kanalları genişletmek için kullanılan farklı materyal ve tasarımlarda dilatörlerdir.",
     features: [{ icon: "trending-up", title: "Kademeli Genişletme", description: "Atravmatik ve etkili." }],
     specifications: [{ name: "Malzeme", value: "Plastik, Metal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-kateterler-uroloji"],
   },
   {
@@ -549,7 +559,7 @@ export const products: Product[] = [
       "Üretere retrograd veya antegrad yolla yerleştirilerek idrar drenajı, kontrast madde verilmesi veya diğer tanısal/terapötik işlemler için kullanılan kateterlerdir.",
     features: [{ icon: "activity", title: "Tanı ve Tedavi", description: "Çok amaçlı kullanım." }],
     specifications: [{ name: "Uç Tipleri", value: "Açık uç, Whistle tip" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["suprapubik-kateter-setleri"],
   },
   {
@@ -562,7 +572,7 @@ export const products: Product[] = [
       "Karın duvarından direkt olarak mesaneye kateter yerleştirilerek idrar drenajı sağlamak için kullanılan komple setlerdir.",
     features: [{ icon: "shield-check", title: "Alternatif Drenaj", description: "Üretral yol uygun olmadığında." }],
     specifications: [{ name: "Tipler", value: "Trokar, Seldinger" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["aksesuarlar-uroloji"],
   },
   {
@@ -575,7 +585,7 @@ export const products: Product[] = [
       "Kılavuz tel yönlendiricileri, Luer-Lock adaptörler, stopcocklar gibi ürolojik girişimlerde kullanılan çeşitli yardımcı malzemelerdir.",
     features: [{ icon: "settings", title: "İşlem Kolaylığı", description: "Girişimleri destekler." }],
     specifications: [{ name: "Çeşitlilik", value: "Geniş ürün gamı." }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/uroloji.jpg"],
     relatedProducts: ["ureteral-stent-setleri"],
   },
 
@@ -592,7 +602,7 @@ export const products: Product[] = [
       { icon: "archive", title: "Hijyenik Toplama", description: "Tek kullanımlık, kontaminasyon riskini azaltır." },
     ],
     specifications: [{ name: "Hacimler", value: "1L, 2L, 3L" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["kanister-esnek-torba"],
   },
   {
@@ -605,7 +615,7 @@ export const products: Product[] = [
       "Esnek aspirasyon torbalarının içine yerleştirildiği, dayanıklı ve tekrar kullanılabilir dış haznedir.",
     features: [{ icon: "box", title: "Dayanıklı Yapı", description: "Uzun ömürlü kullanım." }],
     specifications: [{ name: "Malzeme", value: "Polikarbonat" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["aspirasyon-torbasi-esnek"],
   },
   {
@@ -618,7 +628,7 @@ export const products: Product[] = [
       "Esnek torba kullanan aspirasyon kanisterlerini taşımak ve mobilite sağlamak için tasarlanmış tekerlekli arabadır.",
     features: [{ icon: "truck", title: "Kolay Taşıma", description: "Mobilite ve kullanım kolaylığı." }],
     specifications: [{ name: "Kapasite", value: "1-4 kanister" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["kanister-esnek-torba"],
   },
   {
@@ -630,7 +640,7 @@ export const products: Product[] = [
     longDescription: "Sert kanisterli sistemlerle uyumlu, tek kullanımlık, farklı hacimlerde aspirasyon torbalarıdır.",
     features: [{ icon: "droplet", title: "Sıvı Toplama", description: "Güvenli ve hijyenik." }],
     specifications: [{ name: "Filtre", value: "Hidrofobik, antibakteriyel" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["kanisterler-drenaj"],
   },
   {
@@ -643,7 +653,7 @@ export const products: Product[] = [
       "Standart aspirasyon torbalarının içine yerleştirildiği, otoklavlanabilir veya dezenfekte edilebilir sert dış haznelerdir.",
     features: [{ icon: "package", title: "Tekrar Kullanılabilir", description: "Dayanıklı ve steril edilebilir." }],
     specifications: [{ name: "Malzeme", value: "Polisülfon, Polikarbonat" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["aspirasyon-torbalari-drenaj"],
   },
   {
@@ -656,7 +666,7 @@ export const products: Product[] = [
       "Sert kanisterli aspirasyon sistemlerini taşımak ve klinik içinde mobilite sağlamak için tasarlanmış tekerlekli arabadır.",
     features: [{ icon: "move", title: "Klinik İçi Mobilite", description: "Kolay ve güvenli taşıma." }],
     specifications: [{ name: "Yapı", value: "Paslanmaz çelik veya boyalı metal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["kanisterler-drenaj"],
   },
   {
@@ -669,7 +679,7 @@ export const products: Product[] = [
       "Birden fazla aspirasyon torbasının seri bağlanarak kapasite artırımına olanak tanıyan özel bağlantı sistemine sahip torbalardır.",
     features: [{ icon: "link", title: "Kapasite Artırımı", description: "Uzun süreli aspirasyon için." }],
     specifications: [{ name: "Bağlantı Tipi", value: "Tandem konnektör" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["aspirasyon-torbalari-drenaj"],
   },
   {
@@ -682,7 +692,7 @@ export const products: Product[] = [
       "Aspirasyon hortumları, filtreler, bağlantı parçaları gibi drenaj ve aspirasyon sistemlerini tamamlayan çeşitli aksesuarlardır.",
     features: [{ icon: "settings", title: "Sistem Tamamlayıcı", description: "Fonksiyonelliği artırır." }],
     specifications: [{ name: "Çeşitlilik", value: "Geniş ürün yelpazesi." }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["yankauer-aspirasyon-seti"],
   },
   {
@@ -695,7 +705,7 @@ export const products: Product[] = [
       "Ağız içi ve cerrahi alanlardaki sıvıları aspire etmek için kullanılan, sert Yankauer ucu ve bağlantı hortumundan oluşan settir.",
     features: [{ icon: "filter", title: "Etkili Aspirasyon", description: "Cerrahi alan temizliği." }],
     specifications: [{ name: "Uç Tipi", value: "Standart, Kontrol valfli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["aspirasyon-torbalari-drenaj"],
   },
   {
@@ -708,7 +718,7 @@ export const products: Product[] = [
       "Ameliyat sonrası yara bölgesinde biriken kan ve sıvıları düşük negatif basınçla drene etmek için kullanılan kapalı sistemdir.",
     features: [{ icon: "shield-off", title: "Kapalı Sistem Drenaj", description: "Enfeksiyon riskini azaltır." }],
     specifications: [{ name: "Hacimler", value: "200ml, 400ml, 600ml" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["drenaj-sistemleri-bomba-silikon"],
   },
   {
@@ -721,7 +731,7 @@ export const products: Product[] = [
       "Yumuşak silikon bomba (rezervuar) ile düşük ve sürekli negatif basınç sağlayarak yara drenajı yapan sistemdir.",
     features: [{ icon: "zap", title: "Sürekli Negatif Basınç", description: "Etkili sıvı uzaklaştırma." }],
     specifications: [{ name: "Rezervuar Malzemesi", value: "Silikon" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["silikon-round-dren"],
   },
   {
@@ -734,7 +744,7 @@ export const products: Product[] = [
       "Yumuşak, biyouyumlu silikondan yapılmış, yara bölgesine yerleştirilerek sıvıların drenajını sağlayan yuvarlak kesitli drendir.",
     features: [{ icon: "circle", title: "Biyouyumlu Silikon", description: "Doku dostu, esnek." }],
     specifications: [{ name: "Çaplar", value: "Farklı Fr seçenekleri" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["flat-dren-drenaj"],
   },
   {
@@ -747,7 +757,7 @@ export const products: Product[] = [
       "Özellikle dar alanlarda veya yüzeyel drenaj için kullanılan, yassı (flat) profilli, silikon veya PVC materyalden yapılmış drendir.",
     features: [{ icon: "minimize-2", title: "Yassı Profil", description: "Dar alanlar için uygun." }],
     specifications: [{ name: "Malzeme", value: "Silikon, PVC" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["silikon-round-dren"],
   },
   {
@@ -760,7 +770,7 @@ export const products: Product[] = [
       "Yumuşak silikon drenden ve buna direkt bağlı toplama torbasından oluşan, pratik kullanımlı kapalı drenaj sistemidir.",
     features: [{ icon: "package", title: "Entegre Sistem", description: "Dren ve torba bir arada." }],
     specifications: [{ name: "Dren Malzemesi", value: "Silikon" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["drenaj-torbali-yumusak-dren-pvc"],
   },
   {
@@ -773,7 +783,7 @@ export const products: Product[] = [
       "Yumuşak PVC drenden ve buna direkt bağlı toplama torbasından oluşan, ekonomik ve pratik kapalı drenaj sistemidir.",
     features: [{ icon: "dollar-sign", title: "Ekonomik Çözüm", description: "PVC malzeme ile uygun maliyet." }],
     specifications: [{ name: "Dren Malzemesi", value: "PVC" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["drenaj-torbali-yumusak-dren-silikon"],
   },
   {
@@ -786,7 +796,7 @@ export const products: Product[] = [
       "Farklı drenaj tüplerini, torbalarını veya sistemlerini birbirine bağlamak için kullanılan çeşitli tip ve boyutlarda konnektörlerdir.",
     features: [{ icon: "link", title: "Güvenli Bağlantı", description: "Sızdırmaz ve uyumlu." }],
     specifications: [{ name: "Tipler", value: "Düz, Y-konnektör, Luer" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/drenaj.jpg"],
     relatedProducts: ["aksesuarlar-drenaj"],
   },
 
@@ -800,7 +810,7 @@ export const products: Product[] = [
       "Genç hastalar ve dar anatomiye sahip kadınlar için özel olarak tasarlanmış, tek kullanımlık steril vajinal spekülümdür.",
     features: [{ icon: "user-minus", title: "Küçük Boy", description: "Hassas muayene için." }],
     specifications: [{ name: "Boyut", value: "S" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["vajinal-spekulum-orta", "vajinal-spekulum-buyuk"],
   },
   {
@@ -812,7 +822,7 @@ export const products: Product[] = [
       "Standart jinekolojik muayenelerde en sık kullanılan, tek kullanımlık steril orta boy vajinal spekülümdür.",
     features: [{ icon: "user", title: "Standart Boy", description: "Yaygın kullanıma uygun." }],
     specifications: [{ name: "Boyut", value: "M" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["vajinal-spekulum-kucuk", "vajinal-spekulum-buyuk"],
   },
   {
@@ -824,7 +834,7 @@ export const products: Product[] = [
       "Geniş anatomiye sahip hastalar veya özel işlemler için tasarlanmış, tek kullanımlık steril büyük boy vajinal spekülümdür.",
     features: [{ icon: "user-plus", title: "Geniş Boy", description: "Geniş görüş alanı sağlar." }],
     specifications: [{ name: "Boyut", value: "L" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["vajinal-spekulum-kucuk", "vajinal-spekulum-orta"],
   },
   {
@@ -837,7 +847,7 @@ export const products: Product[] = [
       "Spermlerin direkt olarak rahim içine transfer edilmesi işleminde (aşılama) kullanılan, ince, esnek ve steril kateterdir.",
     features: [{ icon: "target", title: "Hassas Transfer", description: "Atravmatik ve etkili." }],
     specifications: [{ name: "Uç Tipi", value: "Yumuşak, düz veya açılı" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["endometrial-ornek-alma-kanulu"],
   },
   {
@@ -850,7 +860,7 @@ export const products: Product[] = [
       "Rahim içi doku örneklemesi veya erken gebelik sonlandırması gibi işlemlerde negatif basınç oluşturmak için kullanılan manuel enjektördür.",
     features: [{ icon: "minus-circle", title: "Manuel Vakum", description: "Kontrollü aspirasyon." }],
     specifications: [{ name: "Hacim", value: "60cc" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["karman-kanul-ucu"],
   },
   {
@@ -863,7 +873,7 @@ export const products: Product[] = [
       "Manuel vakum aspirasyonu sırasında rahim içine yerleştirilen, farklı boyutlarda, esnek veya sert, tek kullanımlık kanül uçlarıdır.",
     features: [{ icon: "tool", title: "Çeşitli Boyutlar", description: "Farklı ihtiyaçlara uygun." }],
     specifications: [{ name: "Çaplar", value: "4mm - 12mm" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["karman-enjektor"],
   },
   {
@@ -876,7 +886,7 @@ export const products: Product[] = [
       "Rahim iç zarından tanısal amaçlı doku örneği (biyopsi) almak için kullanılan ince, esnek ve steril kanüldür.",
     features: [{ icon: "edit-3", title: "Atravmatik Örnekleme", description: "Minimal invaziv." }],
     specifications: [{ name: "Tip", value: "Pipelle, Novak vb." }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["smear-fircasi"],
   },
   {
@@ -889,7 +899,7 @@ export const products: Product[] = [
       "Rahim ağzından (serviks) Pap smear testi için hücre örneği toplamak amacıyla kullanılan, tek kullanımlık steril fırçadır.",
     features: [{ icon: "brush", title: "Etkili Hücre Toplama", description: "Yeterli örnek alımı." }],
     specifications: [{ name: "Fırça Tipi", value: "Servikal, Endoservikal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["smear-tasima-kabi"],
   },
   {
@@ -902,7 +912,7 @@ export const products: Product[] = [
       "Alınan smear örneklerinin güvenli ve uygun koşullarda laboratuvara transferi için kullanılan, genellikle fiksatif içeren veya içermeyen kaplardır.",
     features: [{ icon: "package", title: "Güvenli Taşıma", description: "Örnek bütünlüğünü korur." }],
     specifications: [{ name: "Tip", value: "Sıvı bazlı, Konvansiyonel" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["smear-fircasi"],
   },
   {
@@ -915,7 +925,7 @@ export const products: Product[] = [
       "Doğum sırasında amniyon kesesini kontrollü bir şekilde açmak (amniyotomi) için kullanılan, genellikle tek kullanımlık steril bir araçtır.",
     features: [{ icon: "scissors", title: "Kontrollü Amniyotomi", description: "Güvenli ve etkili." }],
     specifications: [{ name: "Malzeme", value: "Plastik" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/jinekoloji.jpg"],
     relatedProducts: ["gobek-kordon-klemp"],
   },
 
@@ -930,7 +940,7 @@ export const products: Product[] = [
       "Laboratuvar testleri için idrar örneği toplamak amacıyla kullanılan, genellikle ölçekli ve kapaklı, tek kullanımlık steril bardaktır.",
     features: [{ icon: "beaker", title: "Steril Örnekleme", description: "Kontaminasyonsuz örnek alımı." }],
     specifications: [{ name: "Hacim", value: "100ml, 120ml" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["gaita-kabi"],
   },
   {
@@ -943,7 +953,7 @@ export const products: Product[] = [
       "Laboratuvar incelemeleri için gaita örneği toplamak amacıyla kullanılan, genellikle örnek alma kaşığı içeren, tek kullanımlık steril veya non-steril kaplardır.",
     features: [{ icon: "trash", title: "Hijyenik Toplama", description: "Kaşıklı ve kapaklı tasarım." }],
     specifications: [{ name: "Hacim", value: "20ml, 30ml" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["idrar-bardagi"],
   },
   {
@@ -956,7 +966,7 @@ export const products: Product[] = [
       "İntravenöz (IV) sıvı tedavilerinde, sıvının hastaya veriliş hızını (damla/dakika) hassas bir şekilde ayarlamak için kullanılan settir.",
     features: [{ icon: "sliders", title: "Hassas Akış Kontrolü", description: "Doğru dozajlama sağlar." }],
     specifications: [{ name: "Tip", value: "Makro, Mikro damla" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["instoper-heparin-cap"],
   },
   {
@@ -969,7 +979,7 @@ export const products: Product[] = [
       "Bağırsak temizliği veya ilaç uygulaması amacıyla rektal yoldan sıvı vermek için kullanılan, torba, hortum ve rektal uçtan oluşan settir.",
     features: [{ icon: "droplet", title: "Rektal Uygulama", description: "Kolay ve güvenli kullanım." }],
     specifications: [{ name: "Hacim", value: "1L, 1.5L" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: [],
   },
   {
@@ -982,7 +992,7 @@ export const products: Product[] = [
       "Doğumdan sonra yenidoğanın göbek kordonunu kanamayı önlemek amacıyla sıkıştırmak için kullanılan, tek kullanımlık steril plastik klemptir.",
     features: [{ icon: "lock", title: "Güvenli Klempleme", description: "Kaymaz ve sağlam." }],
     specifications: [{ name: "Malzeme", value: "Medikal Plastik" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["poche-acacagi"],
   },
   {
@@ -995,7 +1005,7 @@ export const products: Product[] = [
       "Cerrahların ve ameliyathane personelinin operasyon öncesi el hijyenini sağlamak için kullandığı, genellikle antiseptik emdirilmiş veya kuru, tek kullanımlık fırçalardır.",
     features: [{ icon: "sun", title: "Etkili Temizlik", description: "Antiseptik özellikli olabilir." }],
     specifications: [{ name: "Tip", value: "Kuru, Antiseptikli" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: [],
   },
   {
@@ -1008,7 +1018,7 @@ export const products: Product[] = [
       "Dermatoloji ve diğer cerrahi dallarda, tanısal amaçlı olarak deriden veya diğer yumuşak dokulardan tam kat silindirik biyopsi örneği almak için kullanılan keskin, tek kullanımlık alettir.",
     features: [{ icon: "disc", title: "Hassas Örnekleme", description: "Farklı çaplarda mevcut." }],
     specifications: [{ name: "Çaplar", value: "2mm - 8mm" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["endometrial-ornek-alma-kanulu"],
   },
   {
@@ -1021,7 +1031,7 @@ export const products: Product[] = [
       "İntravenöz kanüllerin kullanılmadığı zamanlarda pıhtılaşmayı önlemek ve steril kalmasını sağlamak amacıyla ucuna takılan, heparin enjeksiyon portu da olabilen kapaktır.",
     features: [{ icon: "shield-check", title: "Pıhtılaşmayı Önler", description: "Kanül açıklığını korur." }],
     specifications: [{ name: "Bağlantı", value: "Luer Lock" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["damla-ayar-seti"],
   },
   {
@@ -1034,7 +1044,7 @@ export const products: Product[] = [
       "Cerrahi işlemler sırasında kullanılan endoskopik veya laparoskopik kamera sistemlerini steril tutmak için tasarlanmış, tek kullanımlık şeffaf kılıflardır.",
     features: [{ icon: "video", title: "Steril Bariyer", description: "Kamera sistemini korur." }],
     specifications: [{ name: "Malzeme", value: "Şeffaf Polietilen" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: [],
   },
   {
@@ -1047,7 +1057,7 @@ export const products: Product[] = [
       "Arterden kan örneği alarak kan gazı değerlerini (pH, pO2, pCO2 vb.) ölçmek için kullanılan, genellikle pıhtılaşmayı önleyici heparin içeren özel enjektörlerdir.",
     features: [{ icon: "droplet", title: "Arteriyel Örnekleme", description: "Heparinli, hava kabarcıksız." }],
     specifications: [{ name: "Hacim", value: "1ml, 3ml" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["idrar-bardagi"],
   },
   {
@@ -1060,7 +1070,7 @@ export const products: Product[] = [
       "Hastaların idrar toplama torbalarını yatak, sedye veya tekerlekli sandalye gibi yerlere güvenli bir şekilde asmak için kullanılan plastik veya metal askılardır.",
     features: [{ icon: "paperclip", title: "Güvenli Sabitleme", description: "Torbanın düşmesini engeller." }],
     specifications: [{ name: "Malzeme", value: "Plastik, Metal" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["idrar-bardagi"],
   },
   {
@@ -1073,7 +1083,7 @@ export const products: Product[] = [
       "Hastanelerde hasta kimliğini doğrulamak ve karışıklıkları önlemek amacıyla kullanılan, bileğe takılan veya yatak başına asılan, üzerine hasta bilgilerinin yazıldığı künyelerdir.",
     features: [{ icon: "user-check", title: "Hasta Kimlik Doğrulama", description: "Güvenliği artırır." }],
     specifications: [{ name: "Tipler", value: "Yetişkin, Çocuk, Bebek" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: [],
   },
   {
@@ -1086,7 +1096,7 @@ export const products: Product[] = [
       "Anestezi cihazlarından veya solunum devrelerinden gaz örneği alarak kapnografi veya diğer gaz analiz cihazlarına iletmek için kullanılan ince hortumdur.",
     features: [{ icon: "bar-chart", title: "Gaz Analizi", description: "Solunum gazlarını izleme." }],
     specifications: [{ name: "Uzunluk", value: "Standart" }],
-    images: ["/placeholder.svg?height=1&width=1&text=No+Image"],
+    images: ["/images/categories/diger-tibbi-malzemeler.jpg"],
     relatedProducts: ["filtreler-anestezi"],
   },
 ]

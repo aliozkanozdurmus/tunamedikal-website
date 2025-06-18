@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react"
+import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
 import { Card, CardContent } from "@/components/ui/card"
 
 export function DoctorsTeam() {
@@ -11,7 +11,7 @@ export function DoctorsTeam() {
       name: "Dr. Ahmet Yılmaz",
       role: "Tıbbi Direktör",
       specialty: "Kardiyoloji",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/images/doctors/ahmet-yilmaz.jpg",
       bio: "Dr. Yılmaz, kardiyoloji ve tıbbi tanı alanında 20 yılı aşkın deneyime sahiptir.",
       social: {
         twitter: "#",
@@ -24,7 +24,7 @@ export function DoctorsTeam() {
       name: "Dr. Ayşe Kaya",
       role: "Laboratuvar Direktörü",
       specialty: "Patoloji",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/images/doctors/ayse-kaya.jpg",
       bio: "Dr. Kaya, yenilikçi tanı teknikleri odaklı patoloji alanında uzmanlaşmıştır.",
       social: {
         twitter: "#",
@@ -37,7 +37,7 @@ export function DoctorsTeam() {
       name: "Dr. Mehmet Demir",
       role: "Kıdemli Uzman",
       specialty: "Radyoloji",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/images/doctors/mehmet-demir.jpg",
       bio: "Dr. Demir, ileri görüntüleme ve tanısal radyoloji konusunda uzmandır.",
       social: {
         twitter: "#",
@@ -50,7 +50,7 @@ export function DoctorsTeam() {
       name: "Dr. Zeynep Şahin",
       role: "Tıbbi Danışman",
       specialty: "İç Hastalıkları",
-      image: "/placeholder.svg?height=400&width=300",
+      image: "/images/doctors/zeynep-sahin.jpg",
       bio: "Dr. Şahin, karmaşık vakalar için kapsamlı bakım ve tanı danışmanlığı sağlar.",
       social: {
         twitter: "#",
