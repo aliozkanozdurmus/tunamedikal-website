@@ -90,8 +90,7 @@ export function HeroSlider() {
             Tuna Medikal
           </h1>
           <p className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
-            Sağlık sektöründe yenilikçi çözümler ve güvenilir medikal ürünler sunuyoruz. Kaliteli hizmet anlayışımızla
-            tanışın.
+            "Sevgiyi Sağlıkla Buluşturuyoruz"
           </p>
           {/* Buttons removed as per request */}
         </div>

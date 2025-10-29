@@ -8,9 +8,9 @@ export function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-blue-50 to-green-50 dark:from-gray-800 dark:to-gray-900 py-8 px-4 md:px-6 text-gray-700 dark:text-gray-200">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
         <div className="flex flex-col items-center md:items-start">
-          <Link href="#" className="flex items-center gap-2 mb-4" prefetch={false}>
+          <Link href="/" className="flex items-center gap-2 mb-4" prefetch={false}>
             <Image
               src="/images/tuna-medikal-logo.png"
               alt="Tuna Medikal Logo"
@@ -28,32 +28,52 @@ export function Footer() {
           <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-50 font-sans">Hızlı Erişim</h4>
           <nav className="flex flex-col gap-2">
             <Link
-              href="#hakkimizda"
+              href="/hakkimizda"
               className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
               prefetch={false}
             >
               Hakkımızda
             </Link>
             <Link
-              href="#urunler"
+              href="/urunler"
               className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
               prefetch={false}
             >
               Ürünler
             </Link>
             <Link
-              href="#iletisim"
+              href="/referanslar"
+              className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
+              prefetch={false}
+            >
+              Referanslar
+            </Link>
+            <Link
+              href="/iletisim"
               className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
               prefetch={false}
             >
               İletişim
             </Link>
+          </nav>
+        </div>
+
+        <div className="flex flex-col items-center md:items-start">
+          <h4 className="text-lg font-semibold mb-3 text-gray-800 dark:text-gray-50 font-sans">Yasal Bilgiler</h4>
+          <nav className="flex flex-col gap-2">
             <Link
-              href="#sss"
+              href="/gizlilik-politikasi"
               className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
               prefetch={false}
             >
-              S.S.S
+              Gizlilik Politikası
+            </Link>
+            <Link
+              href="/kvkk"
+              className="text-sm text-gray-600 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-sans"
+              prefetch={false}
+            >
+              KVKK
             </Link>
           </nav>
         </div>

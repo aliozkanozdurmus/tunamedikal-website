@@ -47,7 +47,10 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 mb-6"
             >
-              Sağlığınız İçin <span className="gradient-text">İleri Teknoloji</span> Tıbbi Testler
+              <span className="block text-2xl md:text-3xl font-light text-gray-600 mb-2">
+                "Sevgiyi Sağlıkla Buluşturuyoruz"
+              </span>
+              Sağlığınız İçin <span className="gradient-text">İleri Teknoloji</span> Tıbbi Cihazlar
             </motion.h1>
 
             <motion.p
