@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, Award, Stethoscope, Package, Shield, Activity } from "lucide-react"
 
 const slides = [
   {
@@ -73,12 +73,14 @@ export function HeroSlider() {
         <source src={videoUrl} type="video/mp4" />
         Tarayıcınız video etiketini desteklemiyor.
       </video>
+      {/* Dark overlay for better text visibility */}
+      <div className="absolute inset-0 w-full h-full bg-black/40 z-10" />
       {/* Black dotted overlay */}
       <div
-        className="absolute inset-0 w-full h-full z-10" // Changed z-index to z-10
+        className="absolute inset-0 w-full h-full z-10"
         style={{
           backgroundImage: "radial-gradient(rgba(0, 0, 0, 0.3) 0.5px, transparent 0.5px)",
-          backgroundSize: "3px 3px", // Adjust for dot density
+          backgroundSize: "3px 3px",
           pointerEvents: "none",
         }}
       />
@@ -86,13 +88,66 @@ export function HeroSlider() {
         {" "}
         {/* Changed z-index to z-20 */}
         <div className="container mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white drop-shadow-lg">
-            Tuna Medikal
-          </h1>
-          <p className="mt-4 md:mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
-            "Sevgiyi Sağlıkla Buluşturuyoruz"
-          </p>
-          {/* Buttons removed as per request */}
+
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="relative mb-8"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-r from-green-400/30 via-blue-400/30 to-purple-400/30 rounded-3xl blur-2xl animate-pulse"></div>
+            <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+              <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white leading-tight" style={{fontFamily: 'Montserrat, sans-serif', fontWeight: 300}}>
+                Sevgiyi Sağlıkla Buluşturuyoruz
+              </p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/90"
+          >
+            <div className="flex items-center gap-3">
+              <Award className="w-8 h-8 text-yellow-400" />
+              <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-white/50"></div>
+              <span className="text-4xl font-bold text-green-400">15</span>
+              <span className="text-lg font-medium">Yıllık Deneyim</span>
+              <div className="w-12 h-0.5 bg-gradient-to-l from-transparent to-white/50"></div>
+              <Stethoscope className="w-8 h-8 text-blue-400" />
+            </div>
+          </motion.div>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="mt-6 text-lg sm:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed flex flex-wrap items-center justify-center gap-2"
+          >
+            <Stethoscope className="w-5 h-5 text-green-300" />
+            <span>Sağlık sektörüne</span>
+            <Package className="w-5 h-5 text-blue-300" />
+            <span className="text-green-300 font-semibold">kaliteli medikal ürünler</span>
+            <span>ve</span>
+            <Shield className="w-5 h-5 text-purple-300" />
+            <span className="text-blue-300 font-semibold">güvenilir hizmet</span>
+            <span>sunuyoruz</span>
+            <Activity className="w-5 h-5 text-red-300" />
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="mt-8 flex justify-center"
+          >
+            <div className="flex items-center gap-2 text-white/60 text-sm">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span>Her zaman yanınızdayız</span>
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+            </div>
+          </motion.div>
         </div>
       </div>
 

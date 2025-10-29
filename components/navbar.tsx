@@ -36,8 +36,8 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-white/20 backdrop-blur-md border-b border-white/20 shadow-lg" : "bg-gradient-to-r from-blue-900/90 via-blue-900/80 to-blue-900/90"
+className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled ? "bg-white/20 backdrop-blur-md border-b border-white/20 shadow-lg" : "bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900"
       }`}
     >
       <div className="container mx-auto px-4">

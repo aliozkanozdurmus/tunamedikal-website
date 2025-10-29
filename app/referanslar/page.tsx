@@ -29,7 +29,6 @@ export default function Referanslar() {
   const testimonials = [
     {
       id: 1,
-      name: "Dr. Ahmet Yılmaz",
       position: "Anestezi Uzmanı",
       rating: 5,
       comment: "Tuna Medikal'in ürünleri kalitesi ve hizmet anlayışı gerçekten takdir edilesi. 5 yıldır çalışıyoruz ve memnuniyetimiz günden güne artıyor.",
@@ -38,7 +37,6 @@ export default function Referanslar() {
     },
     {
       id: 2,
-      name: "Selin Kaya",
       position: "Satın Alma Müdürü",
       rating: 5,
       comment: "Hızlı teslimat ve rekabetçi fiyatlarla en iyi tedarikçimiz oldular. Özellikle acil durumlarda bize hep destek oldular.",
@@ -47,7 +45,6 @@ export default function Referanslar() {
     },
     {
       id: 3,
-      name: "Prof. Dr. Mehmet Öz",
       position: "Kardiyoloji Bölüm Başkanı",
       rating: 5,
       comment: "Teknolojik ürünleri ve after sales servisleri mükemmel. Özellikle hasta monitörleri departmanımızda vazgeçilmez oldu.",
@@ -56,7 +53,6 @@ export default function Referanslar() {
     },
     {
       id: 4,
-      name: "Zeynep Demir",
       position: "Eczane Sahibi",
       rating: 4,
       comment: "Küçük işletmemiz için bile özel ilgi gösteriyorlar. Ürün çeşitliliği ve fiyatları çok uygun.",
@@ -65,7 +61,6 @@ export default function Referanslar() {
     },
     {
       id: 5,
-      name: "Dr. Ayşe Polat",
       position: "Yoğun Bakım Uzmanı",
       rating: 5,
       comment: "Yoğun bakım ekipmanları konusunda en güvenilir tedarikçimiz. 7/24 destekleri hayat kurtarıyor.",
@@ -74,7 +69,6 @@ export default function Referanslar() {
     },
     {
       id: 6,
-      name: "Mustafa Çelik",
       position: "CEO",
       rating: 5,
       comment: "15 yıldır birlikte çalışıyoruz. Tuna Medikal sadece tedarikçi değil, iş ortağımız oldu.",
@@ -289,11 +283,8 @@ export default function Referanslar() {
                         <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full"></div>
                         <div>
                           <h4 className="font-semibold text-gray-800 dark:text-white">
-                            {testimonial.name}
-                          </h4>
-                          <p className="text-sm text-gray-600 dark:text-gray-400">
                             {testimonial.position}
-                          </p>
+                          </h4>
                         </div>
                       </div>
                     </CardContent>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
@@ -41,8 +41,6 @@ export default function Urunler() {
       name: "Nebulizer Maske",
       category: "respiratory",
       price: "₺450",
-      rating: 4.8,
-      reviews: 124,
       image: "/images/nebulizer-mask.jpg",
       description: "Yüksek kaliteli nebulizer maske, konforlu kullanım",
       features: ["Steril", "Tek kullanımlık", "Yüksek verimlilik"]
@@ -52,19 +50,15 @@ export default function Urunler() {
       name: "Oksijen Maskesi",
       category: "respiratory",
       price: "₺320",
-      rating: 4.6,
-      reviews: 89,
       image: "/images/oxygen-mask.jpg",
       description: "Güvenilir oksijen tedavisi için ideal çözüm",
-      features: ["Hasta dostu", "Ayarlanabilir", "Tıpkı mükemmel"]
+      features: ["Hasta dostu", "Ayarlanabilir", "Tıkanıklık yok"]
     },
     {
       id: 3,
       name: "Nazal Kanül",
       category: "respiratory",
       price: "₺180",
-      rating: 4.7,
-      reviews: 156,
       image: "/images/nasal-cannula.jpg",
       description: "Rahat nazal oksijen uygulaması",
       features: ["Yumuşak malzeme", "Uzun kullanım", "Deri dostu"]
@@ -74,8 +68,6 @@ export default function Urunler() {
       name: "Hasta Monitörü",
       category: "monitoring",
       price: "₺12,500",
-      rating: 4.9,
-      reviews: 67,
       image: "/placeholder.jpg",
       description: "Çok fonksiyonlu hasta monitör sistemi",
       features: ["7\" ekran", "Wireless", "Alarm sistemi"]
@@ -84,9 +76,6 @@ export default function Urunler() {
       id: 5,
       name: "Defibrilatör",
       category: "emergency",
-      price: "₺45,000",
-      rating: 5.0,
-      reviews: 23,
       image: "/placeholder.jpg",
       description: "Profesyonel acil müdahale cihazı",
       features: ["Otomatik", "Taşınabilir", "Hızlı"]
@@ -95,9 +84,6 @@ export default function Urunler() {
       id: 6,
       name: "Cerrahi Set",
       category: "surgical",
-      price: "₺3,200",
-      rating: 4.8,
-      reviews: 45,
       image: "/placeholder.jpg",
       description: "Kapsamlı cerrahi alet seti",
       features: ["Stainless steel", "Steril", "30 parça"]
@@ -220,15 +206,6 @@ export default function Urunler() {
                         alt={product.name}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
-                      <div className="absolute top-4 right-4">
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="bg-white/80 hover:bg-white"
-                        >
-                          <Heart className="w-4 h-4" />
-                        </Button>
-                      </div>
                     </div>
                     <CardContent className="p-6">
                       <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
@@ -250,47 +227,8 @@ export default function Urunler() {
                         ))}
                       </div>
 
-                      {/* Rating */}
-                      <div className="flex items-center gap-2 mb-4">
-                        <div className="flex items-center">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`w-4 h-4 ${
-                                i < Math.floor(product.rating)
-                                  ? "text-yellow-400 fill-current"
-                                  : "text-gray-300"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                        <span className="text-sm text-gray-600 dark:text-gray-400">
-                          {product.rating} ({product.reviews} değerlendirme)
-                        </span>
-                      </div>
 
-                      {/* Price and Actions */}
-                      <div className="flex items-center justify-between">
-                        <span className="text-2xl font-bold text-green-600">
-                          {product.price}
-                        </span>
-                        <div className="flex gap-2">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            className="border-green-600 text-green-600 hover:bg-green-50"
-                          >
-                            Detaylar
-                          </Button>
-                          <Button
-                            size="sm"
-                            className="bg-green-600 hover:bg-green-700"
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Sepet
-                          </Button>
-                        </div>
-                      </div>
+
                     </CardContent>
                   </Card>
                 </motion.div>
