@@ -63,9 +63,20 @@ export function Footer() {
             </address>
           </div>
         </div>
-        <div className="mt-16 border-t border-sand-200 pt-8 text-center">
+        <div className="mt-16 border-t border-sand-200 pt-8 text-center space-y-3">
           <p className="text-[10px] text-gray-400 font-medium tracking-widest uppercase">
             &copy; {currentYear} Tuna Group. Tüm Hakları Saklıdır.
+          </p>
+          <p className="text-[9px] text-gray-400 font-light">
+            Veni AI yapay zeka teknolojileri ile yapılmıştır.{" "}
+            <a
+              href="https://veniplatform.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sage-600 hover:text-sage-700 font-medium transition-colors underline decoration-dotted"
+            >
+              veniplatform.com
+            </a>
           </p>
         </div>
       </footer>

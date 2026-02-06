@@ -83,10 +83,21 @@ export function MobileFooter() {
                 </div>
 
                 {/* Footer Bottom */}
-                <div className="pt-8 border-t border-sand-50 text-center">
+                <div className="pt-8 border-t border-sand-50 text-center space-y-2">
                     <p className="text-[9px] text-gray-400 leading-relaxed font-light">
                         &copy; {currentYear} Tuna Group. <br />
                         Tüm Hakları Saklıdır.
+                    </p>
+                    <p className="text-[8px] text-gray-400 font-light">
+                        Veni AI yapay zeka teknolojileri ile yapılmıştır.{" "}
+                        <a
+                            href="https://veniplatform.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sage-600 hover:text-sage-700 font-medium transition-colors underline decoration-dotted"
+                        >
+                            veniplatform.com
+                        </a>
                     </p>
                 </div>
             </div>
