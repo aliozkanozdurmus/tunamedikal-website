@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { useTheme } from "@/hooks/useTheme"
 import Navbar from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Shield, Users, FileCheck, AlertCircle, Gavel, Database } from "lucide-react"
@@ -10,7 +9,6 @@ import { Card, CardContent } from "@/components/ui/card"
 
 export default function Kvkk() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -28,22 +26,22 @@ export default function Kvkk() {
     {
       icon: <Users className="w-8 h-8" />,
       title: "Bilgi Edinme Hakkı",
-      content: "Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme hakkına sahipsiniz."
+      content: "Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme hakkı."
     },
     {
       icon: <FileCheck className="w-8 h-8" />,
       title: "Düzeltme Talebi",
-      content: "Eksik veya yanlış işlenmiş kişisel verilerinizin düzeltilmesini isteme hakkınız bulunmaktadır."
+      content: "Eksik veya yanlış işlenmiş kişisel verilerinizin düzeltilmesini isteme hakkı."
     },
     {
       icon: <AlertCircle className="w-8 h-8" />,
       title: "Silme ve Yok Etme",
-      content: "Kişisel verilerinizin silinmesini veya yok edilmesini talep etme hakkınız mevcuttur."
+      content: "Kişisel verilerinizin silinmesini veya yok edilmesini talep etme hakkı."
     },
     {
       icon: <Gavel className="w-8 h-8" />,
       title: "Yasal Yollar",
-      content: "Haklarınızın ihlali durumında Kuruma başvurarak yasal yollardan haklarınızı arayabilirsiniz."
+      content: "Haklarınızın ihlali durumunda yasal yollardan haklarınızı arama hakkı."
     }
   ]
 
@@ -56,238 +54,169 @@ export default function Kvkk() {
   ]
 
   return (
-    <div className={`min-h-screen ${theme === "dark" ? "dark bg-slate-900" : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"}`}>
+    <div className="flex min-h-[100dvh] flex-col bg-sand-50">
       <Navbar isScrolled={isScrolled} />
-      
-      <main className="pt-24 pb-16">
+
+      <main className="flex-1 pt-24 pb-16">
         {/* Hero Section */}
-        <section className="relative overflow-hidden py-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
+        <section className="relative overflow-hidden py-16 md:py-24">
+          <div className="absolute inset-0 bg-gradient-to-br from-sage-100/50 via-sand-100/30 to-clay-100/50"></div>
           <div className="container mx-auto px-4 relative z-10">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
               className="text-center max-w-4xl mx-auto"
             >
               <div className="flex justify-center mb-6">
-                <Shield className="w-16 h-16 text-blue-600" />
+                <div className="bg-white p-5 rounded-3xl shadow-sm border border-sand-100">
+                  <Database className="w-12 h-12 text-sage-600" />
+                </div>
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">
-                KVKK Aydınlatma Metni
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-sage-900 mb-6">
+                KVKK Aydınlatma
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında
-                <span className="text-blue-600 font-semibold"> haklarınız ve verilerinizin işlenmesi </span>
-                hakkında bilmeniz gerekenler.
+              <p className="text-lg md:text-xl text-sage-800 leading-relaxed max-w-2xl mx-auto">
+                Kişisel verilerinizin işlenmesi süreçlerinde
+                <span className="text-sage-700 font-semibold italic"> tam şeffaflık ve yasal uyumluluk </span>
+                ilkesiyle hareket ediyoruz.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Main Content */}
-        <section className="py-12">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto">
-              {/* Introduction */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
-              >
-                <Card className="shadow-lg">
-                  <CardContent className="p-8">
-                    <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
-                      Veri Sorumlusu Tanımı
-                    </h2>
-                    <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                      <p>
-                        <strong>Veri Sorumlusu:</strong> Tuna Medikal Tıbbi Cihazlar Sanayi Ve Ticaret Limited Şirketi
-                      </p>
-                      <p>
-                        <strong>Adres:</strong> 3. Organize Sanayi Bölgesi, Kamil Şerbetçi Bulvarı No: 39, Şehitkamil/Gaziantep
-                      </p>
-                      <p>
-                        <strong>Telefon:</strong> +90 342 360 9850
-                      </p>
-                      <p>
-                        <strong>E-posta:</strong> info@tunamedical.com.tr
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Data Processing Purpose */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
-              >
-                <Card className="shadow-lg">
-                  <CardContent className="p-8">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <Database className="w-6 h-6 text-blue-600" />
-                      <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
-                        Kişisel Verilerin İşlenme Amaçları
-                      </h3>
-                    </div>
-                    
-                    <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                      <ul className="list-disc list-inside space-y-2">
-                        <li>Hizmetlerimizi sunmak ve gereksinimlerinizi karşılamak</li>
-                        <li>Müşteri ilişkileri yönetimi ve memnuniyet ölçümü</li>
-                        <li>İletişim ve pazarlama faaliyetleri yürütmek</li>
-                        <li>Yasal yükümlülüklerimizi yerine getirmek</li>
-                        <li>İş sürekliliğini ve operasyonel verimliliği sağlamak</li>
-                        <li>Sözleşme ilişkilerinden doğan hak ve yükümlülükleri yerine getirmek</li>
-                        <li>Finans ve muhasebe işlemlerini yürütmek</li>
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Data Categories */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
-              >
-                <Card className="shadow-lg">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                      İşlenen Kişisel Veri Kategorileri
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {dataCategories.map((category, index) => (
-                        <div key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
-                          <p className="text-gray-600 dark:text-gray-300">{category}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Legal Basis */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
-              >
-                <Card className="shadow-lg">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                      Kişisel Verilerin Aktarıldığı Taraflar
-                    </h3>
-                    <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                      <p>
-                        Kişisel verileriniz, aşağıdaki amaçlarla ve yasal yükümlülüklerimiz çerçevesinde:
-                      </p>
-                      <ul className="list-disc list-inside space-y-2">
-                        <li>Yetkili kamu kurum ve kuruluşlarına</li>
-                        <li>Hukuki zorunluluklar nedeniyle adli makamlara</li>
-                        <li>Hizmet sağlayıcılarımız ve iş ortaklarımıza</li>
-                        <li>Finans kurumlarına</li>
-                        <li>Kargo ve lojistik firmalarına</li>
-                        <li>Teknoloji ve yazılım sağlayıcılarına</li>
-                      </ul>
-                      <p>
-                        aktarılabilmektedir. Veri aktarımları KVKK'nın belirlediği ilkeler doğrultusunda 
-                        gerçekleştirilmektedir.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-
-              {/* Rights Section */}
-              <div className="grid md:grid-cols-2 gap-6 mb-12">
-                {rights.map((right, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: index * 0.1 }}
-                  >
-                    <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                      <CardContent className="p-6">
-                        <div className="flex items-start space-x-4">
-                          <div className="text-blue-600 flex-shrink-0">
-                            {right.icon}
-                          </div>
+            <div className="max-w-5xl mx-auto">
+              {/* Introduction & Identity */}
+              <div className="grid lg:grid-cols-2 gap-8 mb-16">
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="rounded-3xl border-sand-100 bg-sand-50/50 h-full">
+                    <CardContent className="p-8 md:p-10">
+                      <h2 className="text-2xl font-bold text-sage-900 mb-8">Veri Sorumlusu</h2>
+                      <div className="space-y-6 text-sage-800">
+                        <div className="flex items-start gap-4">
+                          <div className="w-1 h-12 bg-sage-400 rounded-full shrink-0"></div>
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
-                              {right.title}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-300">
-                              {right.content}
-                            </p>
+                            <p className="font-bold text-sage-900 mb-1">Şirket Ünvanı</p>
+                            <p className="text-gray-600">Tuna Medikal Tıbbi Cihazlar San. Tic. Ltd. Şti.</p>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Contact Information */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-12"
-              >
-                <Card className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                      Haklarınızı Kullanmak İçin Başvuru
-                    </h3>
-                    <div className="space-y-4 text-gray-600 dark:text-gray-300">
-                      <p>
-                        KVKK kapsamındaki haklarınızı kullanmak için bize aşağıdaki yollarla başvurabilirsiniz:
-                      </p>
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div>
-                          <strong>E-posta:</strong>
-                          <a href="mailto:info@tunamedical.com.tr" className="block text-blue-600 hover:text-blue-700">
-                            info@tunamedical.com.tr
-                          </a>
-                        </div>
-                        <div>
-                          <strong>Posta Adresi:</strong>
-                          <p className="text-sm">
-                            3. Organize Sanayi Bölgesi, Kamil Şerbetçi Bulvarı No: 39<br />
-                            Şehitkamil/Gaziantep
-                          </p>
+                        <div className="flex items-start gap-4">
+                          <div className="w-1 h-12 bg-sage-400 rounded-full shrink-0"></div>
+                          <div>
+                            <p className="font-bold text-sage-900 mb-1">Adres</p>
+                            <p className="text-gray-600">3. Organize Sanayi Bölgesi, Kamil Şerbetçi Bulvarı No: 39, Gaziantep</p>
+                          </div>
                         </div>
                       </div>
-                      <p>
-                        Başvurularınız en geç 30 gün içinde sonuçlandırılacak ve size bildirilecektir.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
 
-              {/* Last Updated */}
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <p className="text-gray-600 dark:text-gray-300">
-                    <strong>Son Güncellenme:</strong> {new Date().toLocaleDateString('tr-TR', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
-                    })}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="rounded-3xl border-sand-100 bg-sand-50/50 h-full">
+                    <CardContent className="p-8 md:p-10">
+                      <h2 className="text-2xl font-bold text-sage-900 mb-8">İşleme Amaçları</h2>
+                      <ul className="space-y-3">
+                        {[
+                          "Hizmet sunumu ve yönetimi",
+                          "Müşteri memnuniyeti ölçümü",
+                          "Yasal yükümlülüklerin ifası",
+                          "Finansal ve teknik operasyonlar",
+                          "İletişim ve destek faaliyetleri"
+                        ].map((purpose, i) => (
+                          <li key={i} className="flex items-center gap-3 text-sage-800">
+                            <div className="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></div>
+                            <span className="text-gray-600 text-sm">{purpose}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </div>
+
+              {/* Data Categories & Rights */}
+              <div className="space-y-16">
+                <div>
+                  <h3 className="text-2xl font-bold text-sage-900 mb-8 text-center">İşlenen Veri Kategorileri</h3>
+                  <div className="grid md:grid-cols-3 gap-6">
+                    {dataCategories.map((category, index) => (
+                      <div key={index} className="bg-white p-6 rounded-2xl border border-sand-100 flex flex-col items-center text-center shadow-sm">
+                        <span className="text-sage-800 font-medium text-sm">{category}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-sage-900 mb-8 text-center">Kanuni Haklarınız (Madde 11)</h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {rights.map((right, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="bg-sand-50/30 p-8 rounded-3xl border border-sand-100 text-center"
+                      >
+                        <div className="text-sage-600 mb-4 flex justify-center bg-white w-14 h-14 rounded-2xl items-center mx-auto shadow-sm">
+                          {right.icon}
+                        </div>
+                        <h4 className="text-lg font-bold text-sage-900 mb-2">{right.title}</h4>
+                        <p className="text-xs text-gray-500 leading-relaxed">{right.content}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Closing Info */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="bg-gradient-to-br from-sage-700 to-clay-600 text-white rounded-3xl overflow-hidden shadow-lg mt-8">
+                    <CardContent className="p-10 text-center">
+                      <h3 className="text-2xl font-bold mb-4 text-white">Başvuru Kanalları</h3>
+                      <p className="text-white/80 max-w-2xl mx-auto mb-8">
+                        Veri sahibi olarak haklarınızı kullanmak için kimlik doğrulayıcı belgelerle birlikte
+                        e-posta veya posta yoluyla bize ulaşabilirsiniz. Talepleriniz 30 gün içinde yanıtlanacaktır.
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
+                          <p className="text-xs uppercase tracking-widest font-bold text-white/60 mb-1">E-POSTA</p>
+                          <p className="font-bold">kvkk@tunamedical.com.tr</p>
+                        </div>
+                        <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
+                          <p className="text-xs uppercase tracking-widest font-bold text-white/60 mb-1">VERTSİS NO</p>
+                          <p className="font-bold">BAŞVURU REHBERİ</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+
+                <div className="text-center pt-8">
+                  <p className="text-xs text-sage-400 font-bold tracking-widest">
+                    YÜRÜRLÜK TARİHİ: 01.01.2024 | SON GÜNCELLEME: {new Date().toLocaleDateString('tr-TR')}
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </div>
           </div>
         </section>

@@ -83,7 +83,7 @@ export function DoctorsTeam() {
   return (
     <section
       id="doctors"
-      className="section-padding bg-gradient-to-b from-white to-medical-50 relative overflow-hidden"
+      className="section-padding bg-gradient-to-b from-white to-sand-50 relative overflow-hidden"
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent z-10"></div>
@@ -92,14 +92,14 @@ export function DoctorsTeam() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.05, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-gradient-radial from-medical-400 to-transparent blur-3xl -z-10"
+        className="absolute -right-40 top-40 h-[400px] w-[400px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-10"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.05, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute -left-40 bottom-40 h-[300px] w-[300px] rounded-full bg-gradient-radial from-medical-500 to-transparent blur-3xl -z-10"
+        className="absolute -left-40 bottom-40 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sand-200 to-transparent blur-3xl -z-10"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
@@ -115,7 +115,7 @@ export function DoctorsTeam() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-medical-50 text-medical-600 border border-medical-100"
+            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-white text-sage-700 border border-sand-200"
           >
             Uzman Ekibimiz
           </motion.span>
@@ -137,7 +137,7 @@ export function DoctorsTeam() {
         >
           {doctors.map((doctor, index) => (
             <motion.div key={index} variants={item}>
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-500 gradient-border bg-white">
+              <Card className="overflow-hidden hover:shadow-xl transition-all duration-500 border border-sand-100 bg-white">
                 <motion.div
                   className="relative h-80 w-full overflow-hidden"
                   whileHover={{ scale: 1.05 }}

@@ -9,17 +9,17 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  /* Medical theme colors */
-  --medical-50: #f0f9ff;
-  --medical-100: #e0f2fe;
-  --medical-200: #bae6fd;
-  --medical-300: #7dd3fc;
-  --medical-400: #38bdf8;
-  --medical-500: #0ea5e9;
-  --medical-600: #0284c7;
-  --medical-700: #0369a1;
-  --medical-800: #075985;
-  --medical-900: #0c4a6e;
+  /* Medical theme colors (Updated to Olive/Sage) */
+  --medical-50: #f5f7f2;
+  --medical-100: #e6ebe1;
+  --medical-200: #cdd8c3;
+  --medical-300: #aec1a2;
+  --medical-400: #8ea57f;
+  --medical-500: #708964;
+  --medical-600: #5a6f50;
+  --medical-700: #465741;
+  --medical-800: #394636;
+  --medical-900: #303a2d;
 
   /* Green gradient colors */
   --sage-50: #f6f7f6;
@@ -121,7 +121,7 @@ a {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #22c55e, #16a34a, #15803d);
+  background: linear-gradient(135deg, #708964, #5a6f50, #465741);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -130,7 +130,7 @@ a {
 
 /* Alternative gradient variations */
 .gradient-text-emerald {
-  background: linear-gradient(135deg, #10b981, #059669, #047857);
+  background: linear-gradient(135deg, #708964, #5a6f50, #465741);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -138,7 +138,7 @@ a {
 }
 
 .gradient-text-mint {
-  background: linear-gradient(135deg, #34d399, #10b981, #059669);
+  background: linear-gradient(135deg, #8ea57f, #708964, #5a6f50);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -182,7 +182,7 @@ a {
 }
 
 .btn-green-gradient {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #708964, #5a6f50);
   border: none;
   color: white;
   font-weight: 600;
@@ -190,17 +190,19 @@ a {
 }
 
 .btn-green-gradient:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: linear-gradient(135deg, #5a6f50, #465741);
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+  box-shadow: 0 10px 25px rgba(112, 137, 100, 0.2);
 }
 
 /* Animations */
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -231,10 +233,10 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, #708964, #5a6f50);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: linear-gradient(135deg, #5a6f50, #465741);
 }

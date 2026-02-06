@@ -34,7 +34,7 @@ export function AboutUs() {
   return (
     <section id="about" className="py-20 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sand-50 via-sand-100 to-sage-50" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -87,13 +87,13 @@ export function AboutUs() {
                 className="flex flex-wrap gap-4"
               >
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-green-600 font-semibold">Kalite</span>
+                  <span className="text-sage-700 font-semibold">Kalite</span>
                 </div>
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-green-600 font-semibold">Güvenilirlik</span>
+                  <span className="text-sage-700 font-semibold">Güvenilirlik</span>
                 </div>
                 <div className="glass px-4 py-2 rounded-full">
-                  <span className="text-green-600 font-semibold">İnovasyon</span>
+                  <span className="text-sage-700 font-semibold">İnovasyon</span>
                 </div>
               </motion.div>
             </div>
@@ -118,10 +118,10 @@ export function AboutUs() {
                 className="glass-card p-6 rounded-xl text-center group cursor-pointer"
               >
                 <div className="glass w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="w-8 h-8 text-green-600" />
+                  <stat.icon className="w-8 h-8 text-sage-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-800 mb-1">{stat.number}</div>
-                <div className="text-green-600 font-semibold mb-1">{stat.label}</div>
+                <div className="text-sage-700 font-semibold mb-1">{stat.label}</div>
                 <div className="text-gray-500 text-sm">{stat.description}</div>
               </motion.div>
             ))}

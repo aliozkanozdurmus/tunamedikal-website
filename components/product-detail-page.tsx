@@ -51,7 +51,7 @@ export function ProductDetailPage({ product, onClose }: ProductDetailPageProps) 
           <nav className="flex mb-6 text-sm">
             <ol className="flex items-center space-x-2">
               <li>
-                <Link href="#" className="text-green-600 hover:text-green-800">
+                <Link href="#" className="text-sage-700 hover:text-sage-800">
                   Ürünler
                 </Link>
               </li>
@@ -68,7 +68,7 @@ export function ProductDetailPage({ product, onClose }: ProductDetailPageProps) 
                     clipRule="evenodd"
                   />
                 </svg>
-                <Link href="#" className="text-green-600 hover:text-green-800">
+                <Link href="#" className="text-sage-700 hover:text-sage-800">
                   {product.category}
                 </Link>
               </li>
@@ -95,11 +95,11 @@ export function ProductDetailPage({ product, onClose }: ProductDetailPageProps) 
             <div className="space-y-6">
               <div>
                 <div className="flex items-center space-x-2 mb-2">
-                  <Badge variant="outline" className="text-green-600 border-green-200 bg-green-50">
+                  <Badge variant="outline" className="text-sage-700 border-sand-200 bg-sand-50">
                     {product.category}
                   </Badge>
                   {product.subcategory && (
-                    <Badge variant="outline" className="text-blue-600 border-blue-200 bg-blue-50">
+                    <Badge variant="outline" className="text-clay-600 border-clay-200 bg-clay-50">
                       {product.subcategory}
                     </Badge>
                   )}

@@ -40,13 +40,13 @@ export function Faq() {
   }
 
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-sand-50 to-white relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
+        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +86,7 @@ export function Faq() {
               <div className="glass-card rounded-2xl overflow-hidden">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-green-50/50 transition-colors duration-200"
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-sand-100/60 transition-colors duration-200"
                 >
                   <span className="font-semibold text-gray-800 pr-4">{faq.question}</span>
                   <motion.div
@@ -95,9 +95,9 @@ export function Faq() {
                     className="flex-shrink-0"
                   >
                     {openIndex === index ? (
-                      <Minus className="h-5 w-5 text-green-600" />
+                      <Minus className="h-5 w-5 text-sage-600" />
                     ) : (
-                      <Plus className="h-5 w-5 text-green-600" />
+                      <Plus className="h-5 w-5 text-sage-600" />
                     )}
                   </motion.div>
                 </button>

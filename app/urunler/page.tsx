@@ -1,249 +1,105 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { useTheme } from "@/hooks/useTheme"
+import { motion } from "framer-motion" // Need to make sure motion is used or removed if not needed, but nice for hero
 import Navbar from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { Search, Filter, Star, ShoppingCart, Heart, Package, Shield, Truck } from "lucide-react"
+import ProductCatalog from "@/components/product-catalog"
+import { ShieldCheck, Truck, HeadphonesIcon, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 
-export default function Urunler() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const { theme } = useTheme()
+export default function UrunlerPage() {
   const [mounted, setMounted] = useState(false)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("all")
 
   useEffect(() => {
     setMounted(true)
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   if (!mounted) return null
 
-  const categories = [
-    { id: "all", name: "Tüm Ürünler", icon: <Package className="w-5 h-5" /> },
-    { id: "respiratory", name: "Solunum Cihazları", icon: <Package className="w-5 h-5" /> },
-    { id: "monitoring", name: "Monitörler", icon: <Package className="w-5 h-5" /> },
-    { id: "emergency", name: "Acil Tıp", icon: <Package className="w-5 h-5" /> },
-    { id: "surgical", name: "Cerrahi Ekipmanlar", icon: <Package className="w-5 h-5" /> }
-  ]
-
-  const products = [
-    {
-      id: 1,
-      name: "Nebulizer Maske",
-      category: "respiratory",
-      price: "₺450",
-      image: "/images/nebulizer-mask.jpg",
-      description: "Yüksek kaliteli nebulizer maske, konforlu kullanım",
-      features: ["Steril", "Tek kullanımlık", "Yüksek verimlilik"]
-    },
-    {
-      id: 2,
-      name: "Oksijen Maskesi",
-      category: "respiratory",
-      price: "₺320",
-      image: "/images/oxygen-mask.jpg",
-      description: "Güvenilir oksijen tedavisi için ideal çözüm",
-      features: ["Hasta dostu", "Ayarlanabilir", "Tıkanıklık yok"]
-    },
-    {
-      id: 3,
-      name: "Nazal Kanül",
-      category: "respiratory",
-      price: "₺180",
-      image: "/images/nasal-cannula.jpg",
-      description: "Rahat nazal oksijen uygulaması",
-      features: ["Yumuşak malzeme", "Uzun kullanım", "Deri dostu"]
-    },
-    {
-      id: 4,
-      name: "Hasta Monitörü",
-      category: "monitoring",
-      price: "₺12,500",
-      image: "/placeholder.jpg",
-      description: "Çok fonksiyonlu hasta monitör sistemi",
-      features: ["7\" ekran", "Wireless", "Alarm sistemi"]
-    },
-    {
-      id: 5,
-      name: "Defibrilatör",
-      category: "emergency",
-      image: "/placeholder.jpg",
-      description: "Profesyonel acil müdahale cihazı",
-      features: ["Otomatik", "Taşınabilir", "Hızlı"]
-    },
-    {
-      id: 6,
-      name: "Cerrahi Set",
-      category: "surgical",
-      image: "/placeholder.jpg",
-      description: "Kapsamlı cerrahi alet seti",
-      features: ["Stainless steel", "Steril", "30 parça"]
-    }
-  ]
-
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
-
   return (
-    <div className={`min-h-screen ${theme === "dark" ? "dark bg-slate-900" : "bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50"}`}>
-      <Navbar isScrolled={isScrolled} />
-      
-      <main className="pt-24 pb-16">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-20">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-blue-600/20"></div>
-          <div className="container mx-auto px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6">
-                Ürünlerimiz
-              </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                Sağlık sektörüne yönelik yenilikçi ve kaliteli medikal ürünler
-              </p>
-            </motion.div>
+    <div className="flex min-h-[100dvh] flex-col bg-sand-50">
+      <Navbar isScrolled={false} />
+
+      <main className="flex-1 pt-24">
+        {/* Page Hero */}
+        <section className="relative py-20 bg-white overflow-hidden border-b border-sand-200">
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-0 right-0 w-96 h-96 bg-sage-50 rounded-full blur-3xl opacity-50 translate-x-1/3 -translate-y-1/3" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-clay-50 rounded-full blur-3xl opacity-50 -translate-x-1/4 translate-y-1/4" />
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <span className="inline-block py-1 px-3 rounded-full bg-sage-100 text-sage-800 text-xs font-bold tracking-wider uppercase mb-4">
+              PREMİUM MEDİKAL ÇÖZÜMLER
+            </span>
+            <h1 className="text-4xl md:text-5xl font-bold text-sage-900 mb-6 tracking-tight">
+              Geniş Ürün Yelpazesi
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Hastaneler, klinikler ve sağlık profesyonelleri için en yüksek kalite standartlarında üretilmiş medikal sarf malzemeleri ve ekipmanlar.
+            </p>
           </div>
         </section>
 
-        {/* Search and Filter */}
-        <section className="py-8">
+        {/* Catalog Component */}
+        <ProductCatalog />
+
+        {/* Value Propositions / Features */}
+        <section className="py-24 bg-white border-t border-sand-200">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-              {/* Search */}
-              <div className="relative w-full lg:w-96">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Ürün ara..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-
-              {/* Categories */}
-              <div className="flex flex-wrap gap-3">
-                {categories.map((category) => (
-                  <Button
-                    key={category.id}
-                    variant={selectedCategory === category.id ? "default" : "outline"}
-                    onClick={() => setSelectedCategory(category.id)}
-                    className={`flex items-center gap-2 ${
-                      selectedCategory === category.id
-                        ? "bg-green-600 hover:bg-green-700"
-                        : "border-green-600 text-green-600 hover:bg-green-50"
-                    }`}
-                  >
-                    {category.icon}
-                    {category.name}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center">
-                <Shield className="w-12 h-12 text-green-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Kalite Garantisi</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">Tüm ürünler CE belgelidir</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center">
-                <Truck className="w-12 h-12 text-blue-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Hızlı Teslimat</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">24 saat içinde kargo</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center">
-                <Package className="w-12 h-12 text-purple-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Geniş Ürün Yelpazesi</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">500+ medikal ürün</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center">
-                <Heart className="w-12 h-12 text-red-600 mx-auto mb-3" />
-                <h3 className="font-semibold text-gray-800 dark:text-white mb-2">Müşteri Memnuniyeti</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">98% memnuniyet oranı</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Products Grid */}
-        <section className="py-12">
-          <div className="container mx-auto px-4">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map((product, index) => (
-                <motion.div
-                  key={product.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                >
-                  <Card className="group hover:shadow-2xl transition-all duration-300 overflow-hidden">
-                    <div className="relative overflow-hidden h-64 bg-gradient-to-br from-gray-100 to-gray-200">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-300 mb-4">
-                        {product.description}
-                      </p>
-                      
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {product.features.map((feature, idx) => (
-                          <span
-                            key={idx}
-                            className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs rounded-full"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-
-
-
-                    </CardContent>
-                  </Card>
-                </motion.div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  icon: ShieldCheck,
+                  title: "Uluslararası Standartlar",
+                  desc: "Tüm ürünlerimiz CE ve ISO sertifikalıdır, global kalite standartlarına uygundur."
+                },
+                {
+                  icon: Truck,
+                  title: "Hızlı Tedarik Ağı",
+                  desc: "Geniş lojistik ağımız ile Türkiye'nin her yerine güvenli ve hızlı teslimat."
+                },
+                {
+                  icon: HeadphonesIcon,
+                  title: "7/24 Uzman Desteği",
+                  desc: "Teknik sorularınız ve ürün seçiminiz için medikal uzmanlarımız her an yanınızda."
+                },
+                {
+                  icon: Award,
+                  title: "%100 Müşteri Memnuniyeti",
+                  desc: "40 yıllık tecrübemizle satış sonrası tam destek garantisi veriyoruz."
+                }
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center text-center p-6 rounded-2xl bg-sand-50/50 hover:bg-sand-50 transition-colors duration-300">
+                  <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-sage-600 shadow-sm mb-6 border border-sage-100">
+                    <item.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="text-lg font-bold text-sage-900 mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
               ))}
             </div>
-
-            {filteredProducts.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-gray-600 dark:text-gray-300 text-lg">
-                  Aradığınız kriterlere uygun ürün bulunamadı.
-                </p>
-              </div>
-            )}
           </div>
         </section>
+
+        {/* Mini CTA */}
+        <section className="py-20 bg-sage-900 text-white text-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10 bg-[url('/noise.png')] mix-blend-overlay" />
+          <div className="container mx-auto px-4 relative z-10">
+            <h2 className="text-3xl font-bold mb-6">Özel Projeleriniz İçin Teklif Alın</h2>
+            <p className="text-sage-200 mb-10 max-w-2xl mx-auto">
+              Hastaneler ve toplu alımlar için size özel kurumsal çözümlerimiz ve fiyatlandırmalarımız hakkında bilgi almak ister misiniz?
+            </p>
+            <Link href="/iletisim">
+              <Button size="lg" className="bg-white text-sage-900 hover:bg-sage-50 rounded-full px-8 text-base font-semibold">
+                Kurumsal Satış ile Görüşün
+              </Button>
+            </Link>
+          </div>
+        </section>
+
       </main>
 
       <Footer />

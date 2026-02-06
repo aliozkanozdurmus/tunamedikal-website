@@ -94,20 +94,20 @@ export function Services() {
   return (
     <section id="services" className="section-padding bg-white relative overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f0f7ff_1px,transparent_1px),linear-gradient(to_bottom,#f0f7ff_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#e6ebe1_1px,transparent_1px),linear-gradient(to_bottom,#e6ebe1_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.05, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-medical-300 to-transparent blur-3xl -z-5"
+        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.05, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-medical-400 to-transparent blur-3xl -z-5"
+        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-400 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +123,7 @@ export function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-medical-50 text-medical-600 border border-medical-100"
+            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-sage-50 text-sage-700 border border-sage-200"
           >
             Ürün ve Hizmetlerimiz
           </motion.span>
@@ -144,12 +144,12 @@ export function Services() {
           {services.map((service, index) => (
             <motion.div key={index} variants={item}>
               <Card
-                className="h-full hover:shadow-xl transition-all duration-500 border-t-4 border-t-medical-500 overflow-hidden group cursor-pointer"
+                className="h-full hover:shadow-xl transition-all duration-500 border-t-4 border-t-sage-500 overflow-hidden group cursor-pointer"
                 onClick={() => handleCategoryClick(service.title)}
               >
                 <CardContent className="p-6 flex flex-col items-center text-center relative">
                   <motion.div
-                    className="text-medical-600 mb-4 relative z-10"
+                    className="text-sage-600 mb-4 relative z-10"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -159,7 +159,7 @@ export function Services() {
                   <p className="text-gray-600 relative z-10">{service.description}</p>
 
                   {/* Background gradient that appears on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-medical-50 to-medical-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-sage-50 to-sage-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-0"></div>
                 </CardContent>
               </Card>
             </motion.div>

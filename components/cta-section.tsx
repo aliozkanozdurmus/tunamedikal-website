@@ -6,20 +6,20 @@ import { Button } from "@/components/ui/button"
 
 export function CtaSection() {
   return (
-    <section className="section-padding bg-gradient-to-br from-green-50 to-emerald-50 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-sand-50 to-sage-50 relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.1, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl -z-5"
+        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.1, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-emerald-400 to-transparent blur-3xl -z-5"
+        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +67,7 @@ export function CtaSection() {
 
               <Button
                 variant="outline"
-                className="btn-glass border-2 border-green-200 text-green-700 hover:bg-green-50 rounded-full px-8 py-3 text-lg font-semibold group"
+                className="btn-glass border-2 border-sand-200 text-sage-700 hover:bg-sand-100 rounded-full px-8 py-3 text-lg font-semibold group"
               >
                 <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
                 E-posta Gönderin

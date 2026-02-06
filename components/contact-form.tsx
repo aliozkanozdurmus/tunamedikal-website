@@ -59,20 +59,20 @@ export function ContactForm() {
   ]
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+    <section id="contact" className="section-padding bg-gradient-to-br from-sand-50 to-white relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
+        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-sage-200 to-transparent blur-3xl -z-5"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl -z-5"
+        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,7 +125,7 @@ export function ContactForm() {
                     className="flex items-start space-x-4"
                   >
                     <div className="glass w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                      <info.icon className="h-5 w-5 text-green-600" />
+                      <info.icon className="h-5 w-5 text-sage-600" />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-1">{info.title}</h4>
@@ -148,7 +148,7 @@ export function ContactForm() {
                 <Button
                   onClick={handleEmail}
                   variant="outline"
-                  className="flex-1 rounded-full border-green-600 text-green-600 hover:bg-green-50"
+                  className="flex-1 rounded-full border-sage-600 text-sage-700 hover:bg-sand-100"
                 >
                   <Mail className="mr-2 h-4 w-4" />
                   E-posta Gönderin

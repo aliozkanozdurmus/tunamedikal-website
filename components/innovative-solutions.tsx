@@ -24,8 +24,8 @@ export function InnovativeSolutions() {
     <section className="py-20 px-4 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-200/30 to-emerald-300/30 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-200/30 to-cyan-300/30 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-sage-200/40 to-sand-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-clay-200/35 to-sand-200/30 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative">
@@ -39,7 +39,7 @@ export function InnovativeSolutions() {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-green-600 via-emerald-500 to-green-700 bg-clip-text text-transparent leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-sage-700 via-sage-600 to-clay-500 bg-clip-text text-transparent leading-normal py-2">
                 Sağlığa Değer Katan Yenilikçi Çözümler
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
@@ -57,7 +57,7 @@ export function InnovativeSolutions() {
                   viewport={{ once: true }}
                   className="flex items-start gap-4 group"
                 >
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-sage-600 to-clay-500 flex items-center justify-center mt-1 group-hover:scale-110 transition-transform duration-300">
                     <Check className="w-4 h-4 text-white" />
                   </div>
                   <p className="text-gray-700 leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
@@ -78,11 +78,11 @@ export function InnovativeSolutions() {
           >
             <div className="relative glass-card p-8 rounded-3xl overflow-hidden group hover:scale-105 transition-all duration-500">
               {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-sage-500/10 via-transparent to-clay-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div className="relative z-10">
                 <Image
-                  src="/images/healthcare-professional.png"
+                  src="/images/solutions/healthcare-consultation.jpeg"
                   alt="Sağlık Profesyoneli"
                   width={500}
                   height={600}
@@ -92,20 +92,20 @@ export function InnovativeSolutions() {
               </div>
 
               {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-tr from-blue-400 to-cyan-500 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-sage-400 to-clay-400 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-tr from-sand-300 to-clay-300 rounded-full opacity-20 group-hover:scale-125 transition-transform duration-500"></div>
             </div>
 
             {/* Floating elements */}
             <motion.div
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-              className="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-30 blur-sm"
+              className="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-br from-sage-400 to-clay-400 rounded-full opacity-30 blur-sm"
             ></motion.div>
             <motion.div
               animate={{ y: [10, -10, 10] }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
-              className="absolute -bottom-6 -right-6 w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full opacity-40 blur-sm"
+              className="absolute -bottom-6 -right-6 w-8 h-8 bg-gradient-to-br from-sand-300 to-clay-300 rounded-full opacity-40 blur-sm"
             ></motion.div>
           </motion.div>
         </div>

@@ -20,7 +20,6 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     { name: "Ana Sayfa", href: "/" },
     { name: "Hakkımızda", href: "/hakkimizda" },
     { name: "Ürünler", href: "/urunler" },
-    { name: "Referanslar", href: "/referanslar" },
     { name: "İletişim", href: "/iletisim" },
   ]
 
@@ -36,26 +35,18 @@ export default function Navbar({ isScrolled }: NavbarProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-white/20 backdrop-blur-md border-b border-white/20 shadow-lg" : "bg-gradient-to-r from-slate-900 via-gray-800 to-slate-900"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        ? "bg-sand-50/90 backdrop-blur-md border-b border-sand-200 shadow-sm"
+        : "bg-sand-50/60 backdrop-blur-sm"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo and Slogan */}
+          {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
             <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-3">
               <div className="relative h-12 w-48">
                 <Image src="/images/tuna-medikal-logo.png" alt="Tuna Medikal" fill className="object-contain" priority />
-              </div>
-              <div className="hidden lg:block">
-                <p
-                  className={`text-sm font-light italic transition-colors duration-300 ${
-                    isScrolled ? "text-gray-600" : "text-white/80"
-                  }`}
-                >
-                  "Sevgiyi Sağlıkla Buluşturuyoruz"
-                </p>
               </div>
             </motion.div>
           </Link>
@@ -69,16 +60,15 @@ className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className={`font-medium transition-all duration-300 relative group ${
-                    pathname === item.href
-                      ? "text-green-600"
-                      : isScrolled 
-                      ? "text-gray-700 hover:text-green-600" 
-                      : "text-white/90 hover:text-white"
-                  }`}
+                  className={`font-medium transition-all duration-300 relative group ${pathname === item.href
+                    ? "text-sage-700"
+                    : isScrolled
+                      ? "text-gray-700 hover:text-sage-700"
+                      : "text-sage-900 hover:text-sage-700"
+                    }`}
                 >
                   {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-green-500 to-green-600 transition-all duration-300 group-hover:w-full"></span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-sage-600 to-clay-500 transition-all duration-300 group-hover:w-full"></span>
                 </motion.a>
               </Link>
             ))}
@@ -88,9 +78,8 @@ className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           <Button
             variant="ghost"
             size="sm"
-            className={`md:hidden glass-card transition-colors duration-300 ${
-              isScrolled ? "text-gray-700 hover:bg-gray-100/50" : "text-white hover:bg-white/20"
-            }`}
+            className={`md:hidden glass-card transition-colors duration-300 ${isScrolled ? "text-gray-700 hover:bg-gray-100/50" : "text-sage-900 hover:bg-white/40"
+              }`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -113,13 +102,12 @@ className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className={`font-medium py-3 px-4 rounded-lg transition-all duration-200 ${
-                        pathname === item.href
-                          ? "bg-green-600/20 text-green-600"
-                          : isScrolled 
-                          ? "text-gray-700 hover:bg-gray-100/50" 
-                          : "text-white/90 hover:bg-white/10"
-                      }`}
+                      className={`font-medium py-3 px-4 rounded-lg transition-all duration-200 ${pathname === item.href
+                        ? "bg-sage-200/60 text-sage-700"
+                        : isScrolled
+                          ? "text-gray-700 hover:bg-gray-100/50"
+                          : "text-sage-900 hover:bg-white/50"
+                        }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {item.name}
@@ -140,7 +128,7 @@ className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
                     <Button
                       onClick={handleEmail}
                       variant="outline"
-                      className="w-full rounded-full border-green-600 text-green-600"
+                      className="w-full rounded-full border-sage-600 text-sage-700"
                     >
                       E-posta Gönderin
                     </Button>

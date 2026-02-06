@@ -4,20 +4,20 @@ import { motion } from "framer-motion"
 
 export default function Brands() {
   return (
-    <section className="section-padding bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-br from-sand-50 to-white relative overflow-hidden">
       {/* Decorative elements */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-green-300 to-transparent blur-3xl -z-5"
+        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
       />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.03, scale: 1 }}
         transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-green-400 to-transparent blur-3xl -z-5"
+        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

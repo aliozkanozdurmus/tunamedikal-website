@@ -41,7 +41,7 @@ export const categories: Category[] = [
     name: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     description:
       "Anestezi ve solunum sistemleri için profesyonel tıbbi cihazlar ve malzemeler. Hasta güvenliği ve konforunu ön planda tutan yüksek kaliteli ürünler.",
-    image: "/images/categories/anestezi-solunum.jpg",
+    image: "/images/categories/anestezi-solunum.jpeg",
     subcategories: [
       { id: "nebulizer-setleri", name: "NEBULİZER SETLERİ" },
       { id: "oksijen-maskeleri", name: "OKSİJEN MASKELERİ" },
@@ -53,7 +53,7 @@ export const categories: Category[] = [
     name: "TIBBİ ATIK YÖNETİMİ",
     description:
       "Tıbbi atık yönetimi için güvenli ve dayanıklı çözümler. Hastane ve klinik ortamlarında güvenli atık bertarafı için özel tasarlanmış ürünler.",
-    image: "/images/categories/tibbi-atik.png",
+    image: "/images/categories/tibbi-atik.jpeg",
     subcategories: [{ id: "atik-kovasi", name: "ATIK KOVASI" }],
   },
 ]
@@ -85,7 +85,7 @@ export const products: Product[] = [
       { name: "Kap", value: "Nebulizer cup" },
       { name: "Kutu İçi Adet", value: "150" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["nebulizer-set-cocuk-tmn-01"],
   },
   {
@@ -111,7 +111,7 @@ export const products: Product[] = [
       { name: "Kap", value: "Nebulizer cup" },
       { name: "Kutu İçi Adet", value: "200" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["nebulizer-set-yetiskin-tmn-02"],
   },
 
@@ -135,7 +135,7 @@ export const products: Product[] = [
       { name: "Hortum", value: "Kink resistant of tubing" },
       { name: "Kutu İçi Adet", value: "200" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["oksijen-maskesi-cocuk-tmn-04"],
   },
   {
@@ -157,7 +157,7 @@ export const products: Product[] = [
       { name: "Hortum", value: "Kink resistant of tubing" },
       { name: "Kutu İçi Adet", value: "250" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["oksijen-maskesi-yetiskin-tmn-05"],
   },
 
@@ -183,7 +183,7 @@ export const products: Product[] = [
       { name: "Hortum", value: "Kink resistant of tubing" },
       { name: "Kutu İçi Adet", value: "300" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["nazal-kanul-cocuk-tmn-06", "nazal-kanul-yenidogan"],
   },
   {
@@ -207,7 +207,7 @@ export const products: Product[] = [
       { name: "Hortum", value: "Kink resistant of tubing" },
       { name: "Kutu İçi Adet", value: "300" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["nazal-kanul-yetiskin-tmn-07", "nazal-kanul-yenidogan"],
   },
 
@@ -243,7 +243,7 @@ export const products: Product[] = [
       { name: "R6", value: "(6.75mm/5.75mm) DENİZ MAVİSİ" },
       { name: "R7", value: "(7.75mm/6.5mm) MOR" },
     ],
-    images: ["/images/categories/anestezi-solunum.jpg"],
+    images: ["/images/categories/anestezi-solunum.jpeg"],
     relatedProducts: ["nazal-kanul-yetiskin-tmn-07", "nazal-kanul-cocuk-tmn-06"],
   },
 
@@ -272,7 +272,7 @@ export const products: Product[] = [
       { name: "Dayanıklılık", value: "Kesici ve delici atıklara karşı dayanıklı" },
       { name: "Malzeme", value: "Tıbbi atık için uygun plastik" },
     ],
-    images: ["/images/categories/tibbi-atik.png"],
+    images: ["/images/categories/tibbi-atik.jpeg"],
     relatedProducts: [],
   },
 ]

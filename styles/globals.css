@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 142 41% 52%;
-    --primary-foreground: 142 40% 98%;
-    --secondary: 142 40% 96.1%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 142 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 142 40% 96.1%;
-    --accent-foreground: 222 47% 11%;
+    --background: 34 33% 96%;
+    --foreground: 155 12% 15%;
+    --card: 34 33% 98%;
+    --card-foreground: 155 12% 15%;
+    --popover: 34 33% 98%;
+    --popover-foreground: 155 12% 15%;
+    --primary: 145 20% 35%;
+    --primary-foreground: 34 33% 98%;
+    --secondary: 32 23% 93%;
+    --secondary-foreground: 155 12% 18%;
+    --muted: 32 23% 93%;
+    --muted-foreground: 155 10% 40%;
+    --accent: 24 35% 78%;
+    --accent-foreground: 155 12% 18%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 142 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142 41% 52%;
-    --radius: 0.5rem;
+    --destructive-foreground: 34 33% 98%;
+    --border: 30 18% 86%;
+    --input: 30 18% 86%;
+    --ring: 145 20% 35%;
+    --radius: 1rem;
   }
 }
 
@@ -50,11 +50,11 @@
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-sage-600 to-sage-400;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-sage-700 to-clay-500;
 }
 
 .gradient-bg {
-  @apply bg-gradient-to-r from-sage-600 to-sage-400;
+  @apply bg-gradient-to-r from-sage-700 to-clay-500;
 }
 
 .gradient-border {
@@ -67,7 +67,7 @@
   inset: 0;
   border-radius: 0.5rem;
   padding: 2px;
-  background: linear-gradient(135deg, #658b65 0%, #85a885 100%);
+  background: linear-gradient(135deg, #708964 0%, #c08763 100%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -90,10 +90,11 @@
 }
 
 .glass-effect {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 252, 247, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(226, 214, 200, 0.7);
+  box-shadow: 0 18px 40px -28px rgba(46, 58, 43, 0.45);
 }
 
 .blob-animation {
@@ -110,4 +111,70 @@
   100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
   }
+}
+
+@layer utilities {
+  .bg-organic {
+    background:
+      radial-gradient(1200px circle at 15% 10%, rgba(182, 198, 171, 0.35), transparent 60%),
+      radial-gradient(900px circle at 85% 0%, rgba(226, 213, 196, 0.45), transparent 55%),
+      linear-gradient(180deg, #fbf7f0 0%, #f1ebe2 100%);
+  }
+}
+
+.glass {
+  background: rgba(255, 252, 247, 0.7);
+  border: 1px solid rgba(226, 214, 200, 0.65);
+  box-shadow: 0 14px 32px -26px rgba(46, 58, 43, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.glass-card {
+  background: rgba(255, 253, 249, 0.85);
+  border: 1px solid rgba(226, 214, 200, 0.7);
+  box-shadow: 0 20px 48px -32px rgba(46, 58, 43, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.glass-strong {
+  background: rgba(255, 249, 242, 0.95);
+  border: 1px solid rgba(216, 202, 188, 0.85);
+  box-shadow: 0 24px 56px -36px rgba(46, 58, 43, 0.45);
+}
+
+.glass-dark {
+  background: rgba(55, 63, 52, 0.7);
+  border: 1px solid rgba(230, 219, 204, 0.2);
+  box-shadow: 0 18px 38px -26px rgba(21, 27, 20, 0.6);
+  color: #f9f4ec;
+}
+
+.btn-glass {
+  background: rgba(255, 252, 247, 0.85);
+  border: 1px solid rgba(214, 200, 186, 0.8);
+  color: #5a5148;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 252, 247, 0.95);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -22px rgba(46, 58, 43, 0.4);
+}
+
+.btn-green-gradient {
+  background: linear-gradient(135deg, #708964, #c08763);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-green-gradient:hover {
+  background: linear-gradient(135deg, #5f7656, #b17152);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px -18px rgba(111, 135, 106, 0.35);
 }
