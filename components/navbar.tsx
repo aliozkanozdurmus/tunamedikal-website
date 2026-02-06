@@ -46,7 +46,7 @@ export default function Navbar({ isScrolled }: NavbarProps) {
           <Link href="/" className="flex items-center space-x-3">
             <motion.div whileHover={{ scale: 1.05 }} className="flex items-center space-x-3">
               <div className="relative h-12 w-48">
-                <Image src="/images/tuna-medikal-logo.png" alt="Tuna Medikal" fill className="object-contain" priority />
+                <Image src="/images/tuna-medikal-logo.png" alt="Tuna Group" fill className="object-contain" priority />
               </div>
             </motion.div>
           </Link>

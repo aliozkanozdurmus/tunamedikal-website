@@ -4,90 +4,75 @@ import { motion } from "framer-motion"
 
 export default function Brands() {
   return (
-    <section className="section-padding bg-gradient-to-br from-sand-50 to-white relative overflow-hidden">
-      {/* Decorative elements */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.03, scale: 1 }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
-      />
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Soft Background Decor */}
+      <div className="absolute top-[20%] right-[-10%] w-72 h-72 bg-sand-100/50 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 left-[-5%] w-80 h-80 bg-sage-50/40 rounded-full blur-[120px] pointer-events-none" />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.03, scale: 1 }}
-        transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16 text-center"
         >
           <motion.span
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-6 py-2 mb-6 text-sm font-medium rounded-full glass-card"
+            className="text-[11px] font-bold tracking-[0.2em] text-sage-600 uppercase mb-4 block"
           >
-            İş Ortaklarımız
+            Küresel Distribütörlük Ağı
           </motion.span>
 
-          <h2 className="section-title gradient-text">Sağlığın Güvenilir Elleri: Distribütör Ağı</h2>
-          <p className="section-subtitle">
-            Dünya çapında tanınmış tıbbi ekipman üreticileri ile güçlü iş ortaklıklarımız bulunmaktadır.
+          <h2 className="text-3xl md:text-5xl font-bold text-sage-950 tracking-tight mb-6">
+            Sektörlerin Güvenilir İsmi: <span className="text-sage-600 font-medium italic">Küresel Ağ</span>
+          </h2>
+          <p className="text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+            Dünya çapında tanınmış markalarla güçlü iş ortaklıkları kurarak,
+            hem sağlık hem de endüstriyel çözüm alanlarında küresel çapta bir köprü kuruyoruz.
           </p>
         </motion.div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6"
-        >
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {[
             { number: "50+", label: "Marka Ortaklığı" },
-            { number: "1000+", label: "Ürün Çeşidi" },
-            { number: "40+", label: "Yıllık Deneyim" },
-            { number: "24/7", label: "Teknik Destek" },
+            { number: "1500+", label: "Ürün Portföyü" },
+            { number: "24", label: "Yıllık Tecrübe" },
+            { number: "7/24", label: "Profesyonel Destek" },
           ].map((stat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center glass-card p-6 rounded-2xl group hover:shadow-lg transition-all duration-300"
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center p-8 bg-sand-50/30 border border-sage-50 rounded-3xl hover:bg-white hover:shadow-2xl hover:shadow-sage-900/5 transition-all duration-500"
             >
-              <div className="text-3xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl font-bold text-sage-950 mb-2 tracking-tight">
                 {stat.number}
               </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
+              <div className="text-[10px] font-bold tracking-[0.1em] text-sage-700 uppercase">{stat.label}</div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Additional Brand Information */}
+        {/* Corporate Partnership Context */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center"
+          transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl mx-auto"
         >
-          <div className="glass-card p-8 rounded-3xl">
-            <h3 className="text-xl font-bold gradient-text mb-4">Güvenilir İş Ortaklıkları</h3>
-            <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto">
-              TUNA Medikal olarak, dünya çapında tanınmış tıbbi ekipman üreticileri ile uzun yıllardır süren güçlü iş
-              ortaklıklarımız bulunmaktadır. Kaliteli ürünler ve güvenilir hizmet anlayışımızla sağlık sektörünün
-              ihtiyaçlarını karşılamaya devam ediyoruz.
+          <div className="p-10 bg-white border border-sage-100/50 rounded-[2.5rem] shadow-xl shadow-sage-900/[0.02] text-center">
+            <h3 className="text-xl font-bold text-sage-950 mb-4">Sürdürülebilir İş Ortaklıkları</h3>
+            <p className="text-gray-500 font-light leading-relaxed">
+              Tuna Group olarak, dünya çapında tanınmış üreticiler ile uzun yıllardır süren güçlü bağlara sahibiz.
+              Sadece distribütörlükle kalmıyor, ISO 13485 standartlarındaki kendi üretimimizle de
+              başta Avrupa olmak üzere küresel pazarda etkin bir rol üstleniyoruz.
             </p>
           </div>
         </motion.div>

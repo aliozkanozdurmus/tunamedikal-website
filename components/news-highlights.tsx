@@ -2,19 +2,14 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
-import { Calendar, ArrowRight, MessageSquare, X } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+import { Calendar, ArrowRight, X } from "lucide-react"
 
 interface NewsPost {
   title: string
   excerpt: string
   content: string
-  image: string
   date: string
   category: string
-  comments: number
 }
 
 export function NewsHighlights() {
@@ -22,298 +17,152 @@ export function NewsHighlights() {
 
   const newsPosts: NewsPost[] = [
     {
-      title: "Nazal Kanül Nedir ve Ne İşe Yarar?",
-      excerpt:
-        "Nazal kanül, oksijen tedavisinde kullanılan önemli bir tıbbi cihaz. Burun yoluyla oksijen verilmesini sağlayan bu cihazın kullanım alanları ve faydaları.",
-      content: `Nazal kanül, oksijen tedavisinde kullanılan en yaygın tıbbi cihazlardan biridir. Bu cihaz, hastanın burun deliklerine yerleştirilen ince tüplerle oksijen verilmesini sağlar.
+      title: "Tuna Group Endüstriyel Üretim Kapasitesini Artırıyor",
+      excerpt: "Sağlık teknolojilerindeki başarımızı endüstriyel ambalaj ve çuval üretimine taşıyarak global pazarda büyümemizi sürdürüyoruz.",
+      content: `Tuna Group, 24 yıllık sektör tecrübesini endüstriyel ambalaj ve çuval üretimiyle taçlandırıyor. Gaziantep 3. Organize Sanayi Bölgesi'ndeki modern tesislerimizde, en yeni teknoloji ile üretilen yüksek mukavemetli ambalaj çözümlerimiz artık dünyanın birçok bölgesine ihraç edilmektedir.
 
-**Nazal Kanülün Özellikleri:**
-- Hafif ve esnek yapısı sayesinde hasta konforu sağlar
-- Farklı yaş grupları için çeşitli boyutlarda üretilir
-- Tek kullanımlık olup hijyenik kullanım sunar
-- Şeffaf malzemeden üretildiği için gözle kontrol edilebilir
+**Üretim Odak Noktalarımız:**
+- %100 Geri dönüştürülebilir PP Sentetik Çuvallar
+- Gıda güvenliğine uygun endüstriyel paketleme sistemleri
+- Yüksek mukavemetli sanayi tipi ambalajlar
 
-**Kullanım Alanları:**
-- Kronik obstrüktif akciğer hastalığı (KOAH) tedavisi
-- Uyku apnesi tedavisi
-- Post-operatif oksijen desteği
-- Acil durumlarda oksijen verilmesi
-
-**Avantajları:**
-- Kolay uygulanabilir
-- Hasta mobilizasyonunu kısıtlamaz
-- Konuşma ve yemek yemeyi engellемez
-- Maliyet etkin bir çözümdür
-
-Nazal kanül kullanımında doğru boyut seçimi ve düzenli değişim önemlidir. Hasta güvenliği için steril koşullarda saklanmalı ve tek kullanımlık olarak tercih edilmelidir.`,
-      image: "/images/nasal-cannula.jpg",
-      date: "15 Aralık 2023",
-      category: "Tıbbi Bilgi",
-      comments: 12,
+Sürdürülebilirlik ilkelerimiz doğrultusunda, hem medikal hem de ambalaj üretiminde çevreye minimum etki, topluma maksimum değer vizyonuyla hareket ediyoruz.`,
+      date: "10 Şubat 2024",
+      category: "Kurumsal",
     },
     {
-      title: "Nebulizatör Maskesi: Solunum Tedavisinin Vazgeçilmezi",
-      excerpt:
-        "Astım, KOAH ve diğer solunum hastalıklarının tedavisinde kullanılan nebulizatör maskelerinin çalışma prensibi ve doğru kullanım yöntemleri.",
-      content: `Nebulizatör maskesi, solunum yolu hastalıklarının tedavisinde kullanılan önemli bir tıbbi cihazdır. İlaçları aerosol formuna dönüştürerek hastanın solunum yollarına ulaştırır.
+      title: "EU MDR ve ISO 13485 Standartlarında Kalite Güvencesi",
+      excerpt: "Sağlık teknolojileri üretimimiz, en güncel Avrupa tıbbi cihaz yönetmeliklerine (EU MDR) tam uyum göstererek güven veriyor.",
+      content: `Tuna Group olarak sağlık teknolojilerinde kalite standartlarımızı en üst seviyede tutuyoruz. ISO 13485:2016 kalite yönetim sistemi çerçevesinde gerçekleştirdiğimiz üretimimiz, EU MDR yönetmeliklerine uygunluğu ile CE sertifikalı olarak uluslararası pazarlara sunulmaktadır.
 
-**Çalışma Prensibi:**
-- Sıvı ilaçları küçük partiküllere böler
-- Kompresör yardımıyla aerosol oluşturur
-- Maske aracılığıyla hastaya ulaştırır
-- Derin solunum yollarına kadar penetrasyon sağlar
+**Kalite Politikamız:**
+- Sıfır hata prensibiyle üretim
+- Sürekli ar-ge ve inovasyon çalışmaları
+- Uluslararası sağlık protokollerine tam uyum
 
-**Kullanım Alanları:**
-- Astım krizi tedavisi
-- KOAH alevlenme dönemleri
-- Bronşit tedavisi
-- Pnömoni destekleyici tedavisi
-- Mukolitik tedavi uygulamaları
-
-**Doğru Kullanım:**
-1. Cihazı temiz bir yüzeye yerleştirin
-2. İlaç dozunu doktor önerisi doğrultusunda hazırlayın
-3. Maskeyi yüze sıkıca yerleştirin
-4. Normal nefes alıp verin
-5. İlaç bitene kadar işlemi sürdürün
-
-**Bakım ve Temizlik:**
-- Her kullanım sonrası temizlenmeli
-- Dezenfektan solüsyonla sterilize edilmeli
-- Kuru ortamda saklanmalı
-- Düzenli olarak değiştirilmeli
-
-Nebulizatör maskesi kullanımında hasta eğitimi çok önemlidir. Doğru teknikle kullanıldığında tedavi etkinliği maksimum düzeye çıkar.`,
-      image: "/images/nebulizer-mask.jpg",
-      date: "8 Aralık 2023",
-      category: "Tıbbi Bilgi",
-      comments: 18,
+Anestezi ve solunum sistemlerinden tanı ekipmanlarına kadar her ürünümüzde Tuna Group güvencesini hissedeceksiniz.`,
+      date: "15 Ocak 2024",
+      category: "Kalite & Sertifika",
     },
     {
-      title: "Oksijen Maskesi Türleri ve Kullanım Alanları",
-      excerpt:
-        "Farklı oksijen maskesi türleri, hangi durumlarda kullanıldığı ve hasta güvenliği açısından dikkat edilmesi gereken önemli noktalar.",
-      content: `Oksijen maskeleri, hastanelerde ve acil durumlarda oksijen tedavisi için kullanılan hayati önem taşıyan tıbbi cihazlardır. Farklı türleri ve kullanım alanları bulunmaktadır.
+      title: "Nazal Kanül ve Solunum Sistemlerinde İnovatif Çözümler",
+      excerpt: "Hasta konforunu odak noktasına alan yeni nesil nazal kanül setlerimiz, medikal profesyonellerden tam not aldı.",
+      content: `Solunum tedavilerinde en yaygın kullanılan cihazlardan biri olan nazal kanül tasarımlarımızda devrim niteliğinde iyileştirmeler yaptık. Yumuşak uçlu, cildi tahriş etmeyen ve kontaminasyona dayanıklı yeni nesil setlerimiz seri üretime geçti.
 
-**Oksijen Maskesi Türleri:**
+**Yeni Nesil Ürün Özellikleri:**
+- Anatomik yapıya tam uyumlu yumuşak konnektörler
+- Kesintisiz akış sağlayan kink-resistant hortum yapısı
+- Yenidoğandan yetişkine her yaş grubuna özel boyutlar
 
-**1. Basit Oksijen Maskesi:**
-- %35-50 oksijen konsantrasyonu sağlar
-- 6-10 L/dk akış hızında kullanılır
-- Kısa süreli oksijen desteği için idealdir
-
-**2. Venturi Maskesi:**
-- Sabit oksijen konsantrasyonu sağlar
-- %24-50 arasında ayarlanabilir
-- KOAH hastalarında tercih edilir
-
-**3. Non-Rebreathing Maskesi:**
-- %90-95 oksijen konsantrasyonu
-- Rezervuar torbalı sistem
-- Acil durumlarda kullanılır
-
-**4. Partial Rebreathing Maskesi:**
-- %60-80 oksijen konsantrasyonu
-- Orta düzey oksijen desteği
-- Rezervuar torbalı
-
-**Kullanım Alanları:**
-- Ameliyat sonrası dönem
-- Solunum yetmezliği
-- Kalp krizi
-- Travma vakaları
-- Zehirlenme durumları
-
-**Güvenlik Önlemleri:**
-- Doğru boyut seçimi yapılmalı
-- Düzenli kontrol edilmeli
-- Steril koşullarda saklanmalı
-- Tek kullanımlık tercih edilmeli
-- Yangın riski nedeniyle dikkatli olunmalı
-
-**Hasta Konforu:**
-- Maske cildi tahriş etmemeli
-- Düzenli pozisyon değişimi yapılmalı
-- Cilt bakımına özen gösterilmeli
-
-Oksijen maskesi seçimi hastanın durumuna göre yapılmalı ve sürekli monitörize edilmelidir.`,
-      image: "/images/oxygen-mask.jpg",
-      date: "2 Aralık 2023",
-      category: "Tıbbi Bilgi",
-      comments: 9,
+Tuna Group olarak "Sevgiyi Sağlıkla Buluşturuyoruz" mottomuzu her yeni ürünümüzle hayata geçirmeye devam ediyoruz.`,
+      date: "05 Ocak 2024",
+      category: "Ürün Geliştirme",
     },
   ]
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  }
-
-  const handleNewsClick = (news: NewsPost) => {
-    setSelectedNews(news)
-  }
-
-  const closeNewsModal = () => {
-    setSelectedNews(null)
-  }
-
   return (
-    <section id="news" className="section-padding bg-sand-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#f4efe6_1px,transparent_1px),linear-gradient(to_bottom,#f4efe6_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_40%,transparent_100%)]"></div>
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[400px] w-[400px] rounded-full bg-gradient-radial from-sage-200 to-transparent blur-3xl -z-5"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.05, scale: 1 }}
-        transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16 text-center"
         >
           <motion.span
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 mb-4 text-sm font-medium rounded-full bg-sand-50 text-sage-700 border border-sand-200"
+            className="text-[11px] font-bold tracking-[0.2em] text-sage-600 uppercase mb-4 block"
           >
-            Tıbbi Bilgiler
+            Güncel Gelişmeler
           </motion.span>
-
-          <h2 className="section-title gradient-text">Son Haberler</h2>
-          <p className="section-subtitle">
-            Tıbbi cihazlar ve sağlık ekipmanları hakkında faydalı bilgiler ve güncel gelişmeler.
-          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-sage-950 tracking-tight">Haberler & <span className="text-sage-600 font-medium italic">Yenilikler</span></h2>
         </motion.div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsPosts.map((post, index) => (
-            <motion.div key={index} variants={item}>
-              <Card
-                className="h-full overflow-hidden hover:shadow-xl transition-all duration-500 group glass-card cursor-pointer"
-                onClick={() => handleNewsClick(post)}
-              >
-                <motion.div
-                  className="relative h-48 w-full overflow-hidden"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image src={post.image || "/placeholder.svg"} alt={post.title} fill className="object-cover" />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-sage-600 hover:bg-sage-700 text-white">{post.category}</Badge>
-                  </div>
-                </motion.div>
-                <CardContent className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>{post.date}</span>
-                    <span className="mx-2">•</span>
-                    <MessageSquare className="h-4 w-4 mr-1" />
-                    <span>{post.comments} yorum</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-sage-700 transition-colors">{post.title}</h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">{post.excerpt}</p>
-                  <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                    <span className="text-sage-700 font-medium hover:text-sage-800 inline-flex items-center">
-                      Devamını Oku <ArrowRight className="ml-1 h-4 w-4" />
-                    </span>
-                  </motion.div>
-                </CardContent>
-              </Card>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="group cursor-pointer"
+              onClick={() => setSelectedNews(post)}
+            >
+              <div className="bg-sand-50/30 border border-sage-50 rounded-[2.5rem] p-10 h-full hover:bg-white hover:shadow-2xl hover:shadow-sage-900/[0.04] transition-all duration-500 flex flex-col items-start text-left">
+                <div className="inline-block px-4 py-1.5 bg-sage-900 rounded-full text-[9px] font-bold tracking-[0.2em] text-white uppercase mb-8">
+                  {post.category}
+                </div>
+
+                <div className="flex items-center text-[10px] font-bold tracking-widest text-sage-400 uppercase mb-4">
+                  <Calendar className="w-3 h-3 mr-2" />
+                  {post.date}
+                </div>
+
+                <h3 className="text-xl font-bold text-sage-950 group-hover:text-sage-600 transition-colors duration-300 mb-4 leading-tight">
+                  {post.title}
+                </h3>
+
+                <p className="text-sm text-gray-500 font-light leading-relaxed mb-8 flex-grow">
+                  {post.excerpt}
+                </p>
+
+                <div className="flex items-center text-xs font-bold text-sage-900 tracking-wider uppercase group-hover:gap-3 transition-all duration-300">
+                  Detayları Oku <ArrowRight className="w-3 h-3 ml-2" />
+                </div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
 
-      {/* News Modal */}
+      {/* Modern News Modal */}
       <AnimatePresence>
         {selectedNews && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
-            onClick={closeNewsModal}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-sage-950/20 backdrop-blur-lg p-4"
+            onClick={() => setSelectedNews(null)}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ type: "spring", damping: 20 }}
-              className="relative w-full max-w-4xl bg-white rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto"
+              initial={{ opacity: 0, y: 100, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 100, scale: 0.95 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="relative w-full max-w-4xl bg-white rounded-[3rem] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
-                onClick={closeNewsModal}
-                className="absolute right-4 top-4 z-10 rounded-full bg-white/80 p-2 text-gray-800 shadow-md hover:bg-white transition-colors"
-                aria-label="Kapat"
+                onClick={() => setSelectedNews(null)}
+                className="absolute right-8 top-8 z-10 w-12 h-12 rounded-full bg-sand-50 flex items-center justify-center text-sage-950 hover:bg-white shadow-sm transition-all"
               >
-                <X className="h-5 w-5" />
+                <X className="w-5 h-5" />
               </button>
 
-              <div className="p-6 lg:p-8">
-                {/* Header Image */}
-                <div className="relative h-64 w-full rounded-lg overflow-hidden mb-6">
-                  <Image
-                    src={selectedNews.image || "/placeholder.svg"}
-                    alt={selectedNews.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className="bg-sage-600 text-white">{selectedNews.category}</Badge>
-                  </div>
+              <div className="overflow-y-auto p-8 md:p-16 lg:p-24">
+                <div className="inline-block px-5 py-2 bg-sage-900 rounded-full text-[10px] font-bold tracking-[0.2em] text-white uppercase mb-8">
+                  {selectedNews.category}
                 </div>
 
-                {/* Content */}
-                <div className="space-y-4">
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    <span>{selectedNews.date}</span>
-                    <span className="mx-2">•</span>
-                    <MessageSquare className="h-4 w-4 mr-1" />
-                    <span>{selectedNews.comments} yorum</span>
-                  </div>
+                <div className="flex items-center text-[10px] font-bold tracking-widest text-sage-400 uppercase mb-4">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  {selectedNews.date}
+                </div>
 
-                  <h1 className="text-3xl font-bold text-gray-900 mb-4">{selectedNews.title}</h1>
+                <h1 className="text-3xl md:text-5xl font-bold text-sage-950 mb-10 tracking-tight leading-tight">
+                  {selectedNews.title}
+                </h1>
 
-                  <div className="prose max-w-none">
-                    <div className="text-gray-700 leading-relaxed whitespace-pre-line">{selectedNews.content}</div>
+                <div className="h-[1px] w-full bg-sage-50 mb-12" />
+
+                <div className="prose prose-sage !max-w-none">
+                  <div className="text-gray-500 font-light leading-relaxed text-lg whitespace-pre-line">
+                    {selectedNews.content}
                   </div>
                 </div>
               </div>

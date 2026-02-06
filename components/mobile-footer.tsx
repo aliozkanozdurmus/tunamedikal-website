@@ -14,13 +14,13 @@ export function MobileFooter() {
                 <div className="flex flex-col items-center text-center">
                     <Image
                         src="/images/tuna-medikal-logo.png"
-                        alt="Tuna Medikal Logo"
+                        alt="Tuna Group Logo"
                         width={160}
                         height={50}
                         className="object-contain mb-4"
                     />
                     <p className="text-xs text-gray-400 font-light tracking-wide uppercase italic">
-                        "Sevgiyi Sağlıkla Buluşturuyoruz"
+                        "Sağlıkta ve Endüstride Değer Üretiyoruz"
                     </p>
                 </div>
 
@@ -85,7 +85,7 @@ export function MobileFooter() {
                 {/* Footer Bottom */}
                 <div className="pt-8 border-t border-sand-50 text-center">
                     <p className="text-[9px] text-gray-400 leading-relaxed font-light">
-                        &copy; {currentYear} Tuna Medikal Tıbbi Cihazlar Ltd. Şti. <br />
+                        &copy; {currentYear} Tuna Group. <br />
                         Tüm Hakları Saklıdır.
                     </p>
                 </div>

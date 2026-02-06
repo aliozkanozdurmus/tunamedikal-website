@@ -1,9 +1,6 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Link from "next/link"
-import { ArrowRight, Star, ShieldCheck, Clock } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
@@ -34,8 +31,6 @@ export function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
 
-
-
           {/* Refined Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -43,9 +38,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="text-5xl md:text-7xl font-bold text-sage-950 mb-8 leading-[1.1] tracking-[-0.03em]"
           >
-            Sağlıkta Güven ve
+            Geleceğin Teknolojisi,
             <br />
-            <span className="text-sage-600/90 italic font-medium">Kalite Buluşuyor</span>
+            <span className="text-sage-600/90 italic font-medium">Tuna Group Güvencesiyle</span>
           </motion.h1>
 
           {/* Minimal Description */}
@@ -55,8 +50,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-base md:text-lg text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Tuna Medikal olarak 40 yıla yaklaşan tecrübemizle sağlık dünyasına
-            yenilikçi çözümler ve koşulsuz güven sunuyoruz.
+            2000 yılından bu yana sağlık teknolojilerinden endüstriyel ambalaja uzanan geniş bir alanda,
+            yenilikçi ve sürdürülebilir çözümlerle değer üretiyoruz.
           </motion.p>
 
 
@@ -68,9 +63,9 @@ export function Hero() {
             className="flex flex-wrap justify-center gap-x-16 gap-y-10 max-w-4xl mx-auto border-t border-sage-50 pt-12"
           >
             {[
-              { value: "500+", label: "Sadık Kurum" },
-              { value: "ISO", label: "Sertifikasyon" },
-              { value: "40 Yıl", label: "Derin Tecrübe" },
+              { value: "ISO 13485", label: "Global Standart" },
+              { value: "EU MDR", label: "CE Sertifikalı" },
+              { value: "24 Yıl", label: "Sektörel Güven" },
             ].map((stat, i) => (
               <div key={i} className="flex flex-col items-center sm:items-start text-center sm:text-left">
                 <span className="text-2xl font-semibold text-sage-900 mb-1 tracking-tight">

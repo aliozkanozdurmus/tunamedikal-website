@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import Navbar from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Shield, Eye, Lock, Database, User, FileText } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
 
 export default function GizlilikPolitikasi() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,160 +23,139 @@ export default function GizlilikPolitikasi() {
 
   const sections = [
     {
-      icon: <Eye className="w-8 h-8" />,
+      icon: <Eye className="w-5 h-5" />,
       title: "Veri Toplama",
-      content: "Web sitemiz üzerinden kişisel verilerinizi yalnızca kanunların izin verdiği ölçüde toplarız. Bu veriler; ad, soyad, e-posta adresi, telefon numarası ve taleplerinizle ilgili bilgileri içerebilir."
+      content: "Web sitemiz üzerinden kişisel verilerinizi yalnızca kanunların izin verdiği ölçüde toplarız. Bu veriler; ad, soyad, e-posta ve taleplerinizi içerebilir."
     },
     {
-      icon: <Lock className="w-8 h-8" />,
+      icon: <Lock className="w-5 h-5" />,
       title: "Veri Koruma",
-      content: "Kişisel verilerinizi yetkisiz erişime, kayba, değiştirilmeye veya imhaya karşı korumak için gerekli tüm teknik ve idari güvenlik önlemlerini alıyoruz."
+      content: "Kişisel verilerinizi yetkisiz erişime, kayba veya imhaya karşı korumak için gerekli tüm teknik ve idari güvenlik önlemlerini alıyoruz."
     },
     {
-      icon: <Database className="w-8 h-8" />,
+      icon: <Database className="w-5 h-5" />,
       title: "Veri Kullanımı",
-      content: "Topladığımız verileri; hizmetlerimizi sunmak, müşteri desteği sağlamak, web sitemizi iyileştirmek ve yasal yükümlülüklerimizi yerine getirmek amacıyla kullanırız."
+      content: "Topladığımız verileri; hizmetlerimizi sunmak, web sitemizi iyileştirmek ve yasal yükümlülüklerimizi yerine getirmek amacıyla kullanırız."
     },
     {
-      icon: <User className="w-8 h-8" />,
+      icon: <User className="w-5 h-5" />,
       title: "Haklarınız",
-      content: "Kişisel verilerinizin işlenmesi hakkında bilgi alma, verilerinizi düzettirme, silme veya yok edilmesini talep etme haklarına sahipsiniz."
+      content: "Kişisel verilerinizin işlenmesi hakkında bilgi alma, verilerinizi düzelttirme veya silinmesini talep etme haklarına sahipsiniz."
     }
   ]
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-sand-50">
+    <div className="flex min-h-[100dvh] flex-col bg-white">
       <Navbar isScrolled={isScrolled} />
 
       <main className="flex-1 pt-24 pb-16">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-sage-100/50 via-sand-100/30 to-clay-100/50"></div>
-          <div className="container mx-auto px-4 relative z-10">
+        {/* Page Hero */}
+        <section className="relative overflow-hidden py-24 bg-sand-50/30">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-sage-50 rounded-full blur-[120px] opacity-60 -translate-y-1/2 translate-x-1/4" />
+
+          <div className="container mx-auto px-4 relative z-10 text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="max-w-4xl mx-auto"
             >
-              <div className="flex justify-center mb-6">
-                <div className="bg-white p-5 rounded-3xl shadow-sm border border-sand-100">
-                  <Shield className="w-12 h-12 text-sage-600" />
-                </div>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-sage-900 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-sage-950 mb-8 tracking-tight">
                 Gizlilik Politikası
               </h1>
-              <p className="text-lg md:text-xl text-sage-800 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
                 Kişisel verilerinizin güvenliği bizim için önceliklidir.
-                <span className="text-sage-700 font-semibold italic"> Bilgi güvenliği standartlarımız </span>
-                hakkında detaylı bilgilere buradan ulaşabilirsiniz.
+                <span className="text-sage-700 font-medium"> Bilgi güvenliği standartlarımız </span>
+                hakkında detaylı bilgileri burada bulabilirsiniz.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Main Content */}
-        <section className="py-12 bg-white">
+        <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              <div className="grid lg:grid-cols-3 gap-8">
-                {/* Left side info */}
-                <div className="lg:col-span-2 space-y-8">
+              <div className="grid lg:grid-cols-3 gap-16">
+
+                {/* Information Sections */}
+                <div className="lg:col-span-2 space-y-12">
                   <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    className="prose prose-sage !max-w-none space-y-6"
                   >
-                    <Card className="rounded-3xl border-sand-100 bg-sand-50/30 overflow-hidden">
-                      <CardContent className="p-8 md:p-10">
-                        <h2 className="text-2xl font-bold text-sage-900 mb-6 flex items-center gap-3">
-                          <FileText className="w-6 h-6 text-sage-600" />
-                          Genel Bilgilendirme
-                        </h2>
-                        <div className="space-y-6 text-sage-800 leading-relaxed text-lg">
-                          <p>
-                            Tuna Medikal olarak, web sitemizi ziyaret eden tüm kullanıcılarımızın
-                            kişisel verilerinin gizliliğine ve korunmasına en yüksek hassasiyeti gösteriyoruz.
-                          </p>
-                          <p>
-                            İşbu politika, <strong>6698 sayılı Kişisel Verilerin Korunması Kanunu</strong>
-                            kapsamında toplanan verilerin işlenme amaçlarını ve güvenlik standartlarımızı
-                            şeffaf bir şekilde paylaşmak amacıyla hazırlanmıştır.
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
+                    <div className="p-10 bg-sand-50/50 rounded-[2.5rem] border border-sage-50">
+                      <h2 className="text-2xl font-bold text-sage-950 mb-6 flex items-center gap-3">
+                        <FileText className="w-6 h-6 text-sage-600" />
+                        Genel Bilgilendirme
+                      </h2>
+                      <div className="space-y-6 text-gray-500 font-light leading-relaxed">
+                        <p>
+                          Tuna Group olarak, web sitemizi ziyaret eden tüm kullanıcılarımızın
+                          kişisel verilerinin gizliliğine ve korunmasına en yüksek hassasiyeti gösteriyoruz.
+                        </p>
+                        <p>
+                          İşbu politika, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında
+                          toplanan verilerin işlenme amaçlarını ve güvenlik standartlarımızı paylaşmak amacıyla hazırlanmıştır.
+                        </p>
+                      </div>
+                    </div>
                   </motion.div>
 
-                  {/* Sections List */}
                   <div className="grid md:grid-cols-2 gap-6">
                     {sections.map((section, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
                         viewport={{ once: true }}
-                        className="bg-white p-8 rounded-3xl border border-sand-100 hover:border-sage-200 hover:shadow-lg transition-all"
+                        transition={{ delay: index * 0.1 }}
+                        className="p-8 border border-sand-100 rounded-3xl hover:bg-sand-50/50 transition-colors"
                       >
-                        <div className="text-sage-600 mb-5 bg-sand-50 w-14 h-14 rounded-2xl flex items-center justify-center shadow-sm">
+                        <div className="text-sage-600 mb-6">
                           {section.icon}
                         </div>
-                        <h3 className="text-xl font-bold text-sage-900 mb-3">
-                          {section.title}
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {section.content}
-                        </p>
+                        <h3 className="text-lg font-bold text-sage-950 mb-3">{section.title}</h3>
+                        <p className="text-xs text-gray-500 font-light leading-relaxed">{section.content}</p>
                       </motion.div>
                     ))}
                   </div>
                 </div>
 
-                {/* Right side sidebar info */}
-                <div className="space-y-6">
+                {/* Sidebar Details */}
+                <div className="space-y-8">
                   <motion.div
-                    initial={{ opacity: 0, x: 30 }}
+                    initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="p-8 bg-sage-50/50 rounded-3xl border border-sage-100 sticky top-28"
+                    className="p-10 bg-sage-50/50 rounded-[2.5rem] border border-sage-100 sticky top-28"
                   >
-                    <h3 className="text-xl font-bold text-sage-900 mb-6">Politika Detayları</h3>
+                    <h3 className="text-lg font-bold text-sage-950 mb-8">Politika Detayları</h3>
 
                     <div className="space-y-8">
-                      <div>
-                        <h4 className="text-sm font-bold text-sage-700 uppercase tracking-widest mb-2">Çerez Kullanımı</h4>
-                        <p className="text-sm text-sage-800">
-                          Deneyiminizi optimize etmek için teknik ve analitik çerezler kullanmaktayız.
-                        </p>
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-bold tracking-widest text-sage-700 uppercase">Çerezler</p>
+                        <p className="text-sm text-gray-500 font-light">Deneyiminizi optimize etmek için teknik çerezler kullanmaktayız.</p>
                       </div>
-
-                      <div className="pt-6 border-t border-sage-100">
-                        <h4 className="text-sm font-bold text-sage-700 uppercase tracking-widest mb-2">Güvenlik Standardı</h4>
-                        <p className="text-sm text-sage-800">
-                          Tüm veri transferleri 256-bit SSL sertifikası ile şifrelenmektedir.
-                        </p>
+                      <div className="space-y-2 pt-6 border-t border-sage-100">
+                        <p className="text-[10px] font-bold tracking-widest text-sage-700 uppercase">Güvenlik</p>
+                        <p className="text-sm text-gray-500 font-light">Tüm veri transferleri SSL sertifikası ile şifrelenmektedir.</p>
                       </div>
-
-                      <div className="pt-6 border-t border-sage-100">
-                        <h4 className="text-sm font-bold text-sage-700 uppercase tracking-widest mb-2">İletişim Kanalları</h4>
-                        <p className="text-sm text-sage-800">
-                          KVKK talepleriniz için <a href="mailto:kvkk@tunamedical.com.tr" className="underline font-semibold">kvkk@tunamedical.com.tr</a>
-                        </p>
+                      <div className="space-y-2 pt-6 border-t border-sage-100">
+                        <p className="text-[10px] font-bold tracking-widest text-sage-700 uppercase">İletişim</p>
+                        <a href="mailto:kvkk@tunamedical.com.tr" className="text-sm text-sage-900 font-bold block hover:underline">kvkk@tunamedical.com.tr</a>
                       </div>
                     </div>
 
-                    <div className="mt-10 pt-6 border-t border-sage-100 text-center">
-                      <p className="text-xs text-sage-500 font-bold">
-                        SON GÜNCELLEME<br />
-                        <span className="text-sage-900">{new Date().toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })}</span>
-                      </p>
+                    <div className="mt-12 pt-8 border-t border-sage-100 text-center">
+                      <p className="text-[10px] font-bold tracking-widest text-sage-300 uppercase">Son Güncelleme</p>
+                      <p className="text-sage-900 font-bold text-sm">{new Date().toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })}</p>
                     </div>
                   </motion.div>
                 </div>
+
               </div>
             </div>
           </div>

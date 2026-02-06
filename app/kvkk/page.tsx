@@ -5,7 +5,6 @@ import { motion } from "framer-motion"
 import Navbar from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Shield, Users, FileCheck, AlertCircle, Gavel, Database } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
 
 export default function Kvkk() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,198 +23,157 @@ export default function Kvkk() {
 
   const rights = [
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-5 h-5" />,
       title: "Bilgi Edinme Hakkı",
       content: "Kişisel verilerinizin işlenip işlenmediğini öğrenme, işlenmişse bilgi talep etme hakkı."
     },
     {
-      icon: <FileCheck className="w-8 h-8" />,
+      icon: <FileCheck className="w-5 h-5" />,
       title: "Düzeltme Talebi",
       content: "Eksik veya yanlış işlenmiş kişisel verilerinizin düzeltilmesini isteme hakkı."
     },
     {
-      icon: <AlertCircle className="w-8 h-8" />,
+      icon: <AlertCircle className="w-5 h-5" />,
       title: "Silme ve Yok Etme",
       content: "Kişisel verilerinizin silinmesini veya yok edilmesini talep etme hakkı."
     },
     {
-      icon: <Gavel className="w-8 h-8" />,
+      icon: <Gavel className="w-5 h-5" />,
       title: "Yasal Yollar",
       content: "Haklarınızın ihlali durumunda yasal yollardan haklarınızı arama hakkı."
     }
   ]
 
-  const dataCategories = [
-    "Kimlik Bilgileri (Ad, soyad, T.C. kimlik numarası)",
-    "İletişim Bilgileri (Adres, telefon, e-posta)",
-    "Müşteri Bilgileri (Siparişler, talepler, geri bildirimler)",
-    "Finansal Bilgiler (Fatura bilgileri, ödeme kayıtları)",
-    "Teknik Bilgiler (IP adresi, çerez verileri, log kayıtları)"
-  ]
-
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-sand-50">
+    <div className="flex min-h-[100dvh] flex-col bg-white">
       <Navbar isScrolled={isScrolled} />
 
       <main className="flex-1 pt-24 pb-16">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden py-16 md:py-24">
-          <div className="absolute inset-0 bg-gradient-to-br from-sage-100/50 via-sand-100/30 to-clay-100/50"></div>
-          <div className="container mx-auto px-4 relative z-10">
+        {/* Page Hero */}
+        <section className="relative overflow-hidden py-24 bg-sand-50/30">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-sage-50 rounded-full blur-[120px] opacity-60 -translate-y-1/2 translate-x-1/4" />
+
+          <div className="container mx-auto px-4 relative z-10 text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center max-w-4xl mx-auto"
+              className="max-w-4xl mx-auto"
             >
-              <div className="flex justify-center mb-6">
-                <div className="bg-white p-5 rounded-3xl shadow-sm border border-sand-100">
-                  <Database className="w-12 h-12 text-sage-600" />
-                </div>
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-sage-900 mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold text-sage-950 mb-8 tracking-tight">
                 KVKK Aydınlatma
               </h1>
-              <p className="text-lg md:text-xl text-sage-800 leading-relaxed max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
                 Kişisel verilerinizin işlenmesi süreçlerinde
-                <span className="text-sage-700 font-semibold italic"> tam şeffaflık ve yasal uyumluluk </span>
-                ilkesiyle hareket ediyoruz.
+                <span className="text-sage-700 font-medium"> şeffaflık ve yasal uyumluluk </span>
+                vizyonumuzun temelini oluşturur.
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Main Content */}
-        <section className="py-12 bg-white">
+        <section className="py-24">
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              {/* Introduction & Identity */}
-              <div className="grid lg:grid-cols-2 gap-8 mb-16">
+            <div className="max-w-4xl mx-auto space-y-24">
+
+              {/* Data Controller */}
+              <div className="grid md:grid-cols-2 gap-12">
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
+                  className="p-10 bg-sand-50 rounded-[2.5rem] border border-sage-50"
                 >
-                  <Card className="rounded-3xl border-sand-100 bg-sand-50/50 h-full">
-                    <CardContent className="p-8 md:p-10">
-                      <h2 className="text-2xl font-bold text-sage-900 mb-8">Veri Sorumlusu</h2>
-                      <div className="space-y-6 text-sage-800">
-                        <div className="flex items-start gap-4">
-                          <div className="w-1 h-12 bg-sage-400 rounded-full shrink-0"></div>
-                          <div>
-                            <p className="font-bold text-sage-900 mb-1">Şirket Ünvanı</p>
-                            <p className="text-gray-600">Tuna Medikal Tıbbi Cihazlar San. Tic. Ltd. Şti.</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-4">
-                          <div className="w-1 h-12 bg-sage-400 rounded-full shrink-0"></div>
-                          <div>
-                            <p className="font-bold text-sage-900 mb-1">Adres</p>
-                            <p className="text-gray-600">3. Organize Sanayi Bölgesi, Kamil Şerbetçi Bulvarı No: 39, Gaziantep</p>
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <h2 className="text-2xl font-bold text-sage-950 mb-8">Veri Sorumlusu</h2>
+                  <div className="space-y-6 text-sm text-gray-500 font-light">
+                    <div>
+                      <p className="font-bold text-sage-900 mb-1">Şirket Ünvanı</p>
+                      <p>Tuna Group</p>
+                    </div>
+                    <div>
+                      <p className="font-bold text-sage-900 mb-1">Adres</p>
+                      <p>3. Organize Sanayi Bölgesi, Kamil Şerbetçi Bulvarı No: 39, Gaziantep</p>
+                    </div>
+                  </div>
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: 30 }}
+                  initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
+                  className="p-10 bg-sage-50 rounded-[2.5rem] border border-sage-50"
                 >
-                  <Card className="rounded-3xl border-sand-100 bg-sand-50/50 h-full">
-                    <CardContent className="p-8 md:p-10">
-                      <h2 className="text-2xl font-bold text-sage-900 mb-8">İşleme Amaçları</h2>
-                      <ul className="space-y-3">
-                        {[
-                          "Hizmet sunumu ve yönetimi",
-                          "Müşteri memnuniyeti ölçümü",
-                          "Yasal yükümlülüklerin ifası",
-                          "Finansal ve teknik operasyonlar",
-                          "İletişim ve destek faaliyetleri"
-                        ].map((purpose, i) => (
-                          <li key={i} className="flex items-center gap-3 text-sage-800">
-                            <div className="w-1.5 h-1.5 bg-sage-500 rounded-full shrink-0"></div>
-                            <span className="text-gray-600 text-sm">{purpose}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
+                  <h2 className="text-2xl font-bold text-sage-950 mb-8">İşleme Amaçları</h2>
+                  <ul className="space-y-4">
+                    {[
+                      "Müşteri ve iş ortağı ilişkileri yönetimi",
+                      "Yasal yükümlülüklerin yerine getirilmesi",
+                      "Üretim ve sevkiyat süreçlerinin planlanması",
+                      "Kalite standartlarının sürdürülebilirliği",
+                      "Analiz ve raporlama faaliyetleri"
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm text-gray-500 font-light">
+                        <div className="w-1.5 h-1.5 bg-sage-400 rounded-full shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               </div>
 
-              {/* Data Categories & Rights */}
-              <div className="space-y-16">
-                <div>
-                  <h3 className="text-2xl font-bold text-sage-900 mb-8 text-center">İşlenen Veri Kategorileri</h3>
-                  <div className="grid md:grid-cols-3 gap-6">
-                    {dataCategories.map((category, index) => (
-                      <div key={index} className="bg-white p-6 rounded-2xl border border-sand-100 flex flex-col items-center text-center shadow-sm">
-                        <span className="text-sage-800 font-medium text-sm">{category}</span>
-                      </div>
-                    ))}
-                  </div>
+              {/* Rights Grid */}
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-sage-950 mb-4">Kanuni Haklarınız</h2>
+                  <p className="text-gray-500 text-sm font-light">6698 Sayılı Kanun'un 11. Maddesi Uyarınca</p>
                 </div>
-
-                <div>
-                  <h3 className="text-2xl font-bold text-sage-900 mb-8 text-center">Kanuni Haklarınız (Madde 11)</h3>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {rights.map((right, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }}
-                        className="bg-sand-50/30 p-8 rounded-3xl border border-sand-100 text-center"
-                      >
-                        <div className="text-sage-600 mb-4 flex justify-center bg-white w-14 h-14 rounded-2xl items-center mx-auto shadow-sm">
-                          {right.icon}
-                        </div>
-                        <h4 className="text-lg font-bold text-sage-900 mb-2">{right.title}</h4>
-                        <p className="text-xs text-gray-500 leading-relaxed">{right.content}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Closing Info */}
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <Card className="bg-gradient-to-br from-sage-700 to-clay-600 text-white rounded-3xl overflow-hidden shadow-lg mt-8">
-                    <CardContent className="p-10 text-center">
-                      <h3 className="text-2xl font-bold mb-4 text-white">Başvuru Kanalları</h3>
-                      <p className="text-white/80 max-w-2xl mx-auto mb-8">
-                        Veri sahibi olarak haklarınızı kullanmak için kimlik doğrulayıcı belgelerle birlikte
-                        e-posta veya posta yoluyla bize ulaşabilirsiniz. Talepleriniz 30 gün içinde yanıtlanacaktır.
-                      </p>
-                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
-                          <p className="text-xs uppercase tracking-widest font-bold text-white/60 mb-1">E-POSTA</p>
-                          <p className="font-bold">kvkk@tunamedical.com.tr</p>
-                        </div>
-                        <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20">
-                          <p className="text-xs uppercase tracking-widest font-bold text-white/60 mb-1">VERTSİS NO</p>
-                          <p className="font-bold">BAŞVURU REHBERİ</p>
-                        </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {rights.map((right, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      className="p-8 border border-sand-100 rounded-3xl hover:bg-sand-50/50 transition-colors"
+                    >
+                      <div className="text-sage-600 mb-6">
+                        {right.icon}
                       </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
+                      <h4 className="text-lg font-bold text-sage-950 mb-2">{right.title}</h4>
+                      <p className="text-gray-500 text-xs font-light leading-relaxed">{right.content}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
 
-                <div className="text-center pt-8">
-                  <p className="text-xs text-sage-400 font-bold tracking-widest">
-                    YÜRÜRLÜK TARİHİ: 01.01.2024 | SON GÜNCELLEME: {new Date().toLocaleDateString('tr-TR')}
+              {/* Contact Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="p-12 bg-sage-900 rounded-[3rem] text-white shadow-2xl overflow-hidden relative"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+
+                <div className="relative z-10 text-center">
+                  <h3 className="text-2xl font-bold mb-6">Başvuru Kanalları</h3>
+                  <p className="text-white/60 font-light text-sm max-w-2xl mx-auto mb-10">
+                    Kişisel veri sahibi olarak haklarınızı kullanmak için kimlik doğrulayıcı
+                    belgelerle birlikte e-posta veya posta yoluyla bize ulaşabilirsiniz.
                   </p>
+                  <div className="inline-flex flex-col sm:flex-row gap-6">
+                    <div className="px-8 py-4 bg-white/10 rounded-2xl border border-white/20 text-center">
+                      <p className="text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase mb-1">E-Posta</p>
+                      <p className="font-bold text-sm">kvkk@tunamedical.com.tr</p>
+                    </div>
+                  </div>
                 </div>
+              </motion.div>
+
+              <div className="text-center text-[10px] font-bold tracking-widest text-sage-300 uppercase">
+                Son Güncelleme: {new Date().toLocaleDateString('tr-TR')}
               </div>
             </div>
           </div>

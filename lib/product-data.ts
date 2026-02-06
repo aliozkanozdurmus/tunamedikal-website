@@ -40,7 +40,7 @@ export const categories: Category[] = [
     id: "anestezi-solunum",
     name: "ANESTEZİ & SOLUNUM SİSTEMLERİ",
     description:
-      "Anestezi ve solunum sistemleri için profesyonel tıbbi cihazlar ve malzemeler. Hasta güvenliği ve konforunu ön planda tutan yüksek kaliteli ürünler.",
+      "Tuna Group bünyesinde geliştirilen, anestezi ve solunum sistemleri için profesyonel tıbbi cihazlar ve malzemeler. Hasta güvenliği ve konforunu ön planda tutan yüksek kaliteli çözümler.",
     image: "/images/categories/anestezi-solunum.jpeg",
     subcategories: [
       { id: "nebulizer-setleri", name: "NEBULİZER SETLERİ" },
@@ -49,10 +49,21 @@ export const categories: Category[] = [
     ],
   },
   {
+    id: "endustriyel-ambalaj",
+    name: "ENDÜSTRİYEL AMBALAJ ÇÖZÜMLERİ",
+    description:
+      "Tuna Group'un endüstriyel üretim gücüyle sunduğu çevre dostu ve dayanıklı ambalaj çözümleri. Farklı sektörlerin ihtiyaçlarına yönelik yüksek mukavemetli çuval ve her türlü endüstriyel ambalaj ürünleri.",
+    image: "/images/categories/ambalaj.jpeg", // Note: Need to make sure this exists or use a placeholder
+    subcategories: [
+      { id: "sentetik-cuval", name: "SENTETİK ÇUVAL" },
+      { id: "endustriyel-paketleme", name: "ENDÜSTRİYEL PAKETLEME" },
+    ],
+  },
+  {
     id: "tibbi-atik",
     name: "TIBBİ ATIK YÖNETİMİ",
     description:
-      "Tıbbi atık yönetimi için güvenli ve dayanıklı çözümler. Hastane ve klinik ortamlarında güvenli atık bertarafı için özel tasarlanmış ürünler.",
+      "Tıbbi atık yönetimi için Tuna Group güvencesiyle sunulan güvenli ve dayanıklı çözümler. Hastane ve klinik ortamlarında güvenli atık bertarafı için özel tasarlanmış ürünler.",
     image: "/images/categories/tibbi-atik.jpeg",
     subcategories: [{ id: "atik-kovasi", name: "ATIK KOVASI" }],
   },
@@ -273,6 +284,30 @@ export const products: Product[] = [
       { name: "Malzeme", value: "Tıbbi atık için uygun plastik" },
     ],
     images: ["/images/categories/tibbi-atik.jpeg"],
+    relatedProducts: [],
+  },
+
+  // Endüstriyel Ambalaj
+  {
+    id: "sentetik-cuval-standart",
+    name: "PP Sentetik Çuval / Standart",
+    category: "ENDÜSTRİYEL AMBALAJ ÇÖZÜMLERİ",
+    subcategory: "SENTETİK ÇUVAL",
+    description: "Endüstriyel kullanıma uygun yüksek mukavemetli PP sentetik çuval.",
+    longDescription:
+      "Tuna Group'un modern üretim tesislerinde üretilen PP sentetik çuvallar, tarım, gıda ve sanayi ürünlerinin güvenli taşınması için tasarlanmıştır. UV dirençli ve çevre dostu yapısı ile uzun süreli kullanım sağlar.",
+    features: [
+      { icon: "shield-alert", title: "Yüksek Mukavemet", description: "Yırtılma ve patlamaya dirençli" },
+      { icon: "sun", title: "UV Koruması", description: "Güneş ışınlarına karşı dayanıklı" },
+      { icon: "leaf", title: "%100 Geri Dönüştürülebilir", description: "Çevre dostu üretim" },
+    ],
+    specifications: [
+      { name: "Malzeme", value: "Polipropilen (PP)" },
+      { name: "Boyutlar", value: "İsteğe bağlı özel üretim" },
+      { name: "Renk", value: "Beyaz / Renkli seçenekler" },
+      { name: "Kullanım Alanları", value: "Baklagil, Un, Şeker, Yem, Sanayi ürünleri" },
+    ],
+    images: ["/images/categories/ambalaj.jpeg"],
     relatedProducts: [],
   },
 ]

@@ -6,70 +6,64 @@ import { Button } from "@/components/ui/button"
 
 export function CtaSection() {
   return (
-    <section className="section-padding bg-gradient-to-br from-sand-50 to-sage-50 relative overflow-hidden">
-      {/* Decorative elements */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute right-0 top-0 h-[300px] w-[300px] rounded-full bg-gradient-radial from-sage-300 to-transparent blur-3xl -z-5"
-      />
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* Decorative Orbs */}
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-sand-50/50 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-sage-50/40 rounded-full blur-[100px] pointer-events-none" />
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 0.1, scale: 1 }}
-        transition={{ duration: 3, delay: 0.5, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse" }}
-        className="absolute left-0 bottom-0 h-[200px] w-[200px] rounded-full bg-gradient-radial from-clay-200 to-transparent blur-3xl -z-5"
-      />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-center"
         >
-          <div className="glass-strong p-12 rounded-3xl max-w-4xl mx-auto">
+          <div className="bg-sand-50/30 backdrop-blur-md p-10 md:p-16 rounded-[3rem] border border-sage-100/50 max-w-5xl mx-auto shadow-2xl shadow-sage-900/[0.03]">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-3xl md:text-4xl font-bold gradient-text mb-6"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-3xl md:text-5xl font-bold text-sage-950 mb-6 tracking-tight"
             >
-              Sağlık Sektörünün Güvenilir Partneri
+              Geleceğin Çözümlerini <br />
+              <span className="text-sage-600 font-medium italic">Birlikte İnşa Edelim</span>
             </motion.h2>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed"
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-base md:text-lg text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed font-light"
             >
-              15 yılı aşkın deneyimimiz ile sağlık kuruluşlarınızın tüm ihtiyaçlarını karşılamaya hazırız. Kaliteli
-              ürünler, hızlı teslimat ve profesyonel hizmet için bizimle iletişime geçin.
+              24 yıllık üretim ve mühendislik tecrübemizle, sağlık teknolojilerinden endüstriyel ambalaja
+              kadar her alanda güvenilir partneriniz olmaya hazırız.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-16"
             >
-              <Button className="btn-green-gradient rounded-full px-8 py-3 text-lg font-semibold group">
-                <Phone className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+              <Button
+                onClick={() => window.location.href = 'tel:+903423609850'}
+                className="bg-sage-900 hover:bg-sage-950 text-white rounded-full px-10 h-14 text-sm font-bold tracking-widest uppercase transition-all duration-500 shadow-xl shadow-sage-900/10 group"
+              >
+                <Phone className="mr-3 h-4 w-4 group-hover:rotate-12 transition-transform" />
                 Hemen Arayın
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
 
               <Button
                 variant="outline"
-                className="btn-glass border-2 border-sand-200 text-sage-700 hover:bg-sand-100 rounded-full px-8 py-3 text-lg font-semibold group"
+                onClick={() => window.location.href = 'mailto:info@tunamedical.com.tr'}
+                className="bg-transparent border border-sage-200 text-sage-900 hover:bg-white rounded-full px-10 h-14 text-sm font-bold tracking-widest uppercase transition-all duration-500 group"
               >
-                <Mail className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+                <Mail className="mr-3 h-4 w-4 group-hover:scale-110 transition-transform" />
                 E-posta Gönderin
               </Button>
             </motion.div>
@@ -78,20 +72,20 @@ export function CtaSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center pt-8 border-t border-sage-100/50"
             >
-              <div className="glass p-4 rounded-2xl">
-                <div className="text-2xl font-bold gradient-text mb-1">24/7</div>
-                <div className="text-sm text-gray-600">Teknik Destek</div>
+              <div className="space-y-1">
+                <div className="text-2xl font-bold text-sage-950">24/7</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] text-sage-600 uppercase">Küresel Destek</div>
               </div>
-              <div className="glass p-4 rounded-2xl">
-                <div className="text-2xl font-bold gradient-text mb-1">500+</div>
-                <div className="text-sm text-gray-600">Mutlu Müşteri</div>
+              <div className="space-y-1">
+                <div className="text-2xl font-bold text-sage-950">750+</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] text-sage-600 uppercase">Aktif İş Ortağı</div>
               </div>
-              <div className="glass p-4 rounded-2xl">
-                <div className="text-2xl font-bold gradient-text mb-1">15+</div>
-                <div className="text-sm text-gray-600">Yıllık Deneyim</div>
+              <div className="space-y-1">
+                <div className="text-2xl font-bold text-sage-950">ISO 13485</div>
+                <div className="text-[10px] font-bold tracking-[0.2em] text-sage-600 uppercase">Kalite Standartları</div>
               </div>
             </motion.div>
           </div>
